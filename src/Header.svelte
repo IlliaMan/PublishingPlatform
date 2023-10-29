@@ -34,6 +34,8 @@
     padding-left: 2rem;
     align-self: center;
     margin: auto;
+    height: 65%;
+    border-radius: 0.5rem;
   }
 
   button {
