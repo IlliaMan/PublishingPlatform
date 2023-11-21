@@ -14,6 +14,7 @@ div {
   display: flex;
   flex-direction: column;
   padding: 0;
+  row-gap: 0.5rem;
 }
 
 p { 
