@@ -24,7 +24,7 @@
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
-    height: 5rem;
+    height: 6rem;
     background-color: #ddd;
   }
 
