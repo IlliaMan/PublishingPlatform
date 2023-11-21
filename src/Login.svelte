@@ -4,8 +4,8 @@
 
 <div>
   <form class="login-form">
-    <InputRectangle name="Login:"/>
-    <InputRectangle type="password" name="Password:"/>
+    <InputRectangle name="Login:" placeholder="youremail@gmail.com"/>
+    <InputRectangle type="password" name="Password:" placeholder="************"/>
     <button>Login</button>
   </form>
 </div>

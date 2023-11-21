@@ -1,11 +1,12 @@
 <script>
   export let name = "Default Name:";
   export let type = "text";
+  export let placeholder = "placeholder";
 </script>
 
 <div>
     <p>{name}</p>
-    <input type={type} />
+    <input type={type} placeholder={placeholder} />
 </div>
 
 <style>
