@@ -2,20 +2,31 @@
   import InputRectangle from "./components/InputRectangle/InputRectangle.svelte";
 </script>
 
-<div>
+<div class="main">
   <form class="login-form">
     <InputRectangle name="Login:" placeholder="youremail@gmail.com"/>
     <InputRectangle type="password" name="Password:" placeholder="************"/>
-    <button>Login</button>
+    <button>Sign in</button>
   </form>
+  <div class="additional-options">
+    <p>Forgot password?</p>
+    <p>Sign up</p>
+  </div>
 </div>
 
 <style>
-div {
+.main {
   height: 100px;
   width: 33vw;
   margin: auto;
   margin-top: 25vh;
+}
+
+.additional-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  font-style: italic;
 }
 
 .login-form {
@@ -26,7 +37,7 @@ div {
 
 button {
   height: 3rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   width: 30%;
   align-self: flex-end;
   border-radius: 4px;

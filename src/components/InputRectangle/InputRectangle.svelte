@@ -19,14 +19,14 @@ div {
 p { 
   align-self: flex-start;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: white;
 }
 
 input {
-  height: 3rem;
+  height: 3.5rem;
   border-radius: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   width: 100%;
 }
 </style>
