@@ -36,9 +36,9 @@
 }
 
 button {
-  height: 3rem;
+  min-height: 3rem;
   font-size: 2rem;
-  width: 30%;
+  width: 25%;
   align-self: flex-end;
   border-radius: 4px;
 }
