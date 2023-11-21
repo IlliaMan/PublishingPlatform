@@ -32,7 +32,7 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: 2rem;
 }
 
 button {
