@@ -7,12 +7,18 @@
 	import MainPage from './MainPage.svelte';
 	import ArticlePage from './ArticlePage.svelte';
 	import UserPage from './UserPage.svelte';
+	import EditArticlePage from './EditArticlePage.svelte';
 </script>
 
 <!-- <main>
 	<Header />
 	<Login />
 </main> -->
+
+<main>
+	<Header />
+	<EditArticlePage />
+</main>
 
 <!-- <main>
 	<Header />
@@ -39,10 +45,10 @@
 	<ForgotPage />
 </main> -->
 
-<main>
+<!-- <main>
 	<Header />
 	<UserPage />
-</main>
+</main> -->
 
 <style>
 	main {
