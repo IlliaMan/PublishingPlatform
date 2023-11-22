@@ -1,11 +1,7 @@
 <script>
-    import AdPlaceholer from "./components/AdPlaceholder/AdPlaceholer.svelte";
     import InputRectangle from "./components/InputRectangle/InputRectangle.svelte";
 
-  let article = {
-    title: "Article Title 1",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id bibendum magna. Suspendisse eu dolor in ipsum tincidunt egestas vel a ipsum. In hac habitasse platea dictumst. Quisque condimentum ex lorem, quis mollis enim pretium vitae. Pellentesque et ipsum ante. Aenean lobortis nisi mollis turpis scelerisque, eleifend vestibulum justo posuere. Nulla magna orci, laoreet vitae faucibus ut, hendrerit congue arcu. Curabitur vel risus in justo varius tempor. Integer diam orci, facilisis at lacinia sit amet, efficitur non metus. Ut cursus leo et pulvinar interdum. Proin ultricies eleifend ullamcorper. Morbi metus est, imperdiet hendrerit purus finibus, porttitor fermentum leo. Ut sit amet sollicitudin magna. Donec quis tempus felis, nec aliquam enim. Integer et dolor sagittis, accumsan elit ut, fermentum massa."
-  };
+  let text = `# Markdown syntax guide\n\n## Headers\n\n# This is a Heading h1\n## This is a Heading h2\n###### This is a Heading h6\n\n## Emphasis\n\n*This text will be italic*  \n_This will also be italic_\n\n**This text will be bold**\n__This will also be bold__\n\ngitg_You **can** combine them_`
 </script>
 
 <div class="main">
@@ -26,15 +22,13 @@
       <div class="header">
         <h1>Article.md</h1>
       </div>
-      <textarea />
-
+      <textarea bind:value={text}/>
     </div>
     <div class="display-area">
       <div class="header">
         <h1>Article.md</h1>
       </div>
-      <textarea />
-
+      <textarea bind:value={text} disabled />
     </div>
   </div>
 </div>
