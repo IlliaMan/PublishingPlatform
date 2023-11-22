@@ -45,10 +45,13 @@
 
 	<footer>
 		{#each Object.keys(pages) as page}
-			<button on:click={() => {
-				activePage = pages[page];
-			}
-			}>{page}</button>
+			<button
+        on:click={() => {
+          activePage = pages[page];
+        }}
+      >
+        {page}
+      </button>
 		{/each}
 	</footer>
 </main>
