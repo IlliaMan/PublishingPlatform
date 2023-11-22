@@ -1,9 +1,10 @@
 <script>
   export let left = '0rem';
   export let top = '0rem';
+  export let minHeight = '42.5rem';
 </script>
 
-<div class="main" style="--left: {left}; --top: {top}">
+<div class="main" style="--left: {left}; --top: {top}; --min-height: {minHeight}">
   <p>Ad Placeholder</p>
 </div>
 
@@ -13,7 +14,7 @@
     box-sizing: border-box;
     border: 4px solid black;
     min-width: 24rem;
-    min-height: 42.5rem;
+    min-height: var(--min-height);
     left: var(--left);
     top: var(--top);
     font-size: 3rem;
