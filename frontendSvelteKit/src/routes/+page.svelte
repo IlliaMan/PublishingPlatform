@@ -1,6 +1,6 @@
 <script>
   import ArticleCarousel from "$lib/components/ArticleCarousel.svelte";
-  import AdPlaceholer from "$lib/components/AdPlaceholer.svelte";
+  import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
 
   let articles = [
     {
@@ -43,7 +43,7 @@
 </script>
 
 <div class="main">
-  <AdPlaceholer left={'14rem'} top={'46.5rem'}/>
+  <AdPlaceholder left={'14rem'} top={'46.5rem'}/>
   <ArticleCarousel />
   <div class="article-tiles">
     {#each articles as { title, content }}
