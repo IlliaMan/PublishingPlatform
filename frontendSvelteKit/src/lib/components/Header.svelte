@@ -64,4 +64,10 @@
     width: 8rem;
     align-items: center;
   }
+
+  @media only screen and (max-width: 550px) {
+    input {
+      visibility: hidden;
+    }
+  }
 </style>
