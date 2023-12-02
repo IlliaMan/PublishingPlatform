@@ -3,20 +3,27 @@
 </script>
 
 <header>
-<img src="logo.png" alt="logo" class="logo"/>
- <input type="text" placeholder="Search"/>
- <button on:click={() => { console.log('clicked'); }}>
-    <img src="ProfileIcon.png" alt="Progile Icon" class="image profile"/>
- </button>
-  <button on:click={() => { console.log('clicked'); }}>
-    <img src="MenuIcon.png" alt="Menu Icon" class="image menu-icon"/>
- </button>
+  <a href="/">
+    <img src="logo.png" alt="logo" class="logo"/>
+  </a>
+  <input type="text" placeholder="Search"/>
+  <div class="profile-icon">
+    <a href="/profile">
+      <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
+    </a>
+  </div>
+  <div class="menu-icon">
+    <button on:click={() => { console.log('clicked'); }}>
+      <img src="MenuIcon.png" alt="Menu Icon" class="small-image"/>
+    </button>
+  </div>
 </header>
 
 <style>
   .logo {
     padding: 0.375rem;
     margin-left: 1rem;
+    max-width: 8rem;
   }
 
   header {
@@ -38,17 +45,23 @@
     border-radius: 0.5rem;
   }
 
+  a {
+    margin-right: 2rem;
+    min-width: 4rem;
+  }
+
   button {
     all: unset;
-    margin-right: 2rem;
   }
 
-  .image {
+  .small-image {
     filter: brightness(0.3);
-    height: 80%;
+    width: 5rem;
   }
 
-  .menu-icon {
-    height: 65%;
+  div {
+    display: flex;
+    width: 8rem;
+    align-items: center;
   }
 </style>
