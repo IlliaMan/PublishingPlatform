@@ -21,12 +21,14 @@
   <button class="left-slider" on:click={() => {
     content_div.scrollLeft -= content_div.scrollWidth / articles.length;
   }}>
-    <p>&lt;</p>
+    <p class="arrow">&lt;</p>
   </button>
   <div bind:this={content_div} class="content">
     {#each articles as { title, content } }
       <div class="sliding-article">
-        <h1>{title}</h1>
+        <div class="article-title">
+          <p>{title}</p>
+        </div>
         <p>{content}</p>
       </div>
     {/each}
@@ -34,7 +36,7 @@
   <button class="right-slider" on:click={() => {
     content_div.scrollLeft += content_div.scrollWidth / articles.length;
   }}>
-    <p>&gt;</p>
+    <p class="arrow">&gt;</p>
   </button>
 </div>
 
@@ -73,20 +75,30 @@
     scroll-behavior: smooth;
   }
 
-  h1 {
+  .article-title {
+    display: inline;
     font-size: 5rem;
     margin: 0;
     margin-top: 1rem;
   }
 
-  p {
+  .article-title > p {
+    display: flex;
+    justify-content: center;
+    font-size: inherit;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
+  .arrow {
     font-size: 8rem;
+    text-align: center;
   }
 
   div > p {
-    align-self: flex-start;
-    padding: 0 10rem;
+    padding: 0 5rem;
     font-size: 2rem;
+    text-align: justify;
   }
 
   button {
