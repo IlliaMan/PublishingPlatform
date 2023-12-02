@@ -48,7 +48,9 @@
   <div class="article-tiles">
     {#each articles as { title, content }}
       <div class="article">
-        <h1>{title}</h1>
+        <div class="article-title">
+          <p>{title}</p>
+        </div>
         <p>{content}</p>
       </div>
     {/each}
@@ -86,5 +88,17 @@
 
   p {
     font-size: 1.6rem;
+    text-align: justify;
   }
+  
+  .article-title {
+    font-size: 2rem;
+  }
+
+  .article-title > p {
+    font-size: inherit;
+    display: flex;
+    justify-content: center;
+  }
+
 </style>
