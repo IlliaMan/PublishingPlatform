@@ -1,52 +1,14 @@
 <script>
   import ArticleCarousel from "$lib/components/ArticleCarousel.svelte";
   import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
-
-  let articles = [
-    {
-      title: "Article Title 1",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 2",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 3",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 4",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 5",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 6",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 7",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 8",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    },
-    {
-      title: "Article Title 59",
-      content: "This description provides a brief overview, giving readers a quick glimpse of its content to help them decide if they are interested"
-    }
-  ]
+  export let data;
 </script>
 
 <div class="main">
   <AdPlaceholder top={'47rem'} minHeight={'43rem'}/>
   <ArticleCarousel />
   <div class="article-tiles">
-    {#each articles as { title, content }}
+    {#each data.articleList as { title, content }}
       <div class="article">
         <div class="article-title">
           <p>{title}</p>
