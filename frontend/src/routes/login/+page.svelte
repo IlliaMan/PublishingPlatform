@@ -1,5 +1,6 @@
 <script>
   import InputRectangle from "$lib/components/InputRectangle.svelte";
+  import { goto } from "$app/navigation";
 
   function onLoginSubmit(event) {
     const formData = new FormData(event.target);
@@ -10,11 +11,23 @@
       data[key] = value;
     }
 
-    console.log(data);
+    console.log(`GET:/login?${new URLSearchParams(data)}`);
 
     fetch('http://localhost:3000/login?' + new URLSearchParams(data))
-    .then(response => response.json())
-    .then(response => console.log(response));
+    .then(response => {
+      if(!response.ok) {
+        throw new Error('Sth went wrong');
+      }
+
+      return response.json();
+    })
+    .then(response => { 
+      console.log(response);
+      goto('/');
+    })
+    .catch(error => {
+      console.warn(error.message);
+    });
   }
 </script>
 
