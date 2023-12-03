@@ -8,7 +8,7 @@
 </script>
 
 <div class="main">
-  <AdPlaceholder left={'14rem'} top={'35rem'} minHeight={'55rem'}/>
+  <AdPlaceholder top={'35rem'} minHeight={'55rem'}/>
   <h1>{article.title}</h1>
   <div class="additional-information">
     <div class="horizontal-block">

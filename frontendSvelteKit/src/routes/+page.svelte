@@ -43,7 +43,7 @@
 </script>
 
 <div class="main">
-  <AdPlaceholder left={'14rem'} top={'46.5rem'}/>
+  <AdPlaceholder top={'47rem'} minHeight={'43rem'}/>
   <ArticleCarousel />
   <div class="article-tiles">
     {#each articles as { title, content }}
