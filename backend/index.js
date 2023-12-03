@@ -12,7 +12,14 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
   console.log(req.query);
-  res.json({ userName: "UserNumberOne"});
+  const { email, password } = req.query;
+  if(email.length === 0 || password.length === 0) {
+    res.status(404).json({
+      message: "No email or password"
+    });
+  } else {
+    res.json({ userName: "UserNumberOne"});
+  }
 });
 
 app.listen(port, () => {
