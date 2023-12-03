@@ -8,7 +8,9 @@
   <InputRectangle name="Email" placeholder="youremail@gmail.com"/>
   <button>Submit</button>
   <div class="additional-options">
-    <p>Back to sign in</p>
+    <a href="/login">
+      <p>Back to sign in</p>
+    </a>
   </div>
 </div>
 

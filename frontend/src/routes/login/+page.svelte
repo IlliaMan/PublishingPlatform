@@ -38,8 +38,12 @@
     <button type="submit">Sign in</button>
   </form>
   <div class="additional-options">
-    <p>Forgot password?</p>
-    <p>Sign up</p>
+    <a href="/forgot-password">
+      <p>Forgot password?</p>
+    </a>
+    <a href="sign-up">
+      <p>Sign up</p>
+    </a>
   </div>
 </div>
 
