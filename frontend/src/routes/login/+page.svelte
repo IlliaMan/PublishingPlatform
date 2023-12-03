@@ -1,9 +1,25 @@
 <script>
   import InputRectangle from "$lib/components/InputRectangle.svelte";
+
+  function onLoginSubmit(event) {
+    const formData = new FormData(event.target);
+
+    const data = {};
+    for (let field of formData) {
+      const [key, value] = field;
+      data[key] = value;
+    }
+
+    console.log(data);
+
+    fetch('http://localhost:3000/login?' + new URLSearchParams(data))
+    .then(response => response.json())
+    .then(response => console.log(response));
+  }
 </script>
 
 <div class="main">
-  <form class="login-form">
+  <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
     <InputRectangle inputName="email" name="Login:" placeholder="youremail@gmail.com"/>
     <InputRectangle inputName="password" type="password" name="Password:" placeholder="************"/>
     <button type="submit">Sign in</button>
