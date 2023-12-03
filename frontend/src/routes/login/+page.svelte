@@ -4,9 +4,9 @@
 
 <div class="main">
   <form class="login-form">
-    <InputRectangle name="Login:" placeholder="youremail@gmail.com"/>
-    <InputRectangle type="password" name="Password:" placeholder="************"/>
-    <button>Sign in</button>
+    <InputRectangle inputName="email" name="Login:" placeholder="youremail@gmail.com"/>
+    <InputRectangle inputName="password" type="password" name="Password:" placeholder="************"/>
+    <button type="submit">Sign in</button>
   </form>
   <div class="additional-options">
     <p>Forgot password?</p>
