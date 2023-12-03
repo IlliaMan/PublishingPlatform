@@ -13,13 +13,18 @@
     position: absolute;
     box-sizing: border-box;
     border: 4px solid black;
-    /* min-width: 24rem; */
     width: 15%;
     min-height: var(--min-height);
     left: var(--left);
     top: var(--top);
     font-size: 2.5rem;
     text-align: center;
-    padding: 0 2rem;
+    padding: 0 1rem;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .main {
+      visibility: hidden;
+    }
   }
 </style>
