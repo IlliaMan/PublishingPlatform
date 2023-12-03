@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { getArticles } from './controllers/user.controllers.js';
 
 const app = express();
 const port = 3000;
@@ -21,6 +22,8 @@ app.get('/login', (req, res) => {
     res.json({ userName: "UserNumberOne"});
   }
 });
+
+app.get('/article-list', getArticles);
 
 app.listen(port, () => {
   console.log(`listening at port ${port}`);
