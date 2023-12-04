@@ -1,7 +1,9 @@
 <script>
   import InputRectangle from "$lib/components/InputRectangle.svelte";
+  import showdown from 'showdown';
 
   let text = `# Markdown syntax guide\n\n## Headers\n\n# This is a Heading h1\n## This is a Heading h2\n###### This is a Heading h6\n\n## Emphasis\n\n*This text will be italic*  \n_This will also be italic_\n\n**This text will be bold**\n__This will also be bold__\n\ngitg_You **can** combine them_`
+  let converter = new showdown.Converter();
 </script>
 
 <div class="main">
@@ -28,7 +30,10 @@
       <div class="header">
         <h1>Article.md</h1>
       </div>
-      <textarea bind:value={text} disabled />
+      <div class="preview">
+        {@html converter.makeHtml(text)}
+      </div>
+      <!-- <textarea bind:value={md} disabled /> -->
     </div>
   </div>
 </div>
@@ -87,10 +92,25 @@
 
   textarea {
     width: 99%;
-    height: 98%;
+    height: 100%;
     font-size: 2rem;
     text-align: left;
     resize: none;
+    overflow: scroll;
+    border: 0;
+  }
+
+  textarea:focus-visible {
+    outline: none;
+  }
+
+  .preview {
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    overflow: scroll;
+    background-color: white;
+    border-top: 0.125rem solid black;
   }
 
   .statistics {
