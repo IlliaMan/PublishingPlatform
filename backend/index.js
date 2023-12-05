@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import articlesRouter from './routes/articles.js'
 import { getArticles } from './controllers/user.controllers.js';
 
 const DATABASE_URL = 'mongodb://localhost:27017/test';
@@ -16,19 +17,21 @@ db.once('disconnected', () => {
 });
 
 
-const User = mongoose.model('User', new mongoose.Schema({
-  name: String
-}));
+// const User = mongoose.model('User', new mongoose.Schema({
+//   name: String
+// }));
 
-const users = await User.find();
-console.log('-----');
-console.log(users);
-console.log('-----');
+// const users = await User.find();
+// console.log('-----');
+// console.log(users);
+// console.log('-----');
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
+
+app.use('/articles', articlesRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
