@@ -1,6 +1,8 @@
 <script>
   import ArticleCarousel from "$lib/components/ArticleCarousel.svelte";
   import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
+  import { goto } from "$app/navigation";
+
   export let data;
 </script>
 
@@ -8,14 +10,16 @@
   <AdPlaceholder top={'47rem'} minHeight={'43rem'}/>
   <ArticleCarousel />
   <div class="article-tiles">
-    {#each data.articleList as { title, content }}
+    {#each data.articleList as { _id, title, content }}
       <div class="article">
         <div class="article-title">
           <p>{title}</p>
         </div>
         <p class="content">{content}</p>
         <div class="article-button-pannel">
-          <button>Read</button>
+          <button on:click={() => {
+            goto('/article?' + new URLSearchParams({ id: _id }));
+          }}>Read</button>
         </div>
       </div>
     {/each}
@@ -32,7 +36,6 @@
     flex-direction: column;
     gap: 4rem;
   }
-
 
   .article-tiles {
     width: 100%;
