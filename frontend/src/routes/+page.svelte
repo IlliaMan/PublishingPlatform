@@ -14,6 +14,9 @@
           <p>{title}</p>
         </div>
         <p class="content">{content}</p>
+        <div class="article-button-pannel">
+          <button>Read</button>
+        </div>
       </div>
     {/each}
   </div>
@@ -65,12 +68,16 @@
     font-size: 2rem;
   }
 
+  .article-button-pannel {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .article-title > p {
     font-size: inherit;
     display: flex;
     justify-content: center;
     margin: 0;
-    text-align: center;
   }
 
   .content {
