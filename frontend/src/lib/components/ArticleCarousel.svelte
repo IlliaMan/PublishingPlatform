@@ -1,20 +1,17 @@
 <script>
-    export let articles = [
-      {
-        title: "Article One",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      },
-      {
-        title: "Article Two",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-      },
-      {
-        title: "Article Three",
-        content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      }
-    ];
+  let articles = [];
+  async function fetchArticles() {
+    const res = await fetch("http://127.0.0.1:3000/articles/");
+    const data = await res.json();
 
-    let content_div;
+    if (res.ok) {
+      articles = data;
+      return data;
+    } else {
+      throw new Error(data);
+    }
+  }
+  let content_div;
 </script>
 
 <div class="main">
@@ -23,16 +20,20 @@
   }}>
     <p class="arrow">&lt;</p>
   </button>
-  <div bind:this={content_div} class="content">
-    {#each articles as { title, content } }
-      <div class="sliding-article">
-        <div class="article-title">
-          <p>{title}</p>
+  {#await fetchArticles()}
+    <p>loading</p>
+  {:then articles} 
+    <div bind:this={content_div} class="content">
+      {#each articles as { title, content } }
+        <div class="sliding-article">
+          <div class="article-title">
+            <p>{title}</p>
+          </div>
+          <p>{content}</p>
         </div>
-        <p>{content}</p>
-      </div>
-    {/each}
-  </div>
+      {/each}
+    </div>
+  {/await}
   <button class="right-slider" on:click={() => {
     content_div.scrollLeft += content_div.scrollWidth / articles.length;
   }}>
