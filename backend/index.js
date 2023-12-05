@@ -16,16 +16,6 @@ db.once('disconnected', () => {
     console.log('Disconnected from MongoDB');
 });
 
-
-// const User = mongoose.model('User', new mongoose.Schema({
-//   name: String
-// }));
-
-// const users = await User.find();
-// console.log('-----');
-// console.log(users);
-// console.log('-----');
-
 const app = express();
 const port = 3000;
 
