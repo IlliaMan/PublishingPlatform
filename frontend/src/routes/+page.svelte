@@ -36,6 +36,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: 3rem;
+    padding-bottom: 2rem;
   }
 
   .article-tiles > div {
