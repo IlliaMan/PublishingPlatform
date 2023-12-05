@@ -48,7 +48,7 @@
     <p>200 followers</p>
     <button>Follow</button>
   </div>
-  <AdPlaceholder left={'14rem'} top={'50rem'} minHeight={'40rem'}/>
+  <AdPlaceholder top={'50rem'} minHeight={'40rem'}/>
   <div class="article-tiles">
   {#each articles as { title, content }}
     <div class="article">
@@ -71,14 +71,14 @@
   }
 
   .user-info {
-    position: fixed;
+    position: absolute;
     box-sizing: border-box;
     border: 4px solid black;
     display: flex;
     flex-direction: column;
-    min-width: 24rem;
+    width: 15%;
     padding: 0 2rem;
-    left: 14rem;
+    left: 6rem;
     background-color: #ddd;
     padding: 2rem 0;
   }
@@ -105,6 +105,7 @@
 
   .user-info > * {
     font-size: 2rem;
+    margin: 3rem auto 0 auto;
   }
 
   button {
@@ -119,5 +120,11 @@
     filter: brightness(0.3);
     min-width: 50%;
     margin: 0 auto;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .user-info {
+      visibility: hidden;
+    }
   }
 </style>
