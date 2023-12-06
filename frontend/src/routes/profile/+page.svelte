@@ -35,6 +35,7 @@
             goto('/article?' + new URLSearchParams({ id: _id }));
           }}>Read</button>
           <button on:click={() => {
+            goto('/edit-article?' + new URLSearchParams({ id: _id }));
           }}>Edit</button>
         </div>
       </div>
