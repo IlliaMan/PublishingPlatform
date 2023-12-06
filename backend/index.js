@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import articlesRouter from './routes/articles.js'
-import { getArticles } from './controllers/user.controllers.js';
 
 const DATABASE_URL = 'mongodb://localhost:27017/test';
 
@@ -39,8 +38,6 @@ app.get('/login', (req, res) => {
     res.json({ userName: "UserNumberOne"});
   }
 });
-
-app.get('/article-list', getArticles);
 
 app.listen(port, () => {
   console.log(`listening at port ${port}`);
