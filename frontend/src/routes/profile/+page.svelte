@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "$app/navigation";
   import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
 
   async function fetchArticles() {
@@ -25,12 +26,13 @@
     <p>loading</p>
   {:then article} 
     <div class="article-tiles">
-      {#each article as { title, content }}
+      {#each article as { title, content, _id }}
       <div class="article">
         <h1>{title}</h1>
         <p>{content}</p>
         <div class="article-button-pannel">
           <button on:click={() => {
+            goto('/article?' + new URLSearchParams({ id: _id }));
           }}>Read</button>
           <button on:click={() => {
           }}>Edit</button>
