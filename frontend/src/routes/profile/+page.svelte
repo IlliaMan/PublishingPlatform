@@ -29,6 +29,12 @@
       <div class="article">
         <h1>{title}</h1>
         <p>{content}</p>
+        <div class="article-button-pannel">
+          <button on:click={() => {
+          }}>Read</button>
+          <button on:click={() => {
+          }}>Edit</button>
+        </div>
       </div>
       {/each}
     </div>
@@ -96,6 +102,18 @@
     filter: brightness(0.3);
     min-width: 50%;
     margin: 0 auto;
+  }
+
+  .article-button-pannel {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-button-pannel > button {
+    max-width: fit-content;
+    padding: 0 5rem;
   }
 
   @media only screen and (max-width: 800px) {
