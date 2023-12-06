@@ -44,3 +44,5 @@ app.get('/login', (req, res) => {
 app.listen(port, () => {
   console.log(`listening at port ${port}`);
 });
+
+export default app;
