@@ -3,11 +3,12 @@
   export let type = "text";
   export let placeholder = "placeholder";
   export let inputName = "";
+  export let value = "";
 </script>
 
 <div>
-    <p>{name}</p>
-    <input type={type} placeholder={placeholder} name={inputName}/>
+  <p>{name}</p>
+  <input type={type} placeholder={placeholder} name={inputName} value={value}>
 </div>
 
 <style>
