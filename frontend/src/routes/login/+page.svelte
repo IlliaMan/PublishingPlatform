@@ -11,9 +11,7 @@
       data[key] = value;
     }
 
-    console.log(`GET:/login?${new URLSearchParams(data)}`);
-
-    fetch('http://localhost:3000/login?' + new URLSearchParams(data))
+    fetch(`http://localhost:3000/users/${data.email}/${data.password}`)
     .then(response => {
       if(!response.ok) {
         throw new Error('Sth went wrong');
