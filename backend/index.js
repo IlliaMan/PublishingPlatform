@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import articlesRouter from './routes/articles.js'
+import uesrRouter from './routes/users.js';
 
 const DATABASE_URL = 'mongodb://localhost:27017/test';
 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/articles', articlesRouter);
+app.use('/users', uesrRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
