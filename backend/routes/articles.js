@@ -54,9 +54,9 @@ articlesRouter.patch('/:id', getArticle, async (req, res) => {
 });
 
 // Deleting one 
-articlesRouter.delete('/:id', async (req, res) => {
+articlesRouter.delete('/:id', getArticle, async (req, res) => {
   try {
-    await res.article.remove();
+    await res.article.deleteOne();
     res.json({ message: 'Deleted Article'});
   } catch (error) {
     res.status(500).json({ message: error.message });
