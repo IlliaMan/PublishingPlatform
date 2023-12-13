@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const userScheme = new mongoose.Schema({
   email: {
@@ -22,6 +22,16 @@ const userScheme = new mongoose.Schema({
     type: Date,
     required: true,
     default: Date.now
+  },
+  articles: {
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Article'
+      }
+    ],
+    required: true,
+    default: []
   }
 });
 
