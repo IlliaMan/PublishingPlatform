@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import articlesRouter from './routes/articles.js'
 import userRouter from './routes/users.js';
+import authRouter from './routes/auth.js';
 
 const DATABASE_URL = 'mongodb://localhost:27017/test';
 
@@ -24,6 +25,7 @@ app.use(express.json());
 
 app.use('/articles', articlesRouter);
 app.use('/users', userRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
