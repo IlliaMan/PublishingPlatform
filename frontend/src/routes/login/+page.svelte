@@ -11,7 +11,16 @@
       data[key] = value;
     }
 
-    fetch(`http://localhost:3000/users/${data.email}/${data.password}`)
+    fetch('http://localhost:3000/auth/', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
     .then(response => {
       if(!response.ok) {
         throw new Error('Sth went wrong');
@@ -21,6 +30,7 @@
     })
     .then(response => { 
       console.log(response);
+      sessionStorage.setItem("jwt", response.accessToken);
       goto('/');
     })
     .catch(error => {
