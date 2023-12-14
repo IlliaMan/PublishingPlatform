@@ -3,7 +3,11 @@
   import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
 
   async function fetchArticles() {
-    const res = await fetch("http://127.0.0.1:3000/articles/");
+    const res = await fetch("http://127.0.0.1:3000/articles/", {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('jwt')}`
+      }
+    });
     const data = await res.json();
 
     if (res.ok) {
