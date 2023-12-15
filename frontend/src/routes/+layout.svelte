@@ -9,7 +9,7 @@
   <Header bind:menuIconArg={isSideMenuVisible} />
   <SideMenu bind:isVisible={isSideMenuVisible} />
 </div>
-<div class="content">
+<div class="content" class:cut-width={isSideMenuVisible}>
   <slot />
 </div>
 
@@ -22,5 +22,9 @@
 
   .content {
     width: 100%;
+  }
+
+  .cut-width {
+    width: calc(100% - 36rem);
   }
 </style>
