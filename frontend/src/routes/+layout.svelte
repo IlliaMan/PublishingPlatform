@@ -25,6 +25,6 @@
   }
 
   .cut-width {
-    width: calc(100% - 36rem);
+    width: calc(100% - 42rem);
   }
 </style>

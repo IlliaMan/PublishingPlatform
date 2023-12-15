@@ -12,7 +12,7 @@
   div {
     position: relative;
     right: 0;
-    width: 36rem;
+    width: 42rem;
     height: 100vh;
     background-color: gray;
   }
