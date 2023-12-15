@@ -11,11 +11,14 @@
       </a>
     </div>
     {#if isLoggedIn}
-      <a href="#">Sign in</a>
-      <a href="#">Sign up</a>
-      <a href="#">Become a Member</a>
+      <a href="/login">Sign in</a>
+      <a href="/sign-up">Sign up</a>
     {:else}
+      <a href="/edit-page">Write</a>
+      <a href="/profile">Profile</a>
+      <a href="/">Settings</a>
     {/if}
+    <a href="/subscription-plans">Become a Member</a>
   </div>
 {/if}
 
@@ -35,9 +38,13 @@
     box-shadow: rgba(0, 0, 0, 0.2) -0.5rem 0 4rem;
   }
 
+  .profile-icon {
+    margin-bottom: 2rem;
+  }
+
   .medium-image {
     filter: brightness(0.3);
-    width: 8rem;
+    width: 10rem;
   }
 
   .main > a {
@@ -53,5 +60,9 @@
 
   .main > a:hover {
     color: rgba(0, 0, 0, 0.55);
+  }
+
+  .main > a:last-child {
+    margin-top: auto;
   }
 </style>
