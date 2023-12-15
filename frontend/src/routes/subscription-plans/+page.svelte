@@ -26,12 +26,13 @@
 <style>
   .main {
     height: 100px;
-    width: 50vw;
+    width: 66vw;
     margin: auto;
     margin-top: 18vh;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    text-align: center;
   }
 
   h1 {
@@ -49,6 +50,7 @@
     display: flex;
     flex-direction: row;
     column-gap: 2rem;
+    justify-content: center;
   }
 
   .options > div {
