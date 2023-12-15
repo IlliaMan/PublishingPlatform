@@ -3,11 +3,12 @@
   import SideMenu from "$lib/components/SideMenu.svelte";
 
   let isSideMenuVisible = true;
+  let isLoggedIn = true;
 </script>
 
 <div class="layout">
   <Header bind:menuIconArg={isSideMenuVisible} />
-  <SideMenu bind:isVisible={isSideMenuVisible} />
+  <SideMenu bind:isVisible={isSideMenuVisible} isLoggedIn={isLoggedIn} />
 </div>
 <div class="content" class:cut-width={isSideMenuVisible}>
   <slot />
