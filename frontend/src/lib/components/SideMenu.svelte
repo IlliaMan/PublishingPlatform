@@ -11,9 +11,10 @@
       </a>
     </div>
     {#if isLoggedIn}
-      <p>LoggedIn</p>
+      <a href="#">Sign in</a>
+      <a href="#">Sign up</a>
+      <a href="#">Become a Member</a>
     {:else}
-      <p>LoggedOut</p>
     {/if}
   </div>
 {/if}
@@ -37,5 +38,20 @@
   .medium-image {
     filter: brightness(0.3);
     width: 8rem;
+  }
+
+  .main > a {
+    width: 100%;
+    text-align: center;
+    display: block;
+    color: black;
+    font-size: 2rem;
+    padding: 1rem 0;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+  }
+
+  .main > a:hover {
+    color: rgba(0, 0, 0, 0.55);
   }
 </style>
