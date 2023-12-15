@@ -1,5 +1,5 @@
 <script>
-
+  export let menuIconArg = false;
 </script>
 
 <header>
@@ -13,7 +13,9 @@
     </a>
   </div>
   <div class="menu-icon">
-    <button on:click={() => { console.log('clicked'); }}>
+    <button on:click={() => { 
+      menuIconArg = !menuIconArg;
+    }}>
       <img src="MenuIcon.png" alt="Menu Icon" class="small-image"/>
     </button>
   </div>
