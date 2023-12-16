@@ -67,6 +67,10 @@
     align-items: center;
   }
 
+  .menu-icon:hover {
+    cursor: pointer;
+  }
+
   @media only screen and (max-width: 550px) {
     input {
       visibility: hidden;
