@@ -2,7 +2,7 @@
   import Header from "$lib/components/Header.svelte";
   import SideMenu from "$lib/components/SideMenu.svelte";
 
-  let isSideMenuVisible = true;
+  let isSideMenuVisible = false;
   let isLoggedIn = true;
 </script>
 
