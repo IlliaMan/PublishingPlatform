@@ -14,6 +14,7 @@
         <th>&#8470;</th>
         <th>Username</th>
         <th>Email</th>
+        <th>Status</th>
         <th colspan="2">Actions</th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
         <td>{index + 1}</td>
         <td>{username}</td>
         <td>{email}</td>
+        <td>Not banned</td>
         <td><button>Ban</button></td>
         <td><button>Unban</button></td>
       </tr>
@@ -38,7 +40,7 @@
     box-sizing: border-box;
     border-collapse: collapse;
     margin: 25px 0;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-family: sans-serif;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
