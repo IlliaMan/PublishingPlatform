@@ -1,39 +1,34 @@
 <script>
-const users = [
-  { email: 'user@gmail.com', username: 'user' },
-  { email: 'email', username: 'username' },
-  { email: 'email', username: 'username' },
-  { email: 'email', username: 'username' },
-  { email: 'email', username: 'username' },
-  { email: 'kolya@gmail.com', username: 'kolya' },
-  { email: 'kolya@gmail.com', username: 'kolya' },
-  { email: '123@gmail.com', username: '123' },
-  { email: 'gmail@gmail.com', username: 'gmail' },
-  { email: '1@1', username: '123' }
-]
+  const getUsers = async () => {
+    const res = await fetch('http://localhost:3000/users');
+    const data = await res.json();
+    return data;
+  };
 </script>
 
 <div class="admin-panel">
   <h1>Admin Panel</h1>
   <table class="styled-table">
     <thead>
-        <tr>
-            <th>&#8470;</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th colspan="2">Actions</th>
-        </tr>
+      <tr>
+        <th>&#8470;</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th colspan="2">Actions</th>
+      </tr>
     </thead>
     <tbody>
-  {#each users as {username, email}, index }
-        <tr>
-            <td>{index + 1}</td>
-            <td>{username}</td>
-            <td>{email}</td>
-            <td><button>Ban</button></td>
-            <td><button>Unban</button></td>
-        </tr>
-  {/each}
+      {#await getUsers()}
+      <p>Loading</p>
+      {:then users} {#each users as {username, email}, index }
+      <tr>
+        <td>{index + 1}</td>
+        <td>{username}</td>
+        <td>{email}</td>
+        <td><button>Ban</button></td>
+        <td><button>Unban</button></td>
+      </tr>
+      {/each} {/await}
     </tbody>
   </table>
 </div>
