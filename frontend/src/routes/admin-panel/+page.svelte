@@ -1,9 +1,30 @@
 <script>
+  import { onMount } from "svelte";
+
+  let users = [];
+
   const getUsers = async () => {
     const res = await fetch('http://localhost:3000/users');
     const data = await res.json();
-    return data;
+    users = data;
   };
+
+  const updateUserBanStatus = (email, isBanned) => {
+    fetch('http://localhost:3000/users/banstatus/', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        email,
+        isBanned
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    .then(data => data.json())
+    .then(console.log);
+  };
+
+  onMount(getUsers);
 </script>
 
 <div class="admin-panel">
@@ -19,18 +40,26 @@
       </tr>
     </thead>
     <tbody>
-      {#await getUsers()}
-      <p>Loading</p>
-      {:then users} {#each users as {username, email}, index }
+    {#each users as user, index}
       <tr>
         <td>{index + 1}</td>
-        <td>{username}</td>
-        <td>{email}</td>
-        <td>Not banned</td>
-        <td><button>Ban</button></td>
-        <td><button>Unban</button></td>
+        <td>{user.username}</td>
+        <td>{user.email}</td>
+        <td>{user.isBanned ? 'Banned' : 'Not Banned'}</td>
+        <td>
+          <button on:click={() => {
+            user.isBanned = true;
+            updateUserBanStatus(user.email, true);
+          }}>Ban</button>
+        </td>
+        <td>
+          <button on:click={() => {
+            user.isBanned = false;
+            updateUserBanStatus(user.email, false);
+          }}>Unban</button>
+        </td>
       </tr>
-      {/each} {/await}
+      {/each}
     </tbody>
   </table>
 </div>

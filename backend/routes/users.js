@@ -46,6 +46,17 @@ userRouter.get('/:email/:password', async (req, res) => {
   res.json(user);
 });
 
+// Ban/Unban user
+userRouter.patch('/banstatus', getUser, async (req, res) => {
+  res.user.isBanned = req.body.isBanned;
+
+  try {
+    const updatedUser = await res.user.save();
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 // Creating one 
 userRouter.post('/', async (req, res) => {
@@ -65,5 +76,22 @@ userRouter.post('/', async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+
+async function getUser(req, res, next) {
+  let user;
+  try {
+    user = await UserModel.find({ email: req.body.email });
+    // console.log(user);
+    if(user == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  res.user = user[0];
+  next();
+}
 
 export default userRouter;
