@@ -11,7 +11,7 @@
       data[key] = value;
     }
 
-    fetch('http://localhost:3000/auth/', {
+    fetch('http://localhost:3000/auth/login/', {
       method: 'POST',
       body: JSON.stringify({
         email: data.email,

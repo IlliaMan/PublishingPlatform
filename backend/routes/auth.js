@@ -5,7 +5,7 @@ import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from './keys.js';
 
 const authRouter = express.Router();
 
-authRouter.post('/', async (req, res) => {
+authRouter.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   let user;
