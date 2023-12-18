@@ -19,8 +19,12 @@ authRouter.post('/', async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 
-  const accessToken = jwt.sign({ email, role: user[0].role }, ACCESS_TOKEN_SECRET);
+  const accessToken = generateAccessToken(user[0]);
   res.json({ accessToken: accessToken });
 });
+
+function generateAccessToken(user) {
+  return jwt.sign({ email: user.email, role: user.role }, ACCESS_TOKEN_SECRET, { expiresIn: '30s' });
+}
 
 export default authRouter;
