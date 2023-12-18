@@ -1,5 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
+const articleScheme = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  content: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now
+  }
+});
+
 const userScheme = new mongoose.Schema({
   email: {
     type: String,
@@ -28,16 +44,7 @@ const userScheme = new mongoose.Schema({
     required: true,
     default: Date.now
   },
-  articles: {
-    type: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Article'
-      }
-    ],
-    required: true,
-    default: []
-  }
+  articles: [articleScheme],
 });
 
 const UserModel = mongoose.model('User', userScheme);
