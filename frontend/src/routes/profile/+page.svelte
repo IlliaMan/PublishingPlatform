@@ -3,17 +3,22 @@
   import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
 
   async function fetchArticles() {
-    const res = await fetch("http://127.0.0.1:3000/articles/", {
+    const res = await fetch("http://127.0.0.1:3000/articles/user", {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem('jwt')}`
       }
     });
+
+    if(res.status === 403 || res.status === 401) {
+      throw Error(res.status);
+    }
+    
     const data = await res.json();
 
     if (res.ok) {
       return data;
     } else {
-      throw new Error(data);
+      throw new Error(res);
     }
   }
 </script>
@@ -28,9 +33,12 @@
   <AdPlaceholder top={'50rem'} minHeight={'40rem'}/>
   {#await fetchArticles()}
     <p>loading</p>
-  {:then article} 
+  {:then articles} 
     <div class="article-tiles">
-      {#each article as { title, content, _id }}
+      {#if articles.length === 0}
+        <h1>No articles</h1>
+      {:else}
+      {#each articles as { title, content, _id }}
       <div class="article">
         <h1>{title}</h1>
         <p>{content}</p>
@@ -44,6 +52,7 @@
         </div>
       </div>
       {/each}
+      {/if}
     </div>
   {/await}
 </div>
