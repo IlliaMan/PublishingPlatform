@@ -30,6 +30,7 @@
     })
     .then(response => { 
       sessionStorage.setItem("jwt", response.accessToken);
+      sessionStorage.setItem("rjwt", response.refreshToken);
       return JSON.parse(atob(response.accessToken.split('.')[1]));
     })
     .then(user => {
