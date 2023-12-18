@@ -7,8 +7,10 @@ const authRouter = express.Router();
 
 authRouter.post('/', async (req, res) => {
   const { email, password } = req.body;
+
+  let user;
   try {
-    let user = await UserModel.find({ email, password });
+    user = await UserModel.find({ email, password });
     if(user == null || user.length === 0) {
       // 404 - cannot find something
       return res.status(404).json({ message: "cannot find User"});
@@ -17,7 +19,7 @@ authRouter.post('/', async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 
-  const accessToken = jwt.sign({ email }, ACCESS_TOKEN_SECRET);
+  const accessToken = jwt.sign({ email, role: user[0].role }, ACCESS_TOKEN_SECRET);
   res.json({ accessToken: accessToken });
 });
 
