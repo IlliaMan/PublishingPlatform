@@ -5,6 +5,8 @@ import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from './keys.js';
 
 const authRouter = express.Router();
 
+let refreshTokens = [];
+
 authRouter.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -21,7 +23,28 @@ authRouter.post('/login', async (req, res) => {
 
   const accessToken = generateAccessToken(user[0]);
   const refreshToken = jwt.sign({ email: user[0].email, role: user[0].role}, REFRESH_TOKEN_SECRET);
+  refreshTokens.push(refreshToken);
   res.json({ accessToken: accessToken, refreshToken: refreshToken });
+});
+
+authRouter.post('/token', (req, res) => {
+  const refreshToken = req.body.token;
+  if (refreshToken == null) {
+    return res.sendStatus(401);
+  }
+
+  if (!refreshTokens.includes(refreshToken)) {
+    return res.sendStatus(403);
+  }
+
+  jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, user) => {
+    if(err) {
+      return res.sendStatus(403);
+    }
+
+    const accessToken = generateAccessToken({ email: user.email, role: user.role });
+    res.json({ accessToken: accessToken });
+  });
 });
 
 function generateAccessToken(user) {
