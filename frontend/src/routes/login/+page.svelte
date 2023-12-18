@@ -29,9 +29,15 @@
       return response.json();
     })
     .then(response => { 
-      console.log(response);
       sessionStorage.setItem("jwt", response.accessToken);
-      goto('/');
+      return JSON.parse(atob(response.accessToken.split('.')[1]));
+    })
+    .then(user => {
+      if(user.role === 'admin') {
+        goto('/admin-panel');
+      } else {
+        goto('/');
+      }
     })
     .catch(error => {
       console.warn(error.message);
