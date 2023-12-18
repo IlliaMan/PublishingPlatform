@@ -1,5 +1,6 @@
 import express from 'express';
 import ArticleModel from '../models/article.js';
+import UserModel from '../models/user.js';
 import { ACCESS_TOKEN_SECRET } from './keys.js';
 import jwt from 'jsonwebtoken';
 
@@ -12,6 +13,15 @@ articlesRouter.get('/', async (request, response) => {
     response.json(articles);
   } catch (error) {
     response.status(500).json({ message: error.message });
+  }
+});
+
+articlesRouter.get('/user', authenticateToken, async (req, res) => {
+  try {
+    const user = await UserModel.find({ email: req.user.email });
+    res.json(user[0].articles);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 
