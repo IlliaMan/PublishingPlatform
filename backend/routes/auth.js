@@ -53,7 +53,7 @@ authRouter.post('/token', (req, res) => {
 });
 
 function generateAccessToken(user) {
-  return jwt.sign({ email: user.email, role: user.role }, ACCESS_TOKEN_SECRET, { expiresIn: '30s' });
+  return jwt.sign({ email: user.email, role: user.role }, ACCESS_TOKEN_SECRET, { expiresIn: '20m' });
 }
 
 export default authRouter;
