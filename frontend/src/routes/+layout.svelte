@@ -1,14 +1,14 @@
 <script>
   import Header from "$lib/components/Header.svelte";
   import SideMenu from "$lib/components/SideMenu.svelte";
+  import { isAuthenticated } from "../stores";
 
   let isSideMenuVisible = false;
-  let isLoggedIn = true;
-</script>
+ </script>
 
 <div class="layout">
-  <Header bind:menuIconArg={isSideMenuVisible} />
-  <SideMenu bind:isVisible={isSideMenuVisible} isLoggedIn={isLoggedIn} />
+  <Header bind:menuIconArg={isSideMenuVisible}/>
+  <SideMenu bind:isVisible={isSideMenuVisible} isAuthenticated={$isAuthenticated}/>
 </div>
 <div class="content" class:cut-width={isSideMenuVisible}>
   <slot />
