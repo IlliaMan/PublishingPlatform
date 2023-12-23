@@ -1,7 +1,7 @@
 <script>
   export let isVisible = false;
-  export let isLoggedIn = false;
-</script>
+  export let isAuthenticated = false;
+ </script>
 
 {#if isVisible}
   <div class="main">
@@ -10,13 +10,13 @@
         <img src="ProfileIcon.png" alt="Progile Icon" class="medium-image"/>
       </a>
     </div>
-    {#if isLoggedIn}
-      <a href="/login">Sign in</a>
-      <a href="/sign-up">Sign up</a>
-    {:else}
+    {#if isAuthenticated}
       <a href="/edit-page">Write</a>
       <a href="/profile">Profile</a>
       <a href="/">Settings</a>
+    {:else}
+      <a href="/login">Sign in</a>
+      <a href="/sign-up">Sign up</a>
     {/if}
     <a href="/subscription-plans">Become a Member</a>
   </div>
