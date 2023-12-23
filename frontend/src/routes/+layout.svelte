@@ -2,17 +2,22 @@
   import Header from "$lib/components/Header.svelte";
   import SideMenu from "$lib/components/SideMenu.svelte";
   import { isAuthenticated } from "../stores";
+	import { page } from '$app/stores';
 
   let isSideMenuVisible = false;
  </script>
 
-<div class="layout">
-  <Header bind:menuIconArg={isSideMenuVisible}/>
-  <SideMenu bind:isVisible={isSideMenuVisible} isAuthenticated={$isAuthenticated}/>
-</div>
-<div class="content" class:cut-width={isSideMenuVisible}>
-  <slot />
-</div>
+{#if $page.error !== null}
+ <slot />
+{:else}
+  <div class="layout">
+    <Header bind:menuIconArg={isSideMenuVisible}/>
+    <SideMenu bind:isVisible={isSideMenuVisible} isAuthenticated={$isAuthenticated}/>
+  </div>
+  <div class="content" class:cut-width={isSideMenuVisible}>
+    <slot />
+  </div>
+{/if}
 
 <style>
   .layout {
