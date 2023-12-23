@@ -1,5 +1,6 @@
 <script>
   import InputRectangle from "$lib/components/InputRectangle.svelte";
+  import { isAuthenticated } from "../../stores";
   import { goto } from "$app/navigation";
 
   function onLoginSubmit(event) {
@@ -34,6 +35,7 @@
       return JSON.parse(atob(response.accessToken.split('.')[1]));
     })
     .then(user => {
+      isAuthenticated.set(true);
       if(user.role === 'admin') {
         goto('/admin-panel');
       } else {
