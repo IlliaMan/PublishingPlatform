@@ -4,9 +4,7 @@
 
 <div class="main">
   <div class="profile-icon">
-    <a href="/profile">
-      <img src="ProfileIcon.png" alt="Progile Icon" class="medium-image"/>
-    </a>
+    <img src="ProfileIcon.png" alt="Progile Icon" class="medium-image"/>
   </div>
   {#if isAuthenticated}
     <a href="/edit-page">Write</a>
