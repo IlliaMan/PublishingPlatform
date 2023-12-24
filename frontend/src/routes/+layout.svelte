@@ -47,6 +47,7 @@
 
   .home-section {
     flex: 5;
+    overflow: auto;
     position: relative;
     height: 100vh;
     transition: all 400ms ease-in;
