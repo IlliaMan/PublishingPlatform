@@ -1,5 +1,6 @@
 <script>
   export let menuIconArg = false;
+  export let isAuthenticated = false;
 </script>
 
 <header>
@@ -7,11 +8,19 @@
     <img src="logo.png" alt="logo" class="logo"/>
   </a>
   <input type="text" placeholder="Search"/>
-  <div class="profile-icon">
-    <a href="/profile">
-      <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
-    </a>
-  </div>
+  {#if isAuthenticated}
+    <div class="icon">
+      <a href="/profile">
+        <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
+      </a>
+    </div>
+  {:else}
+    <div class="icon">
+      <a href="/login">
+      <img src="LogInIcon.png" alt="LogIn Icon" class="small-image"/>
+      </a>
+    </div>
+  {/if}
   <div class="menu-icon">
     <button on:click={() => { 
       menuIconArg = !menuIconArg;

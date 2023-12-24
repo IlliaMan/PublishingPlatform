@@ -8,11 +8,11 @@
  </script>
 
 {#if $page.error !== null}
- <slot />
+  <slot />
 {:else}
   <div class="main">
     <div class="home-section">
-      <Header bind:menuIconArg={isOpen}/>
+      <Header bind:menuIconArg={isOpen} isAuthenticated={$isAuthenticated}/>
       <slot />
     </div>
     <div class="sidebar" class:open={isOpen} class:close={!isOpen}>
