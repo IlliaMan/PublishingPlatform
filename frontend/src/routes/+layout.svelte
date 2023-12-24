@@ -15,7 +15,9 @@
       <Header bind:menuIconArg={isOpen}/>
       <slot />
     </div>
-    <div class="sidebar" class:open={isOpen} class:close={!isOpen}></div>
+    <div class="sidebar" class:open={isOpen} class:close={!isOpen}>
+      <SideMenu isAuthenticated={$isAuthenticated}/>
+    </div>
   </div>
 {/if}
 
@@ -36,16 +38,17 @@
   .sidebar {
     height: 100vh;
     background-color: #11101d;
-    transition: all 300ms ease-in;
+    transition: all 400ms ease;
     z-index: 10;
     justify-self: flex-end;
     max-width: 36rem;
+    overflow: hidden;
   }
 
   .home-section {
     flex: 5;
     position: relative;
     height: 100vh;
-    transition: all 300ms ease-in;
+    transition: all 400ms ease-in;
   }
 </style>
