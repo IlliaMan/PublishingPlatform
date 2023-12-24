@@ -1,6 +1,4 @@
 <script>
-  import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
-
   let id = window.location.search.substring(1).split('=')[1];
   async function fetchArticles() {
     const res = await fetch(`http://127.0.0.1:3000/articles/${id}`);
@@ -16,7 +14,6 @@
 </script>
 
 <div class="main">
-  <AdPlaceholder top={'35rem'} minHeight={'55rem'}/>
   {#await fetchArticles()}
     <p>loading</p>
   {:then article} 

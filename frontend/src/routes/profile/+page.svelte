@@ -1,6 +1,5 @@
 <script>
   import { goto } from "$app/navigation";
-  import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
 
   export let data;
 </script>
@@ -12,7 +11,6 @@
     <p>200 followers</p>
     <button>Follow</button>
   </div>
-  <AdPlaceholder top={'50rem'} minHeight={'40rem'}/>
     <div class="article-tiles">
       {#if data.articles.length === 0}
         <h1>No articles</h1>

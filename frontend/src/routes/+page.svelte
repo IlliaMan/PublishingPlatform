@@ -1,13 +1,11 @@
 <script>
   import ArticleCarousel from "$lib/components/ArticleCarousel.svelte";
-  import AdPlaceholder from "$lib/components/AdPlaceholder.svelte";
   import { goto } from "$app/navigation";
 
   export let data;
 </script>
 
 <div class="main">
-  <AdPlaceholder top={'47rem'} minHeight={'43rem'}/>
   <ArticleCarousel />
   <div class="article-tiles">
     {#each data.articleList as { _id, title, content }}
