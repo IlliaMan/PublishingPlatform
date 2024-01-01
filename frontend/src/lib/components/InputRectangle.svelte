@@ -1,5 +1,5 @@
 <script>
-  export let name = "Default Name:";
+  export let name = "Default Name";
   export let type = "text";
   export let placeholder = "placeholder";
   export let inputName = "";
@@ -7,7 +7,7 @@
 </script>
 
 <div>
-  <p>{name}</p>
+  <p>{`${name}:`}</p>
   <input type={type} placeholder={placeholder} name={inputName} value={value}>
 </div>
 

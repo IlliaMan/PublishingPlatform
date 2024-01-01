@@ -50,8 +50,8 @@
 
 <div class="main">
   <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
-    <InputRectangle inputName="email" name="Login:" placeholder="youremail@gmail.com"/>
-    <InputRectangle inputName="password" type="password" name="Password:" placeholder="************"/>
+    <InputRectangle inputName="email" name="Login" placeholder="youremail@gmail.com"/>
+    <InputRectangle inputName="password" type="password" name="Password" placeholder="************"/>
     <button type="submit">Sign in</button>
   </form>
   <div class="additional-options">
