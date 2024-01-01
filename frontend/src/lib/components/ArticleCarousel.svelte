@@ -75,6 +75,11 @@
     color: var(--secondary-color);
   }
 
+  .left-slider:active,
+  .right-slider:active {
+    color: var(--accent-color);
+  }
+
   .sliding-article {
     min-width: 100%;
     background-color: var(--primary-color);
