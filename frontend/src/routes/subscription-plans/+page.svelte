@@ -1,4 +1,6 @@
 <script>
+  import Button from "$lib/components/Button.svelte";
+
 </script>
 
 <div class="main">
@@ -8,17 +10,17 @@
     <div class="option-1 option">
       <h1>Weekly</h1>
       <p>1$ a week</p>
-      <button>Select</button>
+      <Button name="Select"/>
     </div>
     <div class="option-2 option">
       <h1>Monthly</h1>
       <p>4$ a month</p>
-      <button>Select</button>
+      <Button name="Select"/>
     </div>
     <div class="option-3 option">
       <h1>Annually</h1>
       <p>40$ a year</p>
-      <button>Select</button>
+      <Button name="Select"/>
     </div>
   </div>
 </div>
@@ -28,10 +30,10 @@
     height: 100px;
     width: 66vw;
     margin: auto;
-    margin-top: 18vh;
+    margin-top: 8rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     text-align: center;
   }
 
@@ -56,16 +58,24 @@
   .options > div {
     min-width: 30%;
     min-height: 35rem;
-    background-color: #fff;
+    background-color: var(--primary-color);
+    border: thin solid #fff;
+    color: #fff;
   }
 
   .option:nth-child(2) {
-    background-color: #aaa;
+    background-color: #fff;
+    color: var(--primary-color);
+    border: thin solid var(--primary-color);
+  }
+
+  .option:hover {
+    border: thin solid var(--secondary-color);
   }
 
   .option {
     box-sizing: border-box;
-    padding: 4rem 0rem;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,13 +83,5 @@
 
   p {
     font-size: 2rem;
-  }
-
-  button {
-    min-height: 5rem;
-    font-size: 2rem;
-    width: 60%;
-    align-self: center;
-    border-radius: 8px;
   }
 </style>
