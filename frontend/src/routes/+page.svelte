@@ -1,6 +1,7 @@
 <script>
   import ArticleCarousel from "$lib/components/ArticleCarousel.svelte";
   import { goto } from "$app/navigation";
+  import Button from "$lib/components/Button.svelte";
 
   export let data;
 </script>
@@ -19,9 +20,9 @@
         </div>
         <p class="content">{content}</p>
         <div class="article-button-pannel">
-          <button on:click={() => {
+          <Button name='Read' onClick={() => {
             goto('/article?' + new URLSearchParams({ id: _id }));
-          }}>Read</button>
+          }}/>
         </div>
       </div>
     {/each}
@@ -107,5 +108,15 @@
 
   a {
     all: unset;
+  }
+
+  button {
+    text-transform: capitalize;
+    text-justify: distribute;
+    border: unset;
+  }
+
+  button:hover {
+    text-transform: uppercase;
   }
 </style>
