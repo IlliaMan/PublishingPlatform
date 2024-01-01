@@ -26,7 +26,7 @@
     align-items: center;
     gap: 2rem;
     height: 100%;
-    background-color: whitesmoke;
+    background-color: var(--primary-color);
     padding: 5rem;
     box-shadow: rgba(0, 0, 0, 0.2) -0.5rem 0 4rem;
   }
@@ -36,7 +36,6 @@
   }
 
   .medium-image {
-    filter: brightness(0.3);
     width: 10rem;
   }
 
@@ -44,15 +43,16 @@
     width: 100%;
     text-align: center;
     display: block;
-    color: black;
+    color: white;
     font-size: 2rem;
     padding: 1rem 0;
     text-decoration: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
   }
 
   .main > a:hover {
-    color: rgba(0, 0, 0, 0.55);
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
   }
 
   .main > a:last-child {

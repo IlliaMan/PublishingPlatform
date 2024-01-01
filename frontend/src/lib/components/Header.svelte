@@ -43,7 +43,7 @@
     justify-content: flex-start;
     width: 100%;
     height: 6rem;
-    background-color: #ddd;
+    background-color: var(--primary-color);
   }
 
   input {
@@ -66,7 +66,6 @@
   }
 
   .small-image {
-    filter: brightness(0.3);
     width: 5rem;
   }
 
