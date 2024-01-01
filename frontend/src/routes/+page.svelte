@@ -11,7 +11,11 @@
     {#each data.articleList as { _id, title, content }}
       <div class="article">
         <div class="article-title">
-          <p>{title}</p>
+          <p>
+            <a href={`/article?${new URLSearchParams({ id: _id })}`}>
+              {title}
+            </a>
+          </p>
         </div>
         <p class="content">{content}</p>
         <div class="article-button-pannel">
@@ -94,5 +98,14 @@
     -webkit-line-clamp: 6;
     height: 11rem;
     text-align: justify;
+  }
+
+  .article-title:hover {
+    color: var(--accent-color);
+    cursor: pointer;
+  }
+
+  a {
+    all: unset;
   }
 </style>
