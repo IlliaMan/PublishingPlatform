@@ -23,7 +23,6 @@ p {
   align-self: flex-start;
   margin: 0;
   font-size: 2rem;
-  color: white;
 }
 
 input {
