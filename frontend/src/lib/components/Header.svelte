@@ -4,9 +4,11 @@
 </script>
 
 <header>
-  <a href="/">
-    <img src="logoLight.png" alt="logo" class="logo"/>
-  </a>
+  <div class="logo">
+    <a href="/">
+      <img src="logoLight.png" alt="logo" class="logo-image"/>
+    </a>
+  </div>
   <input type="text" placeholder="Search"/>
   {#if isAuthenticated}
     <div class="icon">
@@ -32,9 +34,12 @@
 
 <style>
   .logo {
-    padding: 0.375rem;
-    margin-left: 1rem;
-    max-width: 8rem;
+    align-items: center;
+    margin-left: 2rem;
+  }
+
+  .logo-image {
+    height: 5rem;
   }
 
   header {
