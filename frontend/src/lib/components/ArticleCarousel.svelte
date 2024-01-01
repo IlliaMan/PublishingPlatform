@@ -24,10 +24,14 @@
     <p>loading</p>
   {:then articles} 
     <div bind:this={content_div} class="content">
-      {#each articles as { title, content } }
+      {#each articles as { title, content, _id } }
         <div class="sliding-article">
           <div class="article-title">
-            <p>{title}</p>
+            <p>
+              <a href={`/article?${new URLSearchParams({ id: _id })}`}>
+                {title}
+              </a>
+            </p>
           </div>
           <p>{content}</p>
         </div>
@@ -101,6 +105,11 @@
     margin-top: 1rem;
   }
 
+  .article-title:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+
   .article-title > p {
     display: flex;
     justify-content: center;
@@ -124,5 +133,9 @@
   button {
     all: unset;
     cursor: pointer;
+  }
+
+  a {
+    all: unset;
   }
 </style>
