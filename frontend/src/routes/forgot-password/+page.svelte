@@ -49,4 +49,8 @@
     align-self: flex-end;
     border-radius: 4px;
   }
+  
+  a:hover {
+    color: var(--accent-color);
+  }
 </style>
