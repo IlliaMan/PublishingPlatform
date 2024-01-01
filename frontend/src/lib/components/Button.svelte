@@ -21,6 +21,6 @@
   }
 
   button:active {
-    transform: scale(0.9);
+    background-color: var(--accent-color);
   }
 </style>
