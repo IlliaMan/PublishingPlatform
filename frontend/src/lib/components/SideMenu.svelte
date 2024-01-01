@@ -50,10 +50,15 @@
   }
 
   .main > a:hover {
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+  }
+
+  .main > a:active {
     color: var(--accent-color);
     border-bottom: 1px solid var(--accent-color);
   }
-
+  
   .main > a:last-child {
     margin-top: auto;
   }
