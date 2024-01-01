@@ -43,6 +43,7 @@
 
 <style>
   .main {
+    box-sizing: border-box;
     width: 55vw;
     margin: auto;
     min-height: 32rem;
