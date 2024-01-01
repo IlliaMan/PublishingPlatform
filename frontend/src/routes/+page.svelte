@@ -109,14 +109,4 @@
   a {
     all: unset;
   }
-
-  button {
-    text-transform: capitalize;
-    text-justify: distribute;
-    border: unset;
-  }
-
-  button:hover {
-    text-transform: uppercase;
-  }
 </style>

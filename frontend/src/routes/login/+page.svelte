@@ -86,16 +86,7 @@
   row-gap: 2rem;
 }
 
-button {
-  min-height: 3rem;
-  font-size: 2rem;
-  width: 25%;
-  align-self: flex-end;
-  border-radius: 4px;
-}
-  
   a:hover {
     color: var(--accent-color);
   }
-
 </style>
