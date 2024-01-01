@@ -52,11 +52,13 @@
   .main > a:hover {
     color: var(--secondary-color);
     border-bottom: 1px solid var(--secondary-color);
+    cursor: pointer;
   }
 
   .main > a:active {
     color: var(--accent-color);
     border-bottom: 1px solid var(--accent-color);
+    cursor: pointer;
   }
   
   .main > a:last-child {
