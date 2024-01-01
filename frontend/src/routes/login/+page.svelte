@@ -2,6 +2,7 @@
   import InputRectangle from "$lib/components/InputRectangle.svelte";
   import { isAuthenticated } from "../../stores";
   import { goto } from "$app/navigation";
+  import Button from "$lib/components/Button.svelte";
 
   function onLoginSubmit(event) {
     const formData = new FormData(event.target);
@@ -52,7 +53,7 @@
   <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
     <InputRectangle inputName="email" name="Login" placeholder="youremail@gmail.com"/>
     <InputRectangle inputName="password" type="password" name="Password" placeholder="************"/>
-    <button type="submit">Sign in</button>
+    <Button name="Sign in"/>
   </form>
   <div class="additional-options">
     <a href="/forgot-password">
