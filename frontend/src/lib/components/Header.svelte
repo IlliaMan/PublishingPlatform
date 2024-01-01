@@ -5,7 +5,7 @@
 
 <header>
   <a href="/">
-    <img src="logo.png" alt="logo" class="logo"/>
+    <img src="logoLight.png" alt="logo" class="logo"/>
   </a>
   <input type="text" placeholder="Search"/>
   {#if isAuthenticated}
