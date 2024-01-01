@@ -1,12 +1,13 @@
 <script>
-  import InputRectangle from "$lib/components/InputRectangle.svelte";
+  import Button from "$lib/components/Button.svelte";
+import InputRectangle from "$lib/components/InputRectangle.svelte";
 </script>
 
 <div class="main">
   <h1>Forgot Password?</h1>
   <p>Enter your email and we will send you a link to reset your password</p>
   <InputRectangle name="Email" placeholder="youremail@gmail.com"/>
-  <button>Submit</button>
+  <Button name="Submit"/>
   <div class="additional-options">
     <a href="/login">
       <p>Back to sign in</p>
