@@ -43,6 +43,7 @@
     justify-self: flex-end;
     max-width: 36rem;
     overflow: hidden;
+    box-shadow: white 1rem 0 2rem;
   }
 
   .home-section {

@@ -28,7 +28,6 @@
     height: 100%;
     background-color: var(--primary-color);
     padding: 5rem;
-    box-shadow: rgba(0, 0, 0, 0.2) -0.5rem 0 4rem;
   }
 
   .profile-icon {
