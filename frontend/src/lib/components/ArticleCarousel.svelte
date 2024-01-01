@@ -46,26 +46,34 @@
     width: 55vw;
     margin: auto;
     min-height: 32rem;
-    border: 4px solid black;
+    border: 4px solid var(--primary-color);
     display: flex;
     flex-direction: row;
   }
 
   .left-slider {
-    border-right: 2px solid black;
+    border-right: 2px solid var(--primary-color);
     background-color: #fff;
     width: 10%;
+    color: var(--primary-color); 
   }
 
   .right-slider {
-    border-left: 2px solid black;
+    border-left: 2px solid var(--primary-color);
     background-color: #fff;
     width: 10%;
+    color: var(--primary-color);
+  }
+
+  .left-slider:hover,
+  .right-slider:hover {
+    color: var(--secondary-color);
   }
 
   .sliding-article {
     min-width: 100%;
-    background-color: #ddd;
+    background-color: var(--primary-color);
+    color: #fff;
   }
 
   .sliding-article > p {
