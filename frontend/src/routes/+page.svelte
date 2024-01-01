@@ -52,17 +52,21 @@
 
   .article-tiles > div {
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 2px solid #fff;
     min-height: 20rem;
     flex: 50%;
     max-width: 47%;
-    background-color: #ddd;
+    background-color: var(--primary-color);
     padding: 2rem 1rem;
+    color: #fff;
+  }
+
+  .article:hover {
+    border: 2px solid var(--secondary-color);
   }
 
   p {
     font-size: 1.6rem;
-    text-align: justify;
   }
   
   .article-title {
@@ -79,6 +83,7 @@
     display: flex;
     justify-content: center;
     margin: 0;
+    text-align: center;
   }
 
   .content {
@@ -88,5 +93,6 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
     height: 11rem;
+    text-align: justify;
   }
 </style>
