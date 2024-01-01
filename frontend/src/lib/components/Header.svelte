@@ -80,7 +80,9 @@
     align-items: center;
   }
 
-  .menu-icon:hover {
+  .menu-icon:hover,
+  .icon:hover,
+  .logo:hover {
     cursor: pointer;
   }
 
