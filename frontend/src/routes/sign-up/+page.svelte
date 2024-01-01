@@ -1,5 +1,6 @@
 <script>
   import { goto } from "$app/navigation";
+  import Button from "$lib/components/Button.svelte";
   import InputRectangle from "$lib/components/InputRectangle.svelte";
 
   function onSignupSubmit(event) {
@@ -50,7 +51,7 @@
     <InputRectangle inputName="username" name="Username" placeholder="nickname"/>
     <InputRectangle inputName="password" name="Password" placeholder="**********" type="password"/>
     <InputRectangle name="Repeat" placeholder="**********" type="password"/>
-    <button type="submit">Sign up</button>
+    <Button name="Sign up"/>
   </form>
   <div class="additional-options">
     <a href="/login">
@@ -100,7 +101,7 @@
     align-self: flex-end;
     border-radius: 4px;
   }
-  
+
   a:hover {
     color: var(--accent-color);
   }
