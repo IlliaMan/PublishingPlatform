@@ -1,5 +1,6 @@
 <script>
   export let isAuthenticated = false;
+  export let isAdmin = false;
 </script>
 
 <div class="main">
@@ -7,9 +8,13 @@
     <img src="ProfileIcon.png" alt="Progile Icon" class="medium-image"/>
   </div>
   {#if isAuthenticated}
-    <a href="/edit-page">Write</a>
-    <a href="/profile">Profile</a>
-    <a href="/">Settings</a>
+    {#if isAdmin}
+      <a href="/admin-panel">Admin Panel</a>
+    {:else}
+      <a href="/edit-page">Write</a>
+      <a href="/profile">Profile</a>
+      <a href="/">Settings</a>
+    {/if}
   {:else}
     <a href="/login">Sign in</a>
     <a href="/sign-up">Sign up</a>

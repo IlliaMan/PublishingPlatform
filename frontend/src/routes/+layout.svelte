@@ -28,7 +28,7 @@
       <slot />
     </div>
     <div class="sidebar" class:open={isOpen} class:close={!isOpen}>
-      <SideMenu isAuthenticated={$isAuthenticated}/>
+      <SideMenu isAuthenticated={$isAuthenticated} isAdmin={$isAdmin}/>
     </div>
   </div>
 {/if}
