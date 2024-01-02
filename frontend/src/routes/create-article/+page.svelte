@@ -15,6 +15,11 @@
   }
 
   function publishCallback() {
+    if(articleTitle.length === 0 || text.length === 0) {
+      console.log("Title or Article is missing");
+      return;
+    }
+
     fetch("http://127.0.0.1:3000/articles/", {
       method: 'POST',
       headers: {
