@@ -1,10 +1,22 @@
 <script>
   import Header from "$lib/components/Header.svelte";
   import SideMenu from "$lib/components/SideMenu.svelte";
-  import { isAuthenticated } from "../stores";
+  import { isAdmin, isAuthenticated } from "../stores";
 	import { page } from '$app/stores';
+  import { onMount } from "svelte";
 
   let isOpen = false;
+
+  onMount(async () => {
+    const jwt = sessionStorage.getItem('jwt');
+    if(jwt) {
+      const user = await JSON.parse(atob(jwt.split('.')[1]));
+      isAuthenticated.set(true);
+      if(user.role === 'admin') {
+        isAdmin.set(true);
+      }
+    }
+  });
  </script>
 
 {#if $page.error !== null}
