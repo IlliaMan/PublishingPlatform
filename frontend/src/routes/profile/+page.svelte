@@ -1,5 +1,6 @@
 <script>
   import { goto } from "$app/navigation";
+  import Button from "$lib/components/Button.svelte";
 
   export let data;
 </script>
@@ -20,12 +21,12 @@
         <h1>{title}</h1>
         <p>{content}</p>
         <div class="article-button-pannel">
-          <button on:click={() => {
+          <Button name="Read" onClick={() => {
             goto('/article?' + new URLSearchParams({ id: _id }));
-          }}>Read</button>
-          <button on:click={() => {
+          }}/>
+          <Button name="Edit" onClick={() => {
             goto('/edit-article?' + new URLSearchParams({ id: _id }));
-          }}>Edit</button>
+          }}/>
         </div>
       </div>
       {/each}
@@ -67,10 +68,13 @@
 
   .article-tiles > div {
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 0.35rem solid var(--primary-color);
     min-height: 20rem;
-    background-color: #ddd;
+    background-color: var(--primary-color);
+    color: #fff;
     padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
   p {
@@ -101,11 +105,28 @@
     justify-content: flex-end;
     column-gap: 2rem;
     margin-bottom: 1rem;
+    margin-top: auto;
   }
 
   .article-button-pannel > button {
     max-width: fit-content;
     padding: 0 5rem;
+  }
+
+  .article {
+    background-color: var(--primary-color);
+  }
+
+  .article:hover {
+    border: 0.35rem solid var(--secondary-color);
+  }
+
+  .article h1 {
+    text-align: center;
+  }
+  
+  .article p {
+    text-align: justify;
   }
 
   @media only screen and (max-width: 800px) {
