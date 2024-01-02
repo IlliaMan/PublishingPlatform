@@ -137,15 +137,6 @@
     font-size: 2rem;
   }
 
-  button {
-    min-height: 4rem;
-    font-size: 2rem;
-    width: 10rem;
-    align-self: flex-end;
-    border-radius: 4px;
-    margin: auto 0;
-  }
-
   .input-rectangle {
     display: flex;
     flex-direction: column;
