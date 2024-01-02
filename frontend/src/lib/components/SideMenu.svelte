@@ -1,4 +1,6 @@
 <script>
+  import { isAdmin as adminStore, isAuthenticated as authenticatedStore } from "../../stores";
+
   export let isAuthenticated = false;
   export let isAdmin = false;
 </script>
@@ -15,6 +17,12 @@
       <a href="/profile">Profile</a>
       <a href="/">Settings</a>
     {/if}
+      <a href="/login" on:click={() => {
+        sessionStorage.removeItem('jwt');
+        sessionStorage.removeItem('rjwt');
+        authenticatedStore.set(false);
+        adminStore.set(false);
+      }}>Log out</a>
   {:else}
     <a href="/login">Sign in</a>
     <a href="/sign-up">Sign up</a>
