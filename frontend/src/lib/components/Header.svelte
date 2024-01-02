@@ -36,6 +36,7 @@
   .logo {
     align-items: center;
     margin-left: 2rem;
+    margin-right: 6rem;
   }
 
   .logo-image {
