@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import showdown from 'showdown';
 
@@ -11,6 +12,34 @@
     const words = text.trim().split(/\s+/).length;
     const time = Math.ceil(words / wpm);
     return time;
+  }
+
+  function publishCallback() {
+    fetch("http://127.0.0.1:3000/articles/", {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+        'Content-type': 'application/json; charset=UTF-8'
+      },
+      body: JSON.stringify({
+        title: articleTitle,
+        content: text
+      })
+    });
+
+    fetch("http://127.0.0.1:3000/users/article", {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+        'Content-type': 'application/json; charset=UTF-8'
+      },
+      body: JSON.stringify({
+        title: articleTitle,
+        content: text
+      })
+    });
+
+    goto('/profile');
   }
 
   $: timeToRead = readingTime(text);
@@ -26,7 +55,7 @@
         <input type="text" placeholder="Article.md" name="Document Name" bind:value={articleTitle}>
       </div>
     </div>
-    <Button name="Publish"/>
+    <Button name="Publish" onClick={publishCallback}/>
     <div class="statistics">
       <p>{`Reading time: ${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'}`}</p>
       <p>{`Words: ${text.split(" ").filter(n => n != '').length}`}</p>
