@@ -1,6 +1,6 @@
 <script>
   import InputRectangle from "$lib/components/InputRectangle.svelte";
-  import { isAuthenticated } from "../../stores";
+  import { isAuthenticated, isAdmin } from "../../stores";
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
 
@@ -38,6 +38,7 @@
     .then(user => {
       isAuthenticated.set(true);
       if(user.role === 'admin') {
+        isAdmin.set(true);
         goto('/admin-panel');
       } else {
         goto('/');
