@@ -18,8 +18,8 @@ articlesRouter.get('/', async (request, response) => {
 
 articlesRouter.get('/user', authenticateToken, async (req, res) => {
   try {
-    const user = await UserModel.find({ email: req.user.email });
-    res.json(user[0].articles);
+    const articles = await ArticleModel.find({ email: req.user.email });
+    res.json(articles);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
