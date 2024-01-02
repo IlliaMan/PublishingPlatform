@@ -31,9 +31,9 @@ articlesRouter.get('/:id', getArticle, (req, res) => {
 });
 
 // Creating one 
-articlesRouter.post('/', async (req, res) => {
-  console.log(req.body);
+articlesRouter.post('/', authenticateToken, async (req, res) => {
   const article = new ArticleModel({
+    email: req.user.email,
     title: req.body.title,
     content: req.body.content
   });
