@@ -5,12 +5,12 @@
 </script>
 
 <div class="main">
-  <div class="user-info">
+  <!-- <div class="user-info">
     <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
     <p>@username</p>
     <p>200 followers</p>
     <button>Follow</button>
-  </div>
+  </div> -->
     <div class="article-tiles">
       {#if data.articles.length === 0}
         <h1>No articles</h1>
