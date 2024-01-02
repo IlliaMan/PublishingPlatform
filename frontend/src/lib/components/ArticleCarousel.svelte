@@ -71,12 +71,15 @@
   }
 
   .left-slider:hover,
-  .right-slider:hover {
+  .right-slider:hover,
+  .article-title:hover {
     color: var(--secondary-color);
+    cursor: pointer;
   }
 
   .left-slider:active,
-  .right-slider:active {
+  .right-slider:active,
+  .article-title:active {
     color: var(--accent-color);
   }
 
@@ -108,11 +111,6 @@
     font-size: 5rem;
     margin: 0;
     margin-top: 1rem;
-  }
-
-  .article-title:hover {
-    color: var(--secondary-color);
-    cursor: pointer;
   }
 
   .article-title > p {

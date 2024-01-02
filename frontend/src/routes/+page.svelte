@@ -102,8 +102,12 @@
   }
 
   .article-title:hover {
-    color: var(--accent-color);
+    color: var(--secondary-color);
     cursor: pointer;
+  }
+
+  .article-title:active {
+    color: var(--accent-color);
   }
 
   a {
