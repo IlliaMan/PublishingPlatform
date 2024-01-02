@@ -1,13 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  let users = [];
-
-  const getUsers = async () => {
-    const res = await fetch('http://localhost:3000/users');
-    const data = await res.json();
-    users = data;
-  };
+  export let data;
 
   const updateUserBanStatus = (email, isBanned) => {
     fetch('http://localhost:3000/users/banstatus/', {
@@ -23,8 +17,6 @@
     .then(data => data.json())
     .then(console.log);
   };
-
-  onMount(getUsers);
 </script>
 
 <div class="admin-panel">
@@ -40,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-    {#each users as user, index}
+    {#each data.users as user, index}
       <tr>
         <td>{index + 1}</td>
         <td>{user.username}</td>
