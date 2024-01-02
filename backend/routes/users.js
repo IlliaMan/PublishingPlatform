@@ -1,5 +1,7 @@
 import express from 'express';
 import UserModel from '../models/user.js';
+import jwt from 'jsonwebtoken';
+import { ACCESS_TOKEN_SECRET } from './keys.js';
 
 const userRouter = express.Router();
 
@@ -44,6 +46,32 @@ userRouter.get('/:email/:password', async (req, res) => {
   }
 
   res.json(user);
+});
+
+userRouter.post('/article', getUserByJWT, async (req, res) => {
+  let user;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    user = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  user.articles.push({
+    title: req.body.title,
+    content: req.body.content
+  });
+
+  try {
+    const updatedUser = await user.save();
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 });
 
 // Ban/Unban user
@@ -93,5 +121,24 @@ async function getUser(req, res, next) {
   res.user = user[0];
   next();
 }
+
+async function getUserByJWT(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.sendStatus(401);
+  }
+
+  jwt.verify(token, ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) {
+      return res.sendStatus(403);
+    }
+
+    req.user = user;
+    next();
+  });
+}
+
 
 export default userRouter;
