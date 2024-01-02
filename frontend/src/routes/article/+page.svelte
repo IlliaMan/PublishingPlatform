@@ -67,6 +67,7 @@
   h1 {
     font-size: 5rem;
     margin: 0;
+    text-align: center;
   }
 
   p {
