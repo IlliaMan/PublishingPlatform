@@ -13,7 +13,7 @@
     {#if isAdmin}
       <a href="/admin-panel">Admin Panel</a>
     {:else}
-      <a href="/edit-page">Write</a>
+      <a href="/create-article">Write</a>
       <a href="/profile">Profile</a>
       <a href="/">Settings</a>
     {/if}
