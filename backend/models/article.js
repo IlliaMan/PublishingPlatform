@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const articleScheme = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: true
