@@ -27,6 +27,21 @@
           <Button name="Edit" onClick={() => {
             goto('/edit-article?' + new URLSearchParams({ id: _id }));
           }}/>
+          <Button name="Delete" onClick={() => {
+            fetch(`http://localhost:3000/users/article/${title}`, {
+              method: "DELETE", 
+              headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+                'Content-type': 'application/json; charset=UTF-8'
+              },
+            });
+
+            fetch(`http://localhost:3000/articles/${_id}`, {
+              method: "DELETE", 
+            });
+
+            data.articles = data.articles.filter(article => article._id !== _id);
+          }}/>
         </div>
       </div>
       {/each}
