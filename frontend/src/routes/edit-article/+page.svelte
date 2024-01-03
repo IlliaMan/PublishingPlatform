@@ -1,5 +1,6 @@
 <script>
-  import InputRectangle from "$lib/components/InputRectangle.svelte";
+  import Button from "$lib/components/Button.svelte";
+import InputRectangle from "$lib/components/InputRectangle.svelte";
   import showdown from 'showdown';
 
   let text = `# Markdown syntax guide\n\n## Headers\n\n# This is a Heading h1\n## This is a Heading h2\n###### This is a Heading h6\n\n## Emphasis\n\n*This text will be italic*  \n_This will also be italic_\n\n**This text will be bold**\n__This will also be bold__\n\ngitg_You **can** combine them_`;
@@ -29,7 +30,7 @@
     <div class="article-name">
       <InputRectangle placeholder="Article.md" name="Document Name" value={articleTitle}/>
     </div>
-    <button on:click={() => {
+    <Button name="Save" onClick={() => {
       console.log(`PATCH: http://localhost:3000/articles/${article._id}`);
       fetch(`http://localhost:3000/articles/${article._id}`, {
         method: "PATCH",
@@ -41,8 +42,7 @@
           'Content-type': 'application/json; charset=UTF-8',
         },
       });
-    }}>Save</button>
-    <button>Publish</button>
+    }}/>
     <div class="statistics">
       <p>Reading time: 5 minutes</p>
       <p>Words: 325</p>
@@ -63,7 +63,6 @@
       <div class="preview">
         {@html converter.makeHtml(text)}
       </div>
-      <!-- <textarea bind:value={md} disabled /> -->
     </div>
     </div>
     {/await}
