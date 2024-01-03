@@ -137,6 +137,7 @@
   }
 
   textarea {
+    padding-top: 2rem;
     width: 99%;
     height: 100%;
     font-size: 2rem;
