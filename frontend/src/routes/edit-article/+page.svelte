@@ -1,10 +1,18 @@
 <script>
   import Button from "$lib/components/Button.svelte";
-import InputRectangle from "$lib/components/InputRectangle.svelte";
   import showdown from 'showdown';
 
-  let text = `# Markdown syntax guide\n\n## Headers\n\n# This is a Heading h1\n## This is a Heading h2\n###### This is a Heading h6\n\n## Emphasis\n\n*This text will be italic*  \n_This will also be italic_\n\n**This text will be bold**\n__This will also be bold__\n\ngitg_You **can** combine them_`;
-  let articleTitle;
+  let text = '';
+  let articleTitle = '';
+  let timeToRead = 1;
+
+  function readingTime(text) {
+    const wpm = 225;
+    const words = text.trim().split(/\s+/).length;
+    const time = Math.ceil(words / wpm);
+    return time;
+  }
+
   let id = window.location.search.substring(1).split('=')[1];
   async function fetchArticles() {
     const res = await fetch(`http://127.0.0.1:3000/articles/${id}`);
@@ -19,6 +27,8 @@ import InputRectangle from "$lib/components/InputRectangle.svelte";
     }
   }
 
+  $: timeToRead = readingTime(text);
+
   let converter = new showdown.Converter();
 </script>
 
@@ -28,7 +38,10 @@ import InputRectangle from "$lib/components/InputRectangle.svelte";
     {:then article} 
   <div class="information">
     <div class="article-name">
-      <InputRectangle placeholder="Article.md" name="Document Name" value={articleTitle}/>
+      <div class="input-rectangle">
+        <p>Document Name:</p>
+        <input type="text" placeholder="Article.md" name="Document Name" bind:value={articleTitle}>
+      </div>
     </div>
     <Button name="Save" onClick={() => {
       console.log(`PATCH: http://localhost:3000/articles/${article._id}`);
@@ -44,21 +57,21 @@ import InputRectangle from "$lib/components/InputRectangle.svelte";
       });
     }}/>
     <div class="statistics">
-      <p>Reading time: 5 minutes</p>
-      <p>Words: 325</p>
-      <p>Characters: 1205</p>
+      <p>{`Reading time: ${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'}`}</p>
+      <p>{`Words: ${text.split(" ").filter(n => n != '').length}`}</p>
+      <p>{`Characters: ${text.length}`}</p>
     </div>
   </div>
   <div class="main-area">
     <div class="editing-area">
       <div class="header">
-        <h1>{`${article.title}.md`}</h1>
+        <h1>{`${articleTitle}.md`}</h1>
       </div>
       <textarea bind:value={text}/>
     </div>
     <div class="display-area">
       <div class="header">
-        <h1>{`${article.title}.md`}</h1>
+        <h1>{`${articleTitle}.md`}</h1>
       </div>
       <div class="preview">
         {@html converter.makeHtml(text)}
@@ -154,12 +167,23 @@ import InputRectangle from "$lib/components/InputRectangle.svelte";
     font-size: 2rem;
   }
 
-  button {
-    min-height: 4rem;
+  .input-rectangle {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    row-gap: 0.5rem;
+  }
+
+  .input-rectangle > p { 
+    align-self: flex-start;
+    margin: 0;
     font-size: 2rem;
-    width: 10rem;
-    align-self: flex-end;
-    border-radius: 4px;
-    margin: auto 0;
+  }
+
+  .input-rectangle > input {
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.8rem;
+    width: 100%;
   }
 </style>
