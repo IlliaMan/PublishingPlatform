@@ -107,9 +107,10 @@
     column-gap: 5rem;
     width: 100%;
     min-height: 10rem;
-    border-bottom: 4px solid black;
-    border-top: 4px solid black;
-    padding: 1rem 4rem;
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 2rem 4rem;
+    border-radius: 4px;
   }
 
   h1 {
@@ -120,7 +121,10 @@
   .header {
     width: 100%;
     height: 5rem;
-    background-color: white;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
   }
 
   .main-area {
