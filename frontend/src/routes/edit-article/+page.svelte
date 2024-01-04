@@ -57,6 +57,18 @@
         },
       });
 
+      fetch(`http://localhost:3000/users/article/${article.title}`, {
+        method: "PATCH",
+        headers: {
+          'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+          'Content-type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify({
+          title: articleTitle,
+          content: text
+        }),
+      });
+
       alert('Article has beed edited');
     }}/>
     <div class="statistics">
