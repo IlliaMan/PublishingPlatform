@@ -25,10 +25,12 @@
     })
     .then(response => {
       if(!response.ok) {
-        throw new Error('Sth went wrong');
+        return response.text().then(text => { 
+          throw new Error(text);
+        });
       }
 
-      return response.json();
+      return response.json()
     })
     .then(response => { 
       sessionStorage.setItem("jwt", response.accessToken);
@@ -45,7 +47,8 @@
       }
     })
     .catch(error => {
-      console.warn(error.message);
+      const message = JSON.parse(error.message).message;
+      alert(`Error: ${message}`);
     });
   }
 </script>
