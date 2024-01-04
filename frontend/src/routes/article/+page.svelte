@@ -1,5 +1,6 @@
 <script>
   import Button from "$lib/components/Button.svelte";
+  import showdown from "showdown";
 
   let timeToRead = 1;
   function readingTime(text) {
@@ -21,6 +22,8 @@
       throw new Error(data);
     }
   }
+  
+  let converter = new showdown.Converter();
 </script>
 
 <div class="main">
@@ -38,9 +41,9 @@
       </div>
       <Button name="Follow"/> 
     </div>
-    <p>{article.content}</p>
-    <p>{article.content}</p>
-    <p>{article.content}</p>
+    <p>{@html converter.makeHtml(article.content)}</p>
+    <p>{@html converter.makeHtml(article.content)}</p>
+    <p>{@html converter.makeHtml(article.content)}</p>
   {/await}
 </div>
 
