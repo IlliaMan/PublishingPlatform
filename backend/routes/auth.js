@@ -15,7 +15,11 @@ authRouter.post('/login', async (req, res) => {
     user = await UserModel.find({ email, password });
     if(user == null || user.length === 0) {
       // 404 - cannot find something
-      return res.status(404).json({ message: "cannot find User"});
+      return res.status(404).json({ message: "cannot find User" });
+    }
+
+    if(user[0].isBanned) {
+      return res.status(403).json({ message: "your account has been banned" });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });
