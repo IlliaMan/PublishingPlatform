@@ -1,4 +1,14 @@
 <script>
+  import Button from "$lib/components/Button.svelte";
+
+  let timeToRead = 1;
+  function readingTime(text) {
+    const wpm = 225;
+    const words = text.trim().split(/\s+/).length;
+    const time = Math.ceil(words / wpm);
+    return time;
+  }
+
   let id = window.location.search.substring(1).split('=')[1];
   async function fetchArticles() {
     const res = await fetch(`http://127.0.0.1:3000/articles/${id}`);
@@ -21,20 +31,17 @@
     <div class="additional-information">
       <div class="horizontal-block">
         <div class="author">
-          <p>@username | September 9th, 2023</p>
+          <p>{`@${article.email.split('@')[0]} | ${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
         </div>
-        <button>Follow</button>
+        <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
+        <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>  
       </div>
-      <div class="horizontal-block">
-        <p>10 minutes to read</p>
-        <p>1568 words</p>  
-      </div>
+      <Button name="Follow"/> 
     </div>
     <p>{article.content}</p>
     <p>{article.content}</p>
     <p>{article.content}</p>
   {/await}
-  
 </div>
 
 <style>
@@ -49,10 +56,13 @@
   }
 
   .additional-information {
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 2rem;
     width: 100%;
     min-height: 12rem;
-    border-top: 4px solid black;
-    border-bottom: 4px solid black;
+    background-color: var(--primary-color);
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -62,6 +72,7 @@
     display: flex;
     flex-direction: row;
     column-gap: 5rem;
+    align-items: baseline;
   }
 
   h1 {
@@ -78,6 +89,8 @@
   .author > p {
     font-size: 2rem;
     background-color: #ddd;
+    color: #000;
+    border-radius: 4px;
     padding: 0.5rem 1rem;
   }
 
