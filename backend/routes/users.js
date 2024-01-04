@@ -48,6 +48,36 @@ userRouter.get('/:email/:password', async (req, res) => {
   res.json(user);
 });
 
+userRouter.patch('/article/:title', getUserByJWT, async (req, res) => {
+  let user;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    user = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  const index = user.articles.findIndex(article => article.title === req.params.title);
+  if(index === -1) {
+    return res.status(404).json({message: "cannot find article"});
+  }
+
+  console.log(user.articles[index]);
+  user.articles[index].title = req.body.title;
+  user.articles[index].content = req.body.content;
+  
+  try {
+    const updatedUser = await user.save();
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 userRouter.delete('/article/:title', getUserByJWT, async (req, res) => {
   let user;
   try {
