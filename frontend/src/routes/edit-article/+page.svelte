@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import showdown from 'showdown';
 
@@ -55,6 +56,8 @@
           'Content-type': 'application/json; charset=UTF-8',
         },
       });
+
+      alert('Article has beed edited');
     }}/>
     <div class="statistics">
       <p>{`Reading time: ${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'}`}</p>

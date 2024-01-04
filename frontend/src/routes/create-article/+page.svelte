@@ -44,6 +44,8 @@
       })
     });
 
+    alert('Article has been created');
+
     goto('/profile');
   }
 
