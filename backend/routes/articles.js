@@ -75,6 +75,58 @@ articlesRouter.delete('/:id', getArticle, async (req, res) => {
   }
 });
 
+articlesRouter.post('/likes/:id', [getArticle, authenticateToken], async (req, res) => {
+  let user;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+
+    user = users[0];
+
+    if(user == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+  try {
+    res.article.likes.push(user._id);
+
+    const updatedUser = await res.article.save();
+
+    res.json(updatedUser);
+  } catch {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+articlesRouter.delete('/likes/:id', [getArticle, authenticateToken], async (req, res) => {
+  let user;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+
+    user = users[0];
+
+    if(user == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+  try {
+    res.article.likes = res.article.likes.filter(userId => userId !== user._id);
+
+    const updatedUser = await res.article.save();
+
+    res.json(updatedUser);
+  } catch {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 async function getArticle(req, res, next) {
   let article;
   try {
