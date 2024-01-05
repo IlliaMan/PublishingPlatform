@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const articleScheme = new mongoose.Schema({
   email: {
@@ -13,6 +13,10 @@ const articleScheme = new mongoose.Schema({
     type: String,
     required: true
   },
+  likes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   date: {
     type: Date,
     required: true,
