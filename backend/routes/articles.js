@@ -84,6 +84,21 @@ articlesRouter.get('/likes/:id/count', getArticle, async (req, res) => {
   }
 });
 
+articlesRouter.get('/user/:email', async (req, res) => {
+  try {
+    const articles = await ArticleModel.find({ email: req.params.email });
+
+    if(articles == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+
+    res.json(articles);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 articlesRouter.get('/likes/:id/check', [getArticle, authenticateToken], async (req, res) => {
   let user;
   try {
