@@ -75,6 +75,14 @@ articlesRouter.delete('/:id', getArticle, async (req, res) => {
   }
 });
 
+articlesRouter.get('/likes/:id/count', getArticle, async (req, res) => {
+  try {
+    const likeCount = res.article.likes.length;
+    res.json({ likeCount });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 articlesRouter.get('/likes/:id/check', [getArticle, authenticateToken], async (req, res) => {
   let user;
@@ -92,9 +100,7 @@ articlesRouter.get('/likes/:id/check', [getArticle, authenticateToken], async (r
   }
 
   try {
-    console.log(res.article.likes);
     const likes = res.article.likes.filter(userId => userId.toString() === user._id.toString());
-    console.log(likes);
 
     res.sendStatus(likes.length === 0 ? 204 : 200);
   } catch (error) {
