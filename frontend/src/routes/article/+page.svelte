@@ -1,6 +1,7 @@
 <script>
   import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
+  import { onMount } from "svelte";
 
   let isLiked = false;
   let likes = 5;
@@ -27,6 +28,24 @@
   }
   
   let converter = new showdown.Converter();
+
+  onMount(() => {
+    id = window.location.search.substring(1).split('=')[1];
+    fetch(`http://127.0.0.1:3000/articles/likes/${id}/check`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+        'Content-type': 'application/json; charset=UTF-8'
+      },
+    })
+      .then(respose => {
+        if(respose.status === 200) {
+          isLiked = true;
+        } else {
+          isLiked = false;
+        }
+      });
+  });
 </script>
 
 <div class="main">
