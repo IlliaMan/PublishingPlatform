@@ -117,7 +117,7 @@ articlesRouter.delete('/likes/:id', [getArticle, authenticateToken], async (req,
   }
 
   try {
-    res.article.likes = res.article.likes.filter(userId => userId !== user._id);
+    res.article.likes = res.article.likes.filter(userId => userId.toString() !== user._id.toString());
 
     const updatedUser = await res.article.save();
 
