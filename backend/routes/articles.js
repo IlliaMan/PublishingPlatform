@@ -75,6 +75,33 @@ articlesRouter.delete('/:id', getArticle, async (req, res) => {
   }
 });
 
+
+articlesRouter.get('/likes/:id/check', [getArticle, authenticateToken], async (req, res) => {
+  let user;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+
+    user = users[0];
+
+    if(user == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
+  try {
+    console.log(res.article.likes);
+    const likes = res.article.likes.filter(userId => userId.toString() === user._id.toString());
+    console.log(likes);
+
+    res.sendStatus(likes.length === 0 ? 204 : 200);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 articlesRouter.post('/likes/:id', [getArticle, authenticateToken], async (req, res) => {
   let user;
   try {
