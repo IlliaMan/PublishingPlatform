@@ -68,8 +68,13 @@
     <h1>{article.title}</h1>
     <div class="additional-information">
       <div class="horizontal-block">
-        <div class="author">
-          <p>{`@${article.email.split('@')[0]} | ${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
+        <div class="icon">
+          <a href="/profile">
+            <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
+          </a>
+          <div class="author">
+            <p>{`@${article.email.split('@')[0]} | ${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
+          </div>
         </div>
         <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
         <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
@@ -138,14 +143,20 @@
     flex-direction: column;
     justify-content: space-evenly;
     row-gap: 2rem;
-    min-width: 73rem;
+    min-width: 82rem;
   }
 
   .horizontal-block {
     display: flex;
     flex-direction: row;
     column-gap: 5rem;
-    align-items: baseline;
+    align-items: center;
+    height: 5rem;
+    justify-content: space-between;
+  }
+
+  .additional-information:nth-child(1) {
+    height: 2rem;
   }
 
   h1 {
@@ -165,6 +176,21 @@
     color: #000;
     border-radius: 4px;
     padding: 0.5rem 1rem;
+    margin: 0;
+  }
+
+  .icon {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+  }
+
+  .small-image {
+    width: 5rem;
+  }
+
+  a {
+    height: fit-content;
   }
 
   button {
