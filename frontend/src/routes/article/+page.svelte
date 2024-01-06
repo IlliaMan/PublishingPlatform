@@ -1,11 +1,10 @@
 <script>
   import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
-  import { onMount } from "svelte";
 
-  let isLiked = false;
-  let likes = 0;
-
+  export let data;
+  let { id, email, isLiked, likeCount, article } = data;
+    
   let timeToRead = 1;
   function readingTime(text) {
     const wpm = 225;
@@ -13,58 +12,11 @@
     const time = Math.ceil(words / wpm);
     return time;
   }
-
-  let id = window.location.search.substring(1).split('=')[1];
-  async function fetchArticles() {
-    const res = await fetch(`http://127.0.0.1:3000/articles/${id}`);
-    const data = await res.json();
-
-    if (res.ok) {
-      console.log(data);
-      return data;
-    } else {
-      throw new Error(data);
-    }
-  }
   
   let converter = new showdown.Converter();
-
-  onMount(() => {
-    id = window.location.search.substring(1).split('=')[1];
-    fetch(`http://127.0.0.1:3000/articles/likes/${id}/check`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
-        'Content-type': 'application/json; charset=UTF-8'
-      },
-    })
-      .then(response => {
-        if(response.status === 200) {
-          isLiked = true;
-        } else {
-          isLiked = false;
-        }
-      });
-
-    fetch(`http://127.0.0.1:3000/articles/likes/${id}/count`)
-      .then(response => {
-        if(!response.ok) {
-          throw new Error(response.status);
-        }
-
-        return response.json();
-      })
-      .then(response => {
-        likes = response.likeCount;
-      })
-      .catch(error => {})
-  });
 </script>
 
 <div class="main">
-  {#await fetchArticles()}
-    <p>loading</p>
-  {:then article} 
     <h1>{article.title}</h1>
     <div class="additional-information">
       <div class="horizontal-block">
@@ -78,7 +30,7 @@
         </div>
         <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
         <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
-        <p>{`Likes: ${likes}`}</p> 
+        <p>{`Likes: ${likeCount}`}</p> 
       </div>
       <Button name="Follow"/>
       {#if isLiked}
@@ -92,7 +44,7 @@
           }).then(response => {
             if(response.ok) {
               isLiked = false;
-              likes--;
+              likeCount--;
             }
           })
 
@@ -108,7 +60,7 @@
           }).then(response => {
             if(response.ok) {
               isLiked = true;
-              likes++;
+              likeCount++;
             }
           });
          }}/>
@@ -117,7 +69,6 @@
     <p>{@html converter.makeHtml(article.content)}</p>
     <p>{@html converter.makeHtml(article.content)}</p>
     <p>{@html converter.makeHtml(article.content)}</p>
-  {/await}
 </div>
 
 <style>
