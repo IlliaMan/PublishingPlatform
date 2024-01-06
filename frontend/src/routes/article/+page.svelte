@@ -135,6 +135,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     row-gap: 2rem;
+    min-width: 73rem;
   }
 
   .horizontal-block {
