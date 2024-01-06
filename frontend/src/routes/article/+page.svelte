@@ -2,8 +2,6 @@
   import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
   import { onMount } from "svelte";
-  import Error from "../+error.svelte";
-  import { error } from "@sveltejs/kit";
 
   let isLiked = false;
   let likes = 0;
@@ -86,10 +84,13 @@
               'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
               'Content-type': 'application/json; charset=UTF-8'
             }
-          });
+          }).then(response => {
+            if(response.ok) {
+              isLiked = false;
+              likes--;
+            }
+          })
 
-          isLiked = false;
-          likes--;
         }}/>
       {:else}
         <Button name="Like" onClick={() => {
@@ -99,11 +100,13 @@
               'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
               'Content-type': 'application/json; charset=UTF-8'
             }
+          }).then(response => {
+            if(response.ok) {
+              isLiked = true;
+              likes++;
+            }
           });
-
-          isLiked = true;
-          likes++;
-        }}/>
+         }}/>
       {/if}
     </div>
     <p>{@html converter.makeHtml(article.content)}</p>
