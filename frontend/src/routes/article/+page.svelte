@@ -2,6 +2,9 @@
   import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
 
+  let isLiked = false;
+  let likes = 5;
+
   let timeToRead = 1;
   function readingTime(text) {
     const wpm = 225;
@@ -37,9 +40,37 @@
           <p>{`@${article.email.split('@')[0]} | ${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
         </div>
         <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
-        <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>  
+        <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
+        <p>{`Likes: ${likes}`}</p> 
       </div>
-      <Button name="Follow"/> 
+      <Button name="Follow"/>
+      {#if isLiked}
+        <Button name="Unlike" onClick={() => {
+          fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+              'Content-type': 'application/json; charset=UTF-8'
+            }
+          });
+
+          isLiked = false;
+          likes--;
+        }}/>
+      {:else}
+        <Button name="Like" onClick={() => {
+          fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+              'Content-type': 'application/json; charset=UTF-8'
+            }
+          });
+
+          isLiked = true;
+          likes++;
+        }}/>
+      {/if}
     </div>
     <p>{@html converter.makeHtml(article.content)}</p>
     <p>{@html converter.makeHtml(article.content)}</p>
@@ -69,6 +100,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    row-gap: 2rem;
   }
 
   .horizontal-block {
