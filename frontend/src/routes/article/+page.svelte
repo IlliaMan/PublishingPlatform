@@ -2,9 +2,11 @@
   import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
   import { onMount } from "svelte";
+  import Error from "../+error.svelte";
+  import { error } from "@sveltejs/kit";
 
   let isLiked = false;
-  let likes = 5;
+  let likes = 0;
 
   let timeToRead = 1;
   function readingTime(text) {
@@ -38,13 +40,26 @@
         'Content-type': 'application/json; charset=UTF-8'
       },
     })
-      .then(respose => {
-        if(respose.status === 200) {
+      .then(response => {
+        if(response.status === 200) {
           isLiked = true;
         } else {
           isLiked = false;
         }
       });
+
+    fetch(`http://127.0.0.1:3000/articles/likes/${id}/count`)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error(response.status);
+        }
+
+        return response.json();
+      })
+      .then(response => {
+        likes = response.likeCount;
+      })
+      .catch(error => {})
   });
 </script>
 
