@@ -16,13 +16,13 @@
       {#if data.articles.length === 0}
         <h1>No articles</h1>
       {:else}
-      {#each data.articles as { title, content, _id }}
+      {#each data.articles as { title, content, email, _id }}
       <div class="article">
         <h1>{title}</h1>
         <p>{content}</p>
         <div class="article-button-pannel">
           <Button name="Read" onClick={() => {
-            goto('/article?' + new URLSearchParams({ id: _id }));
+            goto(`/article?${new URLSearchParams({ id: _id, email })}`);
           }}/>
           <Button name="Edit" onClick={() => {
             goto('/edit-article?' + new URLSearchParams({ id: _id }));

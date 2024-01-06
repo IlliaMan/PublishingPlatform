@@ -24,11 +24,11 @@
     <p>loading</p>
   {:then articles} 
     <div bind:this={content_div} class="content">
-      {#each articles as { title, content, _id } }
+      {#each articles as { title, content, email, _id } }
         <div class="sliding-article">
           <div class="article-title">
             <p>
-              <a href={`/article?${new URLSearchParams({ id: _id })}`}>
+              <a href={`/article?${new URLSearchParams({ id: _id, email })}`}>
                 {title}
               </a>
             </p>

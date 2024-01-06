@@ -9,11 +9,11 @@
 <div class="main">
   <ArticleCarousel />
   <div class="article-tiles">
-    {#each data.articleList as { _id, title, content }}
+    {#each data.articleList as { _id, title, email, content }}
       <div class="article">
         <div class="article-title">
           <p>
-            <a href={`/article?${new URLSearchParams({ id: _id })}`}>
+            <a href={`/article?${new URLSearchParams({ id: _id, email })}`}>
               {title}
             </a>
           </p>
@@ -21,7 +21,7 @@
         <p class="content">{content}</p>
         <div class="article-button-pannel">
           <Button name='Read' onClick={() => {
-            goto('/article?' + new URLSearchParams({ id: _id }));
+            goto(`/article?${new URLSearchParams({ id: _id, email })}`);
           }}/>
         </div>
       </div>
