@@ -140,7 +140,7 @@
   }
 
   .profile {
-    min-width: 50%;
+    min-width: 8rem;
     margin: 0 auto;
   }
 
@@ -170,8 +170,14 @@
   }
 
   @media only screen and (max-width: 850px) {
+    .main {
+      flex-direction: column;
+    }
+
     .user-info {
-      display: none;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
     }
   }
 
@@ -186,5 +192,11 @@
 
   a {
     all: unset;
+  }
+
+  @media only screen and (max-width: 750px) {
+    .main {
+      width: 80vw;
+    }
   }
 </style>
