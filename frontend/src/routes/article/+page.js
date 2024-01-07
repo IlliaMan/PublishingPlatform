@@ -4,6 +4,7 @@ export async function load({ fetch, url }) {
   let isLiked = false;
   let likeCount = 0;
   let article = {};
+  let userName = null;
 
   let res = await fetch(`http://127.0.0.1:3000/articles/${id}`);
   let data = await res.json();
@@ -26,11 +27,16 @@ export async function load({ fetch, url }) {
   res = await res.json();
   likeCount = res.likeCount;
 
+  res = await fetch(`http://127.0.0.1:3000/users/username/${email}`);
+  res = await res.json();
+  userName = res.username;
+
   return {
     id,
     email,
     isLiked,
     likeCount,
-    article
+    article,
+    userName
   };
 }

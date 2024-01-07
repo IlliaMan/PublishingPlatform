@@ -17,9 +17,7 @@ export async function load({ fetch, url }) {
     }
   }
   
-  let users = await fetch("http://127.0.0.1:3000/users/");
-  users = await users.json();
-
+  let userData;
   if(get(isAuthenticated) && (!email || isMyProfile)) {
     res = await fetch("http://127.0.0.1:3000/articles/user/", {
       headers: {
@@ -27,11 +25,15 @@ export async function load({ fetch, url }) {
       }
     });
 
-    userName = users.filter(user => user.email === userEmail)[0].username;
+    userData = await fetch(`http://127.0.0.1:3000/users/username/${userEmail}`);
   } else {
     res = await fetch(`http://127.0.0.1:3000/articles/user/${email}`);
-    userName = users.filter(user => user.email === email)[0].username;
+  
+    userData = await fetch(`http://127.0.0.1:3000/users/username/${email}`);
   }
+
+  userData = await userData.json();
+  userName = userData.username;
 
   if(!res.ok) {
     throw error(res.status);

@@ -4,7 +4,7 @@
   import { isAuthenticated } from "../../stores.js";
 
   export let data;
-  let { id, email, isLiked, likeCount, article } = data;
+  let { id, email, isLiked, likeCount, article, userName } = data;
     
   let timeToRead = 1;
   function readingTime(text) {
@@ -26,7 +26,7 @@
             <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
           </a>
           <div class="author">
-            <p>{`@${article.email.split('@')[0]} | ${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
+            <p>{`@${userName} | ${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
           </div>
         </div>
         <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
