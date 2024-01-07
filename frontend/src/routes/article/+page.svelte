@@ -69,9 +69,9 @@
           }}/>
       </div>
     </div>
-    <p>{@html converter.makeHtml(article.content)}</p>
-    <p>{@html converter.makeHtml(article.content)}</p>
-    <p>{@html converter.makeHtml(article.content)}</p>
+    <div class="content">
+      {@html converter.makeHtml(article.content)}
+    </div>
 </div>
 
 <style>
@@ -117,6 +117,10 @@
     font-size: 5rem;
     margin: 0;
     text-align: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 2rem 1rem;
+    border-radius: 4px;
   }
 
   p {
@@ -170,6 +174,14 @@
 
   .reading-statistics > p {
     margin: auto;
+  }
+
+  .content {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 4px;
   }
 
   @media only screen and (max-width: 850px) {
