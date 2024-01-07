@@ -8,6 +8,7 @@ export async function load({ fetch, url }) {
   let isMyProfile = false;
   let userEmail = null;
   let userName = null;
+  let isFollowing = null;
   const token = sessionStorage.getItem('jwt');
   token ? (userEmail = JSON.parse(atob(token.split('.')[1]))?.email) : null;
 
@@ -17,6 +18,22 @@ export async function load({ fetch, url }) {
     }
   }
   
+  if(get(isAuthenticated) && email) {
+    console.warn(`http://127.0.0.1:3000/users/following/${email}/check`);
+    const resFollowing = await fetch(`http://127.0.0.1:3000/users/following/${email}/check`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+        'Content-type': 'application/json; charset=UTF-8'
+      },
+    });
+    if(resFollowing.status === 200) {
+      isFollowing = true;
+    } else if(resFollowing.status === 204) {
+      isFollowing = false;
+    }
+  }
+
   let userData;
   if(get(isAuthenticated) && (!email || isMyProfile)) {
     res = await fetch("http://127.0.0.1:3000/articles/user/", {
@@ -49,7 +66,8 @@ export async function load({ fetch, url }) {
     articles: data,
     isMyProfile,
     userName,
-    profileUserEmail: email
+    profileUserEmail: email,
+    isFollowing
   };
 }
 

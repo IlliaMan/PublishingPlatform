@@ -4,7 +4,6 @@
   import { isAuthenticated } from "../../stores.js";
   
   export let data;
-  console.log(data);
 </script>
 
 <div class="main">
@@ -12,16 +11,8 @@
     <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
     <p>{`@${data.userName}`}</p>
     <p>200 followers</p>
-    {#if $isAuthenticated}
-      <Button name="Follow" onClick={() => {
-        fetch(`http://127.0.0.1:3000/users/${data.profileUserEmail}/follow`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
-            'Content-type': 'application/json; charset=UTF-8'
-          },
-        })
-      }}/>
+    {#if $isAuthenticated && !data.isMyProfile}
+    {#if data.isFollowing}
       <Button name="Unfollow" onClick={() => {
         fetch(`http://127.0.0.1:3000/users/${data.profileUserEmail}/unfollow`, {
           method: 'POST',
@@ -29,8 +20,27 @@
             'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
             'Content-type': 'application/json; charset=UTF-8'
           },
+        }).then(res => {
+          if(res.ok) {
+            data.isFollowing = false;
+          }
         })
       }}/>
+    {:else}
+      <Button name="Follow" onClick={() => {
+        fetch(`http://127.0.0.1:3000/users/${data.profileUserEmail}/follow`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+            'Content-type': 'application/json; charset=UTF-8'
+          },
+        }).then(res => {
+          if(res.ok) {
+            data.isFollowing = true;
+          }
+        })
+      }}/>
+    {/if}
     {/if}
   </div>
     <div class="article-tiles">
