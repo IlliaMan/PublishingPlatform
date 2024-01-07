@@ -174,6 +174,77 @@ userRouter.post('/', async (req, res) => {
   }
 });
 
+userRouter.post('/:email/follow/', getUserByJWT, async (req, res) => {
+  let currentUser, userToFollow;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    currentUser = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+  
+  try {
+    const users = await UserModel.find({ email: req.params.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    userToFollow = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  try {
+    currentUser.following.push(userToFollow.email);
+
+    const userResult = await currentUser.save();
+
+    return res.json(userResult.following);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+});
+
+userRouter.post('/:email/unfollow/', getUserByJWT, async (req, res) => {
+  let currentUser, userToUnfollow;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    currentUser = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+  
+  try {
+    const users = await UserModel.find({ email: req.params.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    userToUnfollow = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  try {
+    currentUser.following = currentUser.following
+      .filter(email => email !== userToUnfollow.email);
+    
+    const userResult = await currentUser.save();
+
+    return res.json(userResult.following);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+});
+
 async function getUser(req, res, next) {
   let user;
   try {
