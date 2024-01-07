@@ -2,6 +2,7 @@
   import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
   import { isAuthenticated } from "../../stores.js";
+  import LikeButton from "$lib/components/LikeButton.svelte";
 
   export let data;
   let { id, email, isLiked, likeCount, article, userName } = data;
@@ -31,42 +32,39 @@
         </div>
         <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
         <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
-        <p>{`Likes: ${likeCount}`}</p> 
+        <LikeButton 
+          isDisabled={!$isAuthenticated}
+          isLiked={isLiked} 
+          likes={likeCount} 
+          onLike={() => {
+            fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
+              method: 'DELETE',
+              headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+                'Content-type': 'application/json; charset=UTF-8'
+              }
+            }).then(response => {
+              if(response.ok) {
+                isLiked = false;
+                likeCount--;
+              }
+            });
+          }} 
+          onUnlike={() => {
+            fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+                'Content-type': 'application/json; charset=UTF-8'
+              }
+            }).then(response => {
+              if(response.ok) {
+                isLiked = true;
+                likeCount++;
+              }
+            });
+          }}/>
       </div>
-      {#if $isAuthenticated}
-      {#if isLiked}
-        <Button name="Unlike" onClick={() => {
-          fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
-            method: 'DELETE',
-            headers: {
-              'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
-              'Content-type': 'application/json; charset=UTF-8'
-            }
-          }).then(response => {
-            if(response.ok) {
-              isLiked = false;
-              likeCount--;
-            }
-          })
-
-        }}/>
-      {:else}
-        <Button name="Like" onClick={() => {
-          fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
-              'Content-type': 'application/json; charset=UTF-8'
-            }
-          }).then(response => {
-            if(response.ok) {
-              isLiked = true;
-              likeCount++;
-            }
-          });
-         }}/>
-      {/if}
-      {/if} 
     </div>
     <p>{@html converter.makeHtml(article.content)}</p>
     <p>{@html converter.makeHtml(article.content)}</p>
