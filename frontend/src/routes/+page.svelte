@@ -114,4 +114,17 @@
   a {
     all: unset;
   }
+
+  @media only screen and (max-width: 1000px) {
+    .main {
+      width: 80vw;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .article-tiles > div {
+      max-width: 100%;
+      flex: auto;
+    }
+  }
 </style>
