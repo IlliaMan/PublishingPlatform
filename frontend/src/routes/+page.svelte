@@ -57,17 +57,18 @@
 
   .article-tiles > div {
     box-sizing: border-box;
-    border: 2px solid #fff;
+    border: thin solid #fff;
     min-height: 20rem;
     flex: 50%;
     max-width: 47%;
     background-color: var(--primary-color);
     padding: 2rem 1rem;
     color: #fff;
+    border-radius: 4px;
   }
 
   .article:hover {
-    border: 2px solid var(--secondary-color);
+    border: thin solid var(--secondary-color);
   }
 
   p {

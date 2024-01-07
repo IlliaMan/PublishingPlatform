@@ -51,20 +51,21 @@
     width: 55vw;
     margin: auto;
     min-height: 32rem;
-    border: 4px solid #fff;
+    border: thin solid #fff;
     display: flex;
     flex-direction: row;
+    border-radius: 4px;
   }
 
   .left-slider {
-    border-right: 2px solid #fff;
+    border-right: thin solid #fff;
     background-color: var(--primary-color);
     width: 10%;
     color: #fff; 
   }
 
   .right-slider {
-  border-left: 2px solid #fff;
+  border-left: thin solid #fff;
     background-color: var(--primary-color);
     width: 10%;
     color: #fff;
@@ -140,5 +141,9 @@
 
   a {
     all: unset;
+  }
+
+  .main:hover {
+    border: thin solid var(--secondary-color);
   }
 </style>
