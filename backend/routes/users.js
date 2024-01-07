@@ -31,6 +31,22 @@ userRouter.get('/:id', async (req, res) => {
   res.json(user);
 });
 
+userRouter.get('/username/:email', async (req, res) => {
+  const { email } = req.params;
+  let user;
+  try {
+    user = await UserModel.find({ email });
+    if(user == null || user.length === 0) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+
+    res.json({ username: user[0].username });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+});
+
 // Getting one 
 userRouter.get('/:email/:password', async (req, res) => {
   const { email, password } = req.params;
