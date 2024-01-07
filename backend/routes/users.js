@@ -174,6 +174,39 @@ userRouter.post('/', async (req, res) => {
   }
 });
 
+userRouter.get('/following/:email/check', getUserByJWT, async (req, res) => {
+  let currentUser, userToCheck;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User", users: users });
+    }
+    currentUser = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+  
+  try {
+    const users = await UserModel.find({ email: req.params.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    userToCheck = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  console.log(currentUser);
+  console.log(userToCheck);
+  if(!currentUser.following.includes(userToCheck.email)) {
+    res.sendStatus(204);
+  } else {
+    res.sendStatus(200);
+  }
+});
+
 userRouter.post('/:email/follow/', getUserByJWT, async (req, res) => {
   let currentUser, userToFollow;
   try {
@@ -264,8 +297,8 @@ async function getUser(req, res, next) {
 
 async function getUserByJWT(req, res, next) {
   const authHeader = req.headers['authorization'];
+  console.log(authHeader);
   const token = authHeader && authHeader.split(' ')[1];
-
   if (!token) {
     return res.sendStatus(401);
   }
