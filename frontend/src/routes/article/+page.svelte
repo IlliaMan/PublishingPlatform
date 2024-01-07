@@ -104,7 +104,7 @@
     flex-direction: row;
     column-gap: 2rem;
     align-items: center;
-    height: 5rem;
+    height: 8rem;
     justify-content: space-between;
     flex-wrap: wrap;
   }
