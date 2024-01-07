@@ -114,7 +114,7 @@
   }
 
   h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     margin: 0;
     text-align: center;
     background-color: var(--primary-color);
