@@ -6,12 +6,12 @@
 </script>
 
 <div class="main">
-  <!-- <div class="user-info">
+  <div class="user-info">
     <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
     <p>@username</p>
     <p>200 followers</p>
-    <button>Follow</button>
-  </div> -->
+    <Button name="Follow" />
+  </div>
     <div class="article-tiles">
       {#if data.articles.length === 0}
         <h1>No articles</h1>
@@ -60,21 +60,23 @@
     margin: auto;
     margin-top: 4rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 2rem;
+    column-gap: 6rem;
   }
 
   .user-info {
-    position: absolute;
     box-sizing: border-box;
-    border: 4px solid black;
+    border: thin solid #fff;
     display: flex;
     flex-direction: column;
-    width: 15%;
-    padding: 0 2rem;
-    left: 6rem;
-    background-color: #ddd;
-    padding: 2rem 0;
+    width: 25rem;
+    row-gap: 3rem;
+    height: fit-content;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 2rem 3rem;
+    border-radius: 4px;
   }
 
   .article-tiles {
@@ -88,13 +90,13 @@
 
   .article-tiles > div {
     box-sizing: border-box;
-    border: 0.35rem solid var(--primary-color);
-    min-height: 20rem;
+    border: thin solid var(--primary-color);
     background-color: var(--primary-color);
     color: #fff;
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
+    border-radius: 4px;
   }
 
   p {
@@ -103,7 +105,7 @@
 
   .user-info > * {
     font-size: 2rem;
-    margin: 3rem auto 0 auto;
+    margin: 0 auto;
   }
 
   button {
@@ -115,7 +117,6 @@
   }
 
   .profile {
-    filter: brightness(0.3);
     min-width: 50%;
     margin: 0 auto;
   }
@@ -137,8 +138,9 @@
     background-color: var(--primary-color);
   }
 
-  .article:hover {
-    border: 0.35rem solid var(--secondary-color);
+  .article:hover,
+  .user-info:hover {
+    border: thin solid var(--secondary-color);
   }
 
   .article h1 {
