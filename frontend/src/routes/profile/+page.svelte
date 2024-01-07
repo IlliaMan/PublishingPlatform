@@ -57,7 +57,7 @@
 <style>
   .main {
     height: 100px;
-    width: 55vw;
+    width: 60vw;
     margin: auto;
     margin-top: 4rem;
     display: flex;
@@ -71,7 +71,7 @@
     border: thin solid #fff;
     display: flex;
     flex-direction: column;
-    width: 25rem;
+    width: 26rem;
     row-gap: 3rem;
     height: fit-content;
     background-color: var(--primary-color);
@@ -139,9 +139,9 @@
     text-align: justify;
   }
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 850px) {
     .user-info {
-      visibility: hidden;
+      display: none;
     }
   }
 
