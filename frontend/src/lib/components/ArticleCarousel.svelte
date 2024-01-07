@@ -48,11 +48,11 @@
 <style>
   .main {
     box-sizing: border-box;
-    width: 55vw;
     margin: auto;
     min-height: 32rem;
     border: thin solid #fff;
     display: flex;
+    width: 100%;
     flex-direction: row;
     border-radius: 4px;
   }
