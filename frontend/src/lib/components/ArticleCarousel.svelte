@@ -51,23 +51,23 @@
     width: 55vw;
     margin: auto;
     min-height: 32rem;
-    border: 4px solid var(--primary-color);
+    border: 4px solid #fff;
     display: flex;
     flex-direction: row;
   }
 
   .left-slider {
-    border-right: 2px solid var(--primary-color);
-    background-color: #fff;
+    border-right: 2px solid #fff;
+    background-color: var(--primary-color);
     width: 10%;
-    color: var(--primary-color); 
+    color: #fff; 
   }
 
   .right-slider {
-    border-left: 2px solid var(--primary-color);
-    background-color: #fff;
+  border-left: 2px solid #fff;
+    background-color: var(--primary-color);
     width: 10%;
-    color: var(--primary-color);
+    color: #fff;
   }
 
   .left-slider:hover,
