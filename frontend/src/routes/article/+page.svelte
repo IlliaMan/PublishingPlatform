@@ -21,7 +21,7 @@
     <div class="additional-information">
       <div class="horizontal-block">
         <div class="icon">
-          <a href="/profile">
+          <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
             <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
           </a>
           <div class="author">
