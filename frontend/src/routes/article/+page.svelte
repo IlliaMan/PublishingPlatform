@@ -22,14 +22,15 @@
     <h1>{article.title}</h1>
     <div class="additional-information">
       <div class="horizontal-block">
-        <div class="icon">
-          <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
+        <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
+          <div class="icon">
             <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
-          </a>
-          <div class="author">
-            <p>{`@${userName} | ${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
+            <div class="author">
+              <p>{`@${userName}`}</p>
+              <p>{`${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
+            </div>
           </div>
-        </div>
+        </a>
         <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
         <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
         <LikeButton 
@@ -123,8 +124,8 @@
 
   .author > p {
     font-size: 2rem;
-    background-color: #ddd;
-    color: #000;
+    background-color: transparent;
+    color: #fff;
     border-radius: 4px;
     padding: 0.5rem 1rem;
     margin: 0;
@@ -134,6 +135,17 @@
     display: flex;
     column-gap: 1rem;
     align-items: center;
+    border: thin solid #fff;
+    padding: 0 1rem;
+    border-radius: 4px;
+  }
+
+  .icon:hover {
+    border: thin solid var(--secondary-color);
+  }
+
+  .icon:active {
+    border: thin solid var(--accent-color);
   }
 
   .small-image {
@@ -141,6 +153,8 @@
   }
 
   a {
+    all: unset;
     height: fit-content;
+    cursor: pointer;
   }
 </style>
