@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const articleScheme = new mongoose.Schema({
   title: {
@@ -45,6 +45,7 @@ const userScheme = new mongoose.Schema({
     default: Date.now
   },
   articles: [articleScheme],
+  following: [String]
 });
 
 const UserModel = mongoose.model('User', userScheme);
