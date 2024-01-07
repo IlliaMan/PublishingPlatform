@@ -1,6 +1,7 @@
 <script>
   import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
+  import { isAuthenticated } from "../../stores.js";
 
   export let data;
   let { id, email, isLiked, likeCount, article } = data;
@@ -32,6 +33,7 @@
         <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
         <p>{`Likes: ${likeCount}`}</p> 
       </div>
+      {#if $isAuthenticated}
       <Button name="Follow"/>
       {#if isLiked}
         <Button name="Unlike" onClick={() => {
@@ -65,6 +67,7 @@
           });
          }}/>
       {/if}
+      {/if} 
     </div>
     <p>{@html converter.makeHtml(article.content)}</p>
     <p>{@html converter.makeHtml(article.content)}</p>
