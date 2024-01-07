@@ -34,7 +34,6 @@
         <p>{`Likes: ${likeCount}`}</p> 
       </div>
       {#if $isAuthenticated}
-      <Button name="Follow"/>
       {#if isLiked}
         <Button name="Unlike" onClick={() => {
           fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
