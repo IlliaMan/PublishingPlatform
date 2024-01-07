@@ -3,12 +3,13 @@
   import Button from "$lib/components/Button.svelte";
   
   export let data;
+  console.log(data);
 </script>
 
 <div class="main">
   <div class="user-info">
     <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
-    <p>@username</p>
+    <p>{`@${data.userName}`}</p>
     <p>200 followers</p>
     <Button name="Follow" />
   </div>
