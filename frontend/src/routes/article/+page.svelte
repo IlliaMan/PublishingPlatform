@@ -146,13 +146,4 @@
   a {
     height: fit-content;
   }
-
-  button {
-    min-height: 3rem;
-    font-size: 2rem;
-    width: 10rem;
-    align-self: flex-end;
-    border-radius: 4px;
-    margin: auto 0;
-  }
 </style>

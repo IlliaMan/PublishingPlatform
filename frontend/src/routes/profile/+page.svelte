@@ -109,14 +109,6 @@
     margin: 0 auto;
   }
 
-  button {
-    min-height: 5rem;
-    font-size: 2rem;
-    width: 60%;
-    align-self: center;
-    border-radius: 8px;
-  }
-
   .profile {
     min-width: 50%;
     margin: 0 auto;
@@ -128,11 +120,6 @@
     column-gap: 2rem;
     margin-bottom: 1rem;
     margin-top: auto;
-  }
-
-  .article-button-pannel > button {
-    max-width: fit-content;
-    padding: 0 5rem;
   }
 
   .article {
