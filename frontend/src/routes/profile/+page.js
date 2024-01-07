@@ -48,7 +48,8 @@ export async function load({ fetch, url }) {
   return {
     articles: data,
     isMyProfile,
-    userName
+    userName,
+    profileUserEmail: email
   };
 }
 

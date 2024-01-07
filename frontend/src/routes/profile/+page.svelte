@@ -1,6 +1,7 @@
 <script>
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
+  import { isAuthenticated } from "../../stores.js";
   
   export let data;
   console.log(data);
@@ -11,7 +12,26 @@
     <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
     <p>{`@${data.userName}`}</p>
     <p>200 followers</p>
-    <Button name="Follow" />
+    {#if $isAuthenticated}
+      <Button name="Follow" onClick={() => {
+        fetch(`http://127.0.0.1:3000/users/${data.profileUserEmail}/follow`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+            'Content-type': 'application/json; charset=UTF-8'
+          },
+        })
+      }}/>
+      <Button name="Unfollow" onClick={() => {
+        fetch(`http://127.0.0.1:3000/users/${data.profileUserEmail}/unfollow`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+            'Content-type': 'application/json; charset=UTF-8'
+          },
+        })
+      }}/>
+    {/if}
   </div>
     <div class="article-tiles">
       {#if data.articles.length === 0}
