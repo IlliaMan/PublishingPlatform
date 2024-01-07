@@ -18,7 +18,9 @@
       {:else}
       {#each data.articles as { title, content, email, _id }}
       <div class="article">
-        <h1>{title}</h1>
+        <a href={`/article?${new URLSearchParams({ id: _id, email })}`}>
+          <h1>{title}</h1>
+        </a>
         <p>{content}</p>
         <div class="article-button-pannel">
           <Button name="Read" onClick={() => {
@@ -151,5 +153,18 @@
     .user-info {
       visibility: hidden;
     }
+  }
+
+  .article > a:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+  }
+
+  .article > a:active {
+    color: var(--accent-color);
+  }
+
+  a {
+    all: unset;
   }
 </style>
