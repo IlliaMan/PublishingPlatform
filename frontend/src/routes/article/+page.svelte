@@ -31,8 +31,10 @@
             </div>
           </div>
         </a>
-        <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
-        <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
+        <div class="reading-statistics">
+          <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
+          <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
+        </div>
         <LikeButton 
           isDisabled={!$isAuthenticated}
           isLiked={isLiked} 
@@ -95,7 +97,6 @@
     flex-direction: column;
     justify-content: space-evenly;
     row-gap: 2rem;
-    min-width: 68rem;
   }
 
   .horizontal-block {
@@ -105,6 +106,7 @@
     align-items: center;
     height: 5rem;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .additional-information:nth-child(1) {
@@ -156,5 +158,39 @@
     all: unset;
     height: fit-content;
     cursor: pointer;
+  }
+
+  .reading-statistics {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 2rem;
+    min-width: 16rem;
+  }
+
+  .reading-statistics > p {
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 850px) {
+    .horizontal-block {
+      height: auto;
+      row-gap: 2rem;
+    }
+
+    .horizontal-block > * {
+      width: 100%;
+    }
+
+    .reading-statistics {
+      justify-content: space-around;
+      width: 50%;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .main {
+      width: 80vw;
+    }
   }
 </style>
