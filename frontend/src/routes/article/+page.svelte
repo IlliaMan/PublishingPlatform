@@ -95,13 +95,13 @@
     flex-direction: column;
     justify-content: space-evenly;
     row-gap: 2rem;
-    min-width: 82rem;
+    min-width: 68rem;
   }
 
   .horizontal-block {
     display: flex;
     flex-direction: row;
-    column-gap: 5rem;
+    column-gap: 2rem;
     align-items: center;
     height: 5rem;
     justify-content: space-between;
