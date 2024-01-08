@@ -1,3 +1,6 @@
+import { get } from 'svelte/store';
+import { isAuthenticated } from '../../stores.js';
+
 export async function load({ fetch, url }) {
   const id = url.searchParams.get('id');
   const email = url.searchParams.get('email');
@@ -13,14 +16,16 @@ export async function load({ fetch, url }) {
     article = data;
   }
 
-  res = await fetch(`http://127.0.0.1:3000/articles/likes/${id}/check`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
-      'Content-type': 'application/json; charset=UTF-8'
-    },
-  });
-  isLiked = res.status === 200;
+  if(get(isAuthenticated)) {
+    res = await fetch(`http://127.0.0.1:3000/articles/likes/${id}/check`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+        'Content-type': 'application/json; charset=UTF-8'
+      },
+    });
+    isLiked = res.status === 200;
+  }
 
 
   res = await fetch(`http://127.0.0.1:3000/articles/likes/${id}/count`);
