@@ -1,6 +1,8 @@
 <script>
   export let menuIconArg = false;
   export let isAuthenticated = false;
+  let isInputResultHidden = true;
+  let searchResults = [];
 </script>
 
 <header>
@@ -9,7 +11,45 @@
       <img src="logoLight.png" alt="logo" class="logo-image"/>
     </a>
   </div>
-  <input type="text" placeholder="Search"/>
+  <div class="search-bar">
+    <input type="text" placeholder="Search"
+      on:focusin={() => { isInputResultHidden = false; }}
+      on:focusout={val => { 
+      if(val.relatedTarget == null) {
+        isInputResultHidden = true;
+      }
+    }}
+      on:input={input => {
+        const { value } = input.target;
+        if(value == '') {
+          isInputResultHidden = true;
+        } else {
+          fetch(`http://127.0.0.1:3000/search/${value}`)
+            .then(res => res.json())
+            .then(res => {
+              searchResults = res.searchResults;
+              isInputResultHidden = false;
+            }
+          );
+        }
+    }}/>
+    <button 
+      class="blocker" 
+      class:hide={isInputResultHidden}
+      on:click={() => {
+        isInputResultHidden = true;
+      }}
+    />
+    <div class="input-result" class:hide={isInputResultHidden} tabindex="-1">
+      {#each searchResults as { id, title, email }}
+        <a rel="external" href={`/article?${new URLSearchParams({ id, email })}`}
+          on:click={() => {
+            isInputResultHidden = true;
+          }}
+        >{title}</a>
+      {/each}
+    </div>
+  </div>
   {#if isAuthenticated}
     <div class="icon">
       <a href="/profile">
@@ -33,6 +73,11 @@
 </header>
 
 <style>
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
   .logo {
     align-items: center;
     margin-left: 2rem;
@@ -52,19 +97,22 @@
     background-color: var(--primary-color);
   }
 
-  input {
+  .search-bar {
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    font-size: 2rem;
     padding-left: 2rem;
     align-self: center;
     margin: auto;
     height: 65%;
     border-radius: 0.5rem;
-  }
+   }
 
-  a {
-    margin-right: 2rem;
-    min-width: 4rem;
+  input {
+    font-size: 2rem;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   button {
@@ -85,6 +133,40 @@
   .icon:hover,
   .logo:hover {
     cursor: pointer;
+  }
+
+  .input-result {
+    position: absolute;
+    width: 10rem;
+    height: fit-content;
+    top: 5rem;
+    border: thin solid var(--primary-color);
+    background-color: #fff;
+    box-sizing: border-box;
+    width: 50%;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 2rem;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .input-result > a {
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .input-result > a:hover {
+    background-color: #ffffdb;
   }
 
   @media only screen and (max-width: 550px) {
