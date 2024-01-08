@@ -10,10 +10,10 @@
   <div class="user-info">
     <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
     <p>{`@${data.userName}`}</p>
-    <a href={`/followers?${new URLSearchParams({ email: data.profileUserEmail })}`}>
+    <a href={`/followers?${new URLSearchParams({ email: data.profileUserEmail, username: data.userName })}`}>
       <p>{`${data.followersCount} followers`}</p>
     </a>
-    <a href={`/following?${new URLSearchParams({ email: data.profileUserEmail })}`}>
+    <a href={`/following?${new URLSearchParams({ email: data.profileUserEmail, username: data.userName })}`}>
       <p>{`${data.followingCount} following`}</p>
     </a>
     {#if $isAuthenticated && !data.isMyProfile}
