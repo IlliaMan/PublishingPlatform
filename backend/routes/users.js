@@ -174,6 +174,21 @@ userRouter.post('/', async (req, res) => {
   }
 });
 
+userRouter.get('/followers/:email/count', async (req, res) => {
+  let user;
+  try {
+    const users = await UserModel.find({ email: req.params.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User", users: users });
+    }
+    user = users[0];
+    res.json({ followersCount: user.followers.length });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+});
+
 userRouter.get('/following/:email/count', async (req, res) => {
   let user;
   try {
