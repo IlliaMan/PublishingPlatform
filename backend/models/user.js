@@ -45,7 +45,8 @@ const userScheme = new mongoose.Schema({
     default: Date.now
   },
   articles: [articleScheme],
-  following: [String]
+  following: [String],
+  followers: [String]
 });
 
 const UserModel = mongoose.model('User', userScheme);
