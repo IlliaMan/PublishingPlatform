@@ -10,7 +10,12 @@
   <div class="user-info">
     <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
     <p>{`@${data.userName}`}</p>
-    <p>200 followers</p>
+    <a href="/followers">
+      <p>{`${data.followersCount} followers`}</p>
+    </a>
+    <a href="/following">
+      <p>{`${data.followingCount} following`}</p>
+    </a>
     {#if $isAuthenticated && !data.isMyProfile}
     {#if data.isFollowing}
       <Button name="Unfollow" onClick={() => {
@@ -102,7 +107,7 @@
     display: flex;
     flex-direction: column;
     width: 26rem;
-    row-gap: 3rem;
+    row-gap: 4rem;
     height: fit-content;
     background-color: var(--primary-color);
     color: #fff;
@@ -124,7 +129,7 @@
     border: thin solid var(--primary-color);
     background-color: var(--primary-color);
     color: #fff;
-    padding: 0 1rem;
+    padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
     border-radius: 4px;
@@ -134,7 +139,8 @@
     font-size: 1.6rem;
   }
 
-  .user-info > * {
+  .user-info > *,
+  a > * {
     font-size: 2rem;
     margin: 0 auto;
   }
@@ -181,12 +187,14 @@
     }
   }
 
-  .article > a:hover {
+  .article > a:hover,
+  a:hover {
     color: var(--secondary-color);
     cursor: pointer;
   }
 
-  .article > a:active {
+  .article > a:active,
+  a:active {
     color: var(--accent-color);
   }
 

@@ -9,6 +9,8 @@ export async function load({ fetch, url }) {
   let userEmail = null;
   let userName = null;
   let isFollowing = null;
+  let followingCount = 0;
+  let followersCount = 0;
   const token = sessionStorage.getItem('jwt');
   token ? (userEmail = JSON.parse(atob(token.split('.')[1]))?.email) : null;
 
@@ -62,12 +64,22 @@ export async function load({ fetch, url }) {
     isMyProfile = true;
   }
 
+  followingCount = await fetch(`http://127.0.0.1:3000/users/following/${email == null ? userEmail : email}/count`);
+  followingCount = await followingCount.json();
+  followingCount = followingCount.followingCount;
+
+  followersCount = await fetch(`http://127.0.0.1:3000/users/followers/${email == null ? userEmail : email}/count`);
+  followersCount = await followersCount.json();
+  followersCount = followersCount.followersCount;
+
   return {
     articles: data,
     isMyProfile,
     userName,
     profileUserEmail: email,
-    isFollowing
+    isFollowing,
+    followingCount,
+    followersCount
   };
 }
 
