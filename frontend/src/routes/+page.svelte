@@ -94,11 +94,9 @@
 
   .content {
     display: -webkit-box;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
-    height: 11rem;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     text-align: justify;
   }
 

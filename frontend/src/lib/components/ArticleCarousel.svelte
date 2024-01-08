@@ -92,11 +92,9 @@
 
   .sliding-article > p {
     display: -webkit-box;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
-    height: 14rem;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .content {
@@ -121,6 +119,13 @@
     margin-top: 1rem;
     margin-bottom: 0;
     text-align: center;
+  }
+
+  p > a {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .arrow {

@@ -94,7 +94,7 @@
 <style>
   .main {
     height: 100px;
-    width: 60vw;
+    width: 55vw;
     margin: auto;
     margin-top: 4rem;
     display: flex;
@@ -108,7 +108,7 @@
     border: thin solid #fff;
     display: flex;
     flex-direction: column;
-    width: 26rem;
+    width: 30rem;
     row-gap: 4rem;
     height: fit-content;
     background-color: var(--primary-color);
@@ -135,7 +135,6 @@
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    max-height: 35rem;
   }
 
   p {
@@ -176,6 +175,9 @@
   
   .article p {
     text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
