@@ -53,7 +53,7 @@
   }
 
   .styled-table thead tr {
-    background-color: #7928a4;
+    background-color: var(--primary-color);
     color: #ffffff;
     text-align: left;
   }
@@ -68,7 +68,7 @@
   }
 
   .styled-table tbody tr:hover {
-    background-color: #ffffbb;
+    background-color: #ffffdb;
   }
 
   .styled-table tbody tr {
@@ -76,7 +76,7 @@
   }
 
   .styled-table tbody tr:last-child {
-    border-bottom: 0.5rem solid #bb7ddc;
+    border-bottom: 0.5rem solid var(--primary-color);
   }
   
   .following-panel {
