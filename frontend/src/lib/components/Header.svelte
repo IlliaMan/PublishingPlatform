@@ -73,11 +73,6 @@
 </header>
 
 <style>
-  header {
-    display: flex;
-    flex-direction: column;
-  }
-
   .logo {
     align-items: center;
     margin-left: 2rem;
@@ -100,13 +95,12 @@
   .search-bar {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    padding-left: 2rem;
+    width: 55vw;
     align-self: center;
     margin: auto;
     height: 65%;
     border-radius: 0.5rem;
-   }
+  }
 
   input {
     font-size: 2rem;
@@ -137,13 +131,12 @@
 
   .input-result {
     position: absolute;
-    width: 10rem;
     height: fit-content;
     top: 5rem;
     border: thin solid var(--primary-color);
     background-color: #fff;
     box-sizing: border-box;
-    width: 50%;
+    width: 55vw;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
     display: flex;
