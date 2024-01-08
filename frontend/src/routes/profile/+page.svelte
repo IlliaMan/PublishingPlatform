@@ -135,15 +135,16 @@
     display: flex;
     flex-direction: column;
     border-radius: 4px;
+    max-height: 35rem;
   }
 
   p {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   .user-info > *,
   a > * {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin: 0 auto;
   }
 
@@ -175,6 +176,7 @@
   
   .article p {
     text-align: justify;
+    overflow: hidden;
   }
 
   @media only screen and (max-width: 850px) {
