@@ -28,6 +28,7 @@
         }).then(res => {
           if(res.ok) {
             data.isFollowing = false;
+            data.followersCount--;
           }
         })
       }}/>
@@ -42,6 +43,7 @@
         }).then(res => {
           if(res.ok) {
             data.isFollowing = true;
+            data.followersCount++;
           }
         })
       }}/>
