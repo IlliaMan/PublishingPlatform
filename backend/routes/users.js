@@ -263,10 +263,12 @@ userRouter.post('/:email/follow/', getUserByJWT, async (req, res) => {
 
   try {
     currentUser.following.push(userToFollow.email);
+    userToFollow.followers.push(currentUser.email);
 
-    const userResult = await currentUser.save();
+    await currentUser.save();
+    await userToFollow.save();
 
-    return res.json(userResult.following);
+    return res.sendStatus(200);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -299,10 +301,14 @@ userRouter.post('/:email/unfollow/', getUserByJWT, async (req, res) => {
   try {
     currentUser.following = currentUser.following
       .filter(email => email !== userToUnfollow.email);
-    
-    const userResult = await currentUser.save();
 
-    return res.json(userResult.following);
+    userToUnfollow.followers = userToUnfollow.followers
+      .filter(email => email !== currentUser.email);
+    
+    await currentUser.save();
+    await userToUnfollow.save();
+
+    return res.sendStatus(200);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
