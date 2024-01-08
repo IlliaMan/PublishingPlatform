@@ -60,4 +60,8 @@
   button:active {
     border: thin solid var(--accent-color);
   }
+
+  button:disabled {
+    border: thin solid transparent;
+  }
 </style>
