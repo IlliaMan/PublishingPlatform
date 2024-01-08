@@ -38,6 +38,14 @@
       return JSON.parse(atob(response.accessToken.split('.')[1]));
     })
     .then(user => {
+      const time = user.exp - user.iat;
+      setTimeout(() => {
+        sessionStorage.removeItem('jwt');
+        sessionStorage.removeItem('rjwt');
+        isAuthenticated.set(false);
+        isAdmin.set(false);
+      }, time * 1000);
+
       isAuthenticated.set(true);
       if(user.role === 'admin') {
         isAdmin.set(true);
