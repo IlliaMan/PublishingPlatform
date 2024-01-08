@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import articlesRouter from './routes/articles.js'
 import userRouter from './routes/users.js';
 import authRouter from './routes/auth.js';
+import searchRouter from './routes/search.js';
 
 const DATABASE_URL = 'mongodb://localhost:27017/test';
 
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use('/articles', articlesRouter);
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
+app.use('/search', searchRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
