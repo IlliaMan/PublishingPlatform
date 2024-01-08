@@ -98,7 +98,7 @@
 
 <style>
   .main {
-    width: 80vw;
+    width: 75vw;
     margin: auto;
     margin-top: 4rem;
     min-height: 80vh;
