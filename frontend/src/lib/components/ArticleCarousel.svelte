@@ -96,6 +96,9 @@
   }
 
   .sliding-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     min-width: 100%;
     background-color: var(--primary-color);
     color: #fff;
@@ -103,9 +106,10 @@
 
   .sliding-article > p {
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-bottom: 0;
   }
 
   .sliding-article > .button-container {
