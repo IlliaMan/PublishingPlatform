@@ -2,6 +2,7 @@
   import ArticleCarousel from "$lib/components/ArticleCarousel.svelte";
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
+  import LikeButton from "$lib/components/LikeButton.svelte";
 
   export let data;
 </script>
@@ -9,7 +10,7 @@
 <div class="main">
   <ArticleCarousel />
   <div class="article-tiles">
-    {#each data.articleList as { _id, title, email, content }}
+    {#each data.articleList as { _id, title, email, likes, content }}
       <div class="article">
         <div class="article-title">
           <p>
@@ -20,6 +21,12 @@
         </div>
         <p class="content">{content}</p>
         <div class="article-button-pannel">
+          <LikeButton 
+            likes={likes.length} 
+            isDisabled={true} 
+            isLiked={false}
+            isSmallIcon={true} 
+          />
           <Button name='Read' onClick={() => {
             goto(`/article?${new URLSearchParams({ id: _id, email })}`);
           }}/>
@@ -80,8 +87,10 @@
   }
 
   .article-button-pannel {
+    height: 4rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-right: 2rem;
   }
 
   .article-title > p {
@@ -98,6 +107,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-align: justify;
+    padding: 0rem 2rem;
   }
 
   .article-title:hover {
