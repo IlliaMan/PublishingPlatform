@@ -74,6 +74,7 @@
 
   button:disabled {
     border: thin solid transparent;
+    cursor: unset;
   }
 
   .small {
