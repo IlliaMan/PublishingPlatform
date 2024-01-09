@@ -4,6 +4,7 @@
   export let onLike = () => {};
   export let onUnlike = () => {};
   export let isDisabled = false;
+  export let isSmallIcon = false;
 
   function changeIsLiked() {
     isLiked = !isLiked;
@@ -21,7 +22,12 @@
     changeIsLiked();
     onLike();
   }}>
-    <img src="redHeart.svg" alt="Red Heart Icon" class="small-image"/>
+    <img 
+      src="redHeart.svg" 
+      alt="Red Heart Icon" 
+      class="small-image" 
+      class:small={isSmallIcon}
+    />
     <p>{likes}</p>
   </button>
 {:else}
@@ -29,7 +35,12 @@
     changeIsLiked();
     onUnlike();
   }}>
-    <img src="greyHeart.svg" alt="Grey Heart Icon" class="small-image"/>
+    <img 
+      src="greyHeart.svg" 
+      alt="Grey Heart Icon" 
+      class="small-image"
+      class:small={isSmallIcon}
+    />
     <p>{likes}</p>
   </button>
 {/if}
@@ -42,9 +53,9 @@
   button {
     display: flex;
     gap: 2rem;
-    font-size: 2rem;
-    padding: 0 1rem;
+    font-size: 2.2rem;
     align-items: center;
+    justify-content: center;
     width: 10rem;
     border-radius: 4px;
     background: transparent;
@@ -63,5 +74,9 @@
 
   button:disabled {
     border: thin solid transparent;
+  }
+
+  .small {
+    width: 3rem;
   }
 </style>
