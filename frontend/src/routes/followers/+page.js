@@ -1,3 +1,5 @@
+import { error } from '@sveltejs/kit';
+
 export async function load({ fetch, url }) {
   const email = url.searchParams.get('email');
   const userName = url.searchParams.get('username');
