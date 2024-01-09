@@ -1,6 +1,6 @@
 <script>
   import InputRectangle from "$lib/components/InputRectangle.svelte";
-  import { isAuthenticated, isAdmin } from "../../stores";
+  import { isAuthenticated, isAdmin, userEmail } from "../../stores";
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
 
@@ -44,8 +44,10 @@
         sessionStorage.removeItem('rjwt');
         isAuthenticated.set(false);
         isAdmin.set(false);
+        userEmail.set(null);
       }, time * 1000);
 
+      userEmail.set(user.email);
       isAuthenticated.set(true);
       if(user.role === 'admin') {
         isAdmin.set(true);

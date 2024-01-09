@@ -1,7 +1,7 @@
 <script>
   import Header from "$lib/components/Header.svelte";
   import SideMenu from "$lib/components/SideMenu.svelte";
-  import { isAdmin, isAuthenticated } from "../stores";
+  import { isAdmin, isAuthenticated, userEmail } from "../stores";
 	import { page } from '$app/stores';
 
   let isOpen = false;
@@ -12,11 +12,19 @@
 {:else}
   <div class="main">
     <div class="home-section">
-      <Header bind:menuIconArg={isOpen} isAuthenticated={$isAuthenticated}/>
+      <Header 
+        bind:menuIconArg={isOpen}
+        isAuthenticated={$isAuthenticated}
+        userEmail={$userEmail}
+      />
       <slot />
     </div>
     <div class="sidebar" class:open={isOpen} class:close={!isOpen}>
-      <SideMenu isAuthenticated={$isAuthenticated} isAdmin={$isAdmin}/>
+      <SideMenu 
+        isAuthenticated={$isAuthenticated}
+        isAdmin={$isAdmin}
+        userEmail={$userEmail}
+      />
     </div>
   </div>
 {/if}

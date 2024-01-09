@@ -1,8 +1,9 @@
 <script>
-  import { isAdmin as adminStore, isAuthenticated as authenticatedStore } from "../../stores";
+  import { isAdmin as adminStore, isAuthenticated as authenticatedStore, userEmail as userEmailStore } from "../../stores";
 
   export let isAuthenticated = false;
   export let isAdmin = false;
+  export let userEmail = null;
 </script>
 
 <div class="main">
@@ -14,7 +15,7 @@
       <a href="/admin-panel">Admin Panel</a>
     {:else}
       <a href="/create-article">Write</a>
-      <a href="/profile">Profile</a>
+      <a href={`/profile?${new URLSearchParams({ email: userEmail })}`}>Profile</a>
       <a href="/">Settings</a>
     {/if}
       <a href="/login" on:click={() => {
@@ -22,6 +23,7 @@
         sessionStorage.removeItem('rjwt');
         authenticatedStore.set(false);
         adminStore.set(false);
+        userEmailStore.set(null);
       }}>Log out</a>
   {:else}
     <a href="/login">Sign in</a>

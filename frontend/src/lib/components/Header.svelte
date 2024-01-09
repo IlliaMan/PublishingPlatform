@@ -1,6 +1,7 @@
 <script>
   export let menuIconArg = false;
   export let isAuthenticated = false;
+  export let userEmail = null;
   let isInputResultHidden = true;
   let searchResults = [];
 </script>
@@ -52,7 +53,7 @@
   </div>
   {#if isAuthenticated}
     <div class="icon">
-      <a href="/profile">
+      <a href={`/profile?${new URLSearchParams({ email: userEmail })}`}>
         <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
       </a>
     </div>
