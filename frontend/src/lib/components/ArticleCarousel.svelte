@@ -1,4 +1,6 @@
 <script>
+  import LikeButton from "./LikeButton.svelte";
+
   let articles = [];
   async function fetchArticles() {
     const res = await fetch("http://127.0.0.1:3000/articles/");
@@ -6,6 +8,7 @@
 
     if (res.ok) {
       articles = data;
+      console.log(articles);
       return data;
     } else {
       throw new Error(data);
@@ -24,7 +27,7 @@
     <p>loading</p>
   {:then articles} 
     <div bind:this={content_div} class="content">
-      {#each articles as { title, content, email, _id } }
+      {#each articles as { title, content, email, likes, _id } }
         <div class="sliding-article">
           <div class="article-title">
             <p>
@@ -34,6 +37,14 @@
             </p>
           </div>
           <p>{content}</p>
+          <div class="button-container">
+            <LikeButton 
+              likes={likes.length} 
+              isDisabled={true} 
+              isLiked={false} 
+              isSmallIcon={true}
+            />
+          </div>
         </div>
       {/each}
     </div>
@@ -92,9 +103,14 @@
 
   .sliding-article > p {
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .sliding-article > .button-container {
+    display: flex;
+    margin: 0 0 1rem 3rem;
   }
 
   .content {
@@ -135,7 +151,7 @@
 
   div > p {
     padding: 0 5rem;
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-align: justify;
   }
 
