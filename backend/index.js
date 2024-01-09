@@ -6,7 +6,7 @@ import userRouter from './routes/users.js';
 import authRouter from './routes/auth.js';
 import searchRouter from './routes/search.js';
 
-const DATABASE_URL = 'mongodb://localhost:27017/test';
+const DATABASE_URL = 'mongodb://mongodb:27017/test';
 
 mongoose.connect(DATABASE_URL);
 const db = mongoose.connection;
