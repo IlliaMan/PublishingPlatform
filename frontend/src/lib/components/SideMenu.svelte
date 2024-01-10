@@ -16,7 +16,6 @@
     {:else}
       <a href="/create-article">Write</a>
       <a href={`/profile?${new URLSearchParams({ email: userEmail })}`}>Profile</a>
-      <a href="/">Settings</a>
     {/if}
       <a href="/login" on:click={() => {
         sessionStorage.removeItem('jwt');
