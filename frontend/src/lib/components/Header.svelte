@@ -9,7 +9,7 @@
 <header>
   <div class="logo">
     <a href="/">
-      <img src="logoLight.png" alt="logo" class="logo-image"/>
+      <img src="logoLight.svg" alt="logo" class="logo-image"/>
     </a>
   </div>
   <div class="search-bar">
