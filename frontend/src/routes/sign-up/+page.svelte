@@ -48,7 +48,7 @@
 </script>
 
 <div class="main">
-  <h1>Sign up</h1>
+  <p>Sign up</p>
   <p>Create a free account</p>
   <form on:submit|preventDefault={onSignupSubmit}>
     <div class="profile-picker">
@@ -57,7 +57,7 @@
         alt="Profile Icon"
       />
       <Button 
-        name="Randomize Profile Picture"
+        name="Randomize Profile Icon"
         type="button"
         onClick={() => {
           icon = getRandomIcon();
@@ -92,29 +92,49 @@
 
 <style>
   .main {
-    height: 100px;
-    width: 33vw;
+    box-sizing: border-box;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    width: 55vw;
     margin: auto;
     margin-top: 10vh;
     display: flex;
+    padding: 3rem 0;
     flex-direction: column;
-    gap: 2rem;
+    row-gap: 2rem;
+    align-items: center;
+  }
+
+  .main > * {
+    width: 70%;
+  }
+
+  .main > p:nth-child(1) {
+    font-size: 2.375rem;
+  }
+  
+  .main > p:nth-child(2) {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  .main p {
+    text-align: center;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin: 0;
+    gap: 3rem;
   }
 
   p {
-    font-size: 1.6rem;
     margin: 0;
+  }
+
+  a {
+    color: #fff;
   }
 
   .additional-options {
@@ -136,7 +156,7 @@
   }
 
   .profile-picker img {
-    border-radius: 10rem;
-    width: 12rem;
+    border-radius: 5rem;
+    width: 10rem;
   }
 </style>
