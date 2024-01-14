@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import { isAuthenticated } from '../../stores.js';
+import { isAuthenticated, profileIcon } from '../../stores.js';
 
 export async function load({ fetch, url }) {
   const id = url.searchParams.get('id');
@@ -8,6 +8,7 @@ export async function load({ fetch, url }) {
   let likeCount = 0;
   let article = {};
   let userName = null;
+  let icon = 'profileIcon.png';
 
   let res = await fetch(`http://127.0.0.1:3000/articles/${id}`);
   let data = await res.json();
@@ -25,6 +26,12 @@ export async function load({ fetch, url }) {
       },
     });
     isLiked = res.status === 200;
+
+    icon = get(profileIcon);
+  } else {
+    res = await fetch(`http://127.0.0.1:3000/users/icon/${email == null ? userEmail : email}`);
+    res = await res.json();
+    icon = res.icon;
   }
 
 
@@ -42,6 +49,7 @@ export async function load({ fetch, url }) {
     isLiked,
     likeCount,
     article,
-    userName
+    userName,
+    icon
   };
 }

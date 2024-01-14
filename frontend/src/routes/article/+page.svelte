@@ -5,7 +5,7 @@
   import LikeButton from "$lib/components/LikeButton.svelte";
 
   export let data;
-  let { id, email, isLiked, likeCount, article, userName } = data;
+  let { id, email, isLiked, likeCount, article, userName, icon } = data;
     
   let timeToRead = 1;
   function readingTime(text) {
@@ -23,8 +23,8 @@
     <div class="additional-information">
       <div class="horizontal-block">
         <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
-          <div class="icon">
-            <img src="/icons/profileIcon.png" alt="Progile Icon" class="small-image"/>
+          <div class="icon profile-icon">
+            <img src={`/icons/${icon}`} alt="Progile Icon" class="small-image"/>
             <div class="author">
               <p>{`@${userName}`}</p>
               <p>{`${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
@@ -152,6 +152,10 @@
 
   .icon:active {
     border: thin solid var(--accent-color);
+  }
+
+  .profile-icon img {
+    border-radius: 5rem;
   }
 
   .small-image {
