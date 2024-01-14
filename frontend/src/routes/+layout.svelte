@@ -1,7 +1,7 @@
 <script>
   import Header from "$lib/components/Header.svelte";
   import SideMenu from "$lib/components/SideMenu.svelte";
-  import { isAdmin, isAuthenticated, userEmail } from "../stores";
+  import { isAdmin, isAuthenticated, profileIcon, userEmail } from "../stores";
 	import { page } from '$app/stores';
 
   let isOpen = false;
@@ -16,6 +16,7 @@
         bind:menuIconArg={isOpen}
         isAuthenticated={$isAuthenticated}
         userEmail={$userEmail}
+        profileIcon={$profileIcon}
       />
       <slot />
     </div>
@@ -24,6 +25,7 @@
         isAuthenticated={$isAuthenticated}
         isAdmin={$isAdmin}
         userEmail={$userEmail}
+        profileIcon={$profileIcon}
       />
     </div>
   </div>

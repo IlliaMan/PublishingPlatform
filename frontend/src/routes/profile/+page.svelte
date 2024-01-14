@@ -1,14 +1,14 @@
 <script>
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
-  import { isAuthenticated } from "../../stores.js";
+  import { isAuthenticated, profileIcon } from "../../stores.js";
   
   export let data;
 </script>
 
 <div class="main">
   <div class="user-info">
-    <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
+    <img src={`icons/${$profileIcon}`} alt="Progile Icon" class="profile"/>
     <p>{`@${data.userName}`}</p>
     <a href={`/followers?${new URLSearchParams({ email: data.profileUserEmail, username: data.userName })}`}>
       <p>{`${data.followersCount} followers`}</p>
@@ -148,6 +148,7 @@
   }
 
   .profile {
+    border-radius: 6rem;
     min-width: 8rem;
     margin: 0 auto;
   }

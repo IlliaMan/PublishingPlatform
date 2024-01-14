@@ -1,14 +1,20 @@
 <script>
-  import { isAdmin as adminStore, isAuthenticated as authenticatedStore, userEmail as userEmailStore } from "../../stores";
+  import { 
+    isAdmin as adminStore, 
+    isAuthenticated as authenticatedStore, 
+    userEmail as userEmailStore,
+    profileIcon as profileIconStore
+  } from "../../stores";
 
   export let isAuthenticated = false;
   export let isAdmin = false;
   export let userEmail = null;
+  export let profileIcon = 'profileIcon.png';
 </script>
 
 <div class="main">
   <div class="profile-icon">
-    <img src="ProfileIcon.png" alt="Progile Icon" class="medium-image"/>
+    <img src={`icons/${profileIcon}`} alt="Progile Icon" class="medium-image"/>
   </div>
   {#if isAuthenticated}
     {#if isAdmin}
@@ -20,6 +26,7 @@
       <a href="/login" on:click={() => {
         sessionStorage.removeItem('jwt');
         sessionStorage.removeItem('rjwt');
+        profileIconStore.set('profileIcon.png');
         authenticatedStore.set(false);
         adminStore.set(false);
         userEmailStore.set(null);
@@ -46,6 +53,10 @@
 
   .profile-icon {
     margin-bottom: 2rem;
+  }
+
+  .profile-icon > img {
+    border-radius: 5rem;
   }
 
   .medium-image {

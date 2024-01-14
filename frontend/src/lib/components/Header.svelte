@@ -1,6 +1,7 @@
 <script>
   export let menuIconArg = false;
   export let isAuthenticated = false;
+  export let profileIcon = 'profileIcon.png'
   export let userEmail = null;
   let isInputResultHidden = true;
   let searchResults = [];
@@ -52,15 +53,15 @@
     </div>
   </div>
   {#if isAuthenticated}
-    <div class="icon">
+    <div class="icon profile-icon">
       <a href={`/profile?${new URLSearchParams({ email: userEmail })}`}>
-        <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
+        <img src={`icons/${profileIcon}`} alt="Progile Icon" class="small-image"/>
       </a>
     </div>
   {:else}
     <div class="icon">
       <a href="/login">
-      <img src="LogInIcon.png" alt="LogIn Icon" class="small-image"/>
+        <img src="LogInIcon.png" alt="LogIn Icon" class="small-image"/>
       </a>
     </div>
   {/if}
@@ -167,6 +168,10 @@
 
   .input-result > a:hover {
     background-color: #ffffdb;
+  }
+
+  .profile-icon a img {
+    border-radius: 5rem;
   }
 
   @media only screen and (max-width: 550px) {
