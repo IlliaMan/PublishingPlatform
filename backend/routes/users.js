@@ -47,13 +47,12 @@ userRouter.get('/username/:email', async (req, res) => {
   }
 });
 
-// Getting one 
-userRouter.get('/:email/:password', async (req, res) => {
-  const { email, password } = req.params;
-  let user;
+userRouter.get('/icon/:email', async (req, res) => {
+  const { email } = req.params;
+  let users;
   try {
-    user = await UserModel.find({ email, password });
-    if(user == null || user.length === 0) {
+    users = await UserModel.find({ email });
+    if(users == null || users.length === 0) {
       // 404 - cannot find something
       return res.status(404).json({ message: "cannot find User"});
     }
@@ -61,7 +60,7 @@ userRouter.get('/:email/:password', async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 
-  res.json(user);
+  res.json({ icon: users[0].icon });
 });
 
 userRouter.patch('/article/:title', getUserByJWT, async (req, res) => {
