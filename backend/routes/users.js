@@ -160,7 +160,8 @@ userRouter.post('/', async (req, res) => {
   const user = new UserModel({
     email: req.body.email,
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    icon: req.body.icon
   });
 
   try {
