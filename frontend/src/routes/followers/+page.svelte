@@ -21,11 +21,11 @@
       </tr>
     </thead>
     <tbody>
-    {#each followers as email, index}
+    {#each followers as { email, icon }, index}
       <tr>
         <td>{index + 1}</td>
         <td>
-          <img src="icons/profileIcon.png" alt="Progile Icon" class="profile"/>
+          <img src={`icons/${icon}`} alt="Progile Icon" class="profile"/>
         </td>
         <td>{`${email}`}</td>
         <td>
@@ -122,6 +122,6 @@
   }
   
   img {
-    filter: brightness(0.3);
+    border-radius: 5rem;
   }
 </style>
