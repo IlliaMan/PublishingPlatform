@@ -99,8 +99,7 @@
     width: 55vw;
     align-self: center;
     margin: auto;
-    height: 65%;
-    border-radius: 0.5rem;
+    height: 4.5rem;
   }
 
   input {
@@ -108,6 +107,13 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    border-radius: 0.5rem;
+    padding-left: 2rem;
+    border: none;
+  }
+  
+  input:focus {
+    outline-color: var(--secondary-color);
   }
 
   button {
@@ -133,7 +139,7 @@
   .input-result {
     position: absolute;
     height: fit-content;
-    top: 5rem;
+    top: 5.5rem;
     border: thin solid var(--primary-color);
     background-color: #fff;
     box-sizing: border-box;
