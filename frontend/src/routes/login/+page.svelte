@@ -1,5 +1,5 @@
 <script>
-  import InputRectangle from "$lib/components/InputRectangle.svelte";
+  import TextField from "$lib/components/TextField.svelte";
   import { isAuthenticated, isAdmin, userEmail, profileIcon } from "../../stores";
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
@@ -72,8 +72,8 @@
   </div>
   <div class="form">
     <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
-    <InputRectangle inputName="email" placeholder="Email Address"/>
-    <InputRectangle inputName="password" type="password" placeholder="Password"/>
+    <TextField inputName="email" placeholder="Email Address"/>
+    <TextField inputName="password" type="password" placeholder="Password"/>
     <Button name="Sign in"/>
   </form>
   <div class="additional-options">

@@ -1,7 +1,7 @@
 <script>
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
-  import InputRectangle from "$lib/components/InputRectangle.svelte";
+  import TextField from "$lib/components/TextField.svelte";
 
   function onSignupSubmit(event) {
     const formData = new FormData(event.target);
@@ -47,20 +47,20 @@
   <h1>Sign up</h1>
   <p>Create a free account</p>
   <form on:submit|preventDefault={onSignupSubmit}>
-    <InputRectangle 
+    <TextField 
       inputName="email" 
       placeholder="Email"
     />
-    <InputRectangle 
+    <TextField 
       inputName="username" 
       placeholder="Username"
     />
-    <InputRectangle 
+    <TextField 
       inputName="password" 
       placeholder="Password" 
       type="password"
     />
-    <InputRectangle 
+    <TextField 
       placeholder="Repeat Password" 
       type="password"
     />
