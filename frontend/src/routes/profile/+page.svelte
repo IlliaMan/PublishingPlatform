@@ -8,7 +8,7 @@
 
 <div class="main">
   <div class="user-info">
-    <img src={data.isMyProfile ? `icons/${$profileIcon}` : 'icons/profileIcon.png'} alt="Progile Icon" class="profile"/>
+    <img src={data.isMyProfile ? `icons/${$profileIcon}` : `icons/${data.icon}`} alt="Progile Icon" class="profile"/>
     <p>{`@${data.userName}`}</p>
     <a href={`/followers?${new URLSearchParams({ email: data.profileUserEmail, username: data.userName })}`}>
       <p>{`${data.followersCount} followers`}</p>

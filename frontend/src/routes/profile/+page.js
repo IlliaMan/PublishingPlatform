@@ -11,6 +11,7 @@ export async function load({ fetch, url }) {
   let isFollowing = null;
   let followingCount = 0;
   let followersCount = 0;
+  let icon = 'profileIcon.png';
   const token = sessionStorage.getItem('jwt');
   token ? (userEmail = JSON.parse(atob(token.split('.')[1]))?.email) : null;
 
@@ -21,7 +22,7 @@ export async function load({ fetch, url }) {
   }
   
   if(get(isAuthenticated) && email) {
-    console.warn(`http://127.0.0.1:3000/users/following/${email}/check`);
+    console.log(`http://127.0.0.1:3000/users/following/${email}/check`);
     const resFollowing = await fetch(`http://127.0.0.1:3000/users/following/${email}/check`, {
       method: 'GET',
       headers: {
@@ -72,6 +73,12 @@ export async function load({ fetch, url }) {
   followersCount = await followersCount.json();
   followersCount = followersCount.followersCount;
 
+  if(!isMyProfile) {
+    res = await fetch(`http://127.0.0.1:3000/users/icon/${email == null ? userEmail : email}`);
+    res = await res.json();
+    icon = res.icon;
+  }
+
   return {
     articles: data,
     isMyProfile,
@@ -79,7 +86,8 @@ export async function load({ fetch, url }) {
     profileUserEmail: email,
     isFollowing,
     followingCount,
-    followersCount
+    followersCount,
+    icon
   };
 }
 
