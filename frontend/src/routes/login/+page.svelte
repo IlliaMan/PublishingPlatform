@@ -64,9 +64,14 @@
 </script>
 
 <div class="main">
-  <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
-    <InputRectangle inputName="email" name="Login" placeholder="youremail@gmail.com"/>
-    <InputRectangle inputName="password" type="password" name="Password" placeholder="************"/>
+  <div class="logo">
+    <p>Welcome to</p>
+    <img src="logoLight.svg" alt="logo" class="logo-image" />
+  </div>
+  <div class="form">
+    <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
+    <InputRectangle inputName="email" placeholder="Email Address"/>
+    <InputRectangle inputName="password" type="password" placeholder="Password"/>
     <Button name="Sign in"/>
   </form>
   <div class="additional-options">
@@ -77,14 +82,30 @@
       <p>Sign up</p>
     </a>
   </div>
+  </div>
 </div>
 
 <style>
 .main {
-  height: 100px;
-  width: 33vw;
+  display: flex;
+  flex-direction: column;
+  width: 55vw;
   margin: auto;
-  margin-top: 25vh;
+  margin-top: 10vh;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 4px;
+  padding: 3rem 0;
+  row-gap: 4rem;
+}
+
+.logo {
+  width: 50%;
+  margin: auto;
+}
+
+.logo-image {
+  width: 21rem;
 }
 
 .additional-options {
@@ -95,12 +116,34 @@
 }
 
 .login-form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 3rem;
 }
 
-  a:hover {
-    color: var(--accent-color);
-  }
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2.375rem;
+}
+
+.logo p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.form {
+  width: 70%;
+  margin: auto;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
 </style>

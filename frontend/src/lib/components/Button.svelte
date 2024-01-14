@@ -7,6 +7,7 @@
 
 <style>
    button {
+    height: 4.5rem;
     border-radius: 4px;
     padding: 0.75rem 3rem;
     background-color: whitesmoke;
