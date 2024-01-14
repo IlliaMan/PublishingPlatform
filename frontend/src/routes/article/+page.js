@@ -27,12 +27,11 @@ export async function load({ fetch, url }) {
     });
     isLiked = res.status === 200;
 
-    icon = get(profileIcon);
-  } else {
-    res = await fetch(`http://127.0.0.1:3000/users/icon/${email == null ? userEmail : email}`);
-    res = await res.json();
-    icon = res.icon;
   }
+
+  res = await fetch(`http://127.0.0.1:3000/users/icon/${email}`);
+  res = await res.json();
+  icon = res.icon;
 
 
   res = await fetch(`http://127.0.0.1:3000/articles/likes/${id}/count`);
