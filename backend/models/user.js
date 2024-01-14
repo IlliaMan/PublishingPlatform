@@ -39,6 +39,11 @@ const userScheme = new mongoose.Schema({
     required: true,
     default: false
   },
+  icon: {
+    type: String,
+    required: true,
+    default: 'profileIcon.png'
+  },
   date: {
     type: Date,
     required: true,
