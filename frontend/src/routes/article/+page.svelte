@@ -24,7 +24,7 @@
       <div class="horizontal-block">
         <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
           <div class="icon">
-            <img src="ProfileIcon.png" alt="Progile Icon" class="small-image"/>
+            <img src="/icons/profileIcon.png" alt="Progile Icon" class="small-image"/>
             <div class="author">
               <p>{`@${userName}`}</p>
               <p>{`${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>

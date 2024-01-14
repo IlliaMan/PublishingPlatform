@@ -25,7 +25,7 @@
       <tr>
         <td>{index + 1}</td>
         <td>
-          <img src="ProfileIcon.png" alt="Progile Icon" class="profile"/>
+          <img src="icons/profileIcon.png" alt="Progile Icon" class="profile"/>
         </td>
         <td>{`${email}`}</td>
         <td>
