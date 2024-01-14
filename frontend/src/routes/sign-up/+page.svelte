@@ -47,10 +47,23 @@
   <h1>Sign up</h1>
   <p>Create a free account</p>
   <form on:submit|preventDefault={onSignupSubmit}>
-    <InputRectangle inputName="email" name="Email" placeholder="youremail@gmail.com"/>
-    <InputRectangle inputName="username" name="Username" placeholder="nickname"/>
-    <InputRectangle inputName="password" name="Password" placeholder="**********" type="password"/>
-    <InputRectangle name="Repeat" placeholder="**********" type="password"/>
+    <InputRectangle 
+      inputName="email" 
+      placeholder="Email"
+    />
+    <InputRectangle 
+      inputName="username" 
+      placeholder="Username"
+    />
+    <InputRectangle 
+      inputName="password" 
+      placeholder="Password" 
+      type="password"
+    />
+    <InputRectangle 
+      placeholder="Repeat Password" 
+      type="password"
+    />
     <Button name="Sign up"/>
   </form>
   <div class="additional-options">
