@@ -2,7 +2,10 @@
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import TextField from "$lib/components/TextField.svelte";
+  import getRandomIcon from "$lib/functions/getRandomIcon";
 
+  let icon = 'profileIcon.png';
+  
   function onSignupSubmit(event) {
     const formData = new FormData(event.target);
 
@@ -12,14 +15,15 @@
       data[key] = value;
     }
 
-    console.log(data);
+    console.log({ ...data, icon: icon });
     fetch('http://localhost:3000/users/', 
       {
         method: 'POST',
         body: JSON.stringify({
           email: data.email,
           username: data.username,
-          password: data.password
+          password: data.password,
+          icon: icon
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -47,6 +51,19 @@
   <h1>Sign up</h1>
   <p>Create a free account</p>
   <form on:submit|preventDefault={onSignupSubmit}>
+    <div class="profile-picker">
+      <img 
+        src={`icons/${icon}`} 
+        alt="Profile Icon"
+      />
+      <Button 
+        name="Randomize Profile Picture"
+        type="button"
+        onClick={() => {
+          icon = getRandomIcon();
+        }}
+      /> 
+    </div>
     <TextField 
       inputName="email" 
       placeholder="Email"
@@ -78,7 +95,7 @@
     height: 100px;
     width: 33vw;
     margin: auto;
-    margin-top: 18vh;
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -109,5 +126,17 @@
 
   a:hover {
     color: var(--accent-color);
+  }
+
+  .profile-picker {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .profile-picker img {
+    border-radius: 10rem;
+    width: 12rem;
   }
 </style>

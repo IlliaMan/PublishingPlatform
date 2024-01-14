@@ -1,9 +1,10 @@
 <script>
   export let name = "Button";
   export let onClick = () => {};
+  export let type = "submit";
 </script>
 
-<button on:click={onClick}>{name}</button>
+<button type={type} on:click={onClick}>{name}</button>
 
 <style>
    button {
