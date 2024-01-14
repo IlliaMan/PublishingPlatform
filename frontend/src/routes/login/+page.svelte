@@ -3,6 +3,7 @@
   import { isAuthenticated, isAdmin, userEmail, profileIcon } from "../../stores";
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
+  import Logo from "$lib/components/Logo.svelte";
 
   function onLoginSubmit(event) {
     const formData = new FormData(event.target);
@@ -68,7 +69,7 @@
 <div class="main">
   <div class="logo">
     <p>Welcome to</p>
-    <img src="logoLight.svg" alt="logo" class="logo-image" />
+    <Logo size="big" />
   </div>
   <div class="form">
     <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
@@ -106,10 +107,6 @@
   margin: auto;
 }
 
-.logo-image {
-  width: 21rem;
-}
-
 .additional-options {
   display: flex;
   justify-content: space-between;
@@ -126,14 +123,15 @@
 
 .logo {
   display: flex;
+  width: 70%;
   flex-direction: column;
   align-items: center;
-  font-size: 2.375rem;
+  justify-content: center;
 }
 
 .logo p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin: 0 auto 2rem auto;
+  font-size: 2.375rem;
 }
 
 .form {

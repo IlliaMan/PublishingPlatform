@@ -1,4 +1,6 @@
 <script>
+  import Logo from "./Logo.svelte";
+
   export let menuIconArg = false;
   export let isAuthenticated = false;
   export let profileIcon = 'profileIcon.png'
@@ -9,9 +11,7 @@
 
 <header>
   <div class="logo">
-    <a href="/">
-      <img src="logoLight.svg" alt="logo" class="logo-image"/>
-    </a>
+    <Logo size="small" />
   </div>
   <div class="search-bar">
     <input type="text" placeholder="Search"
