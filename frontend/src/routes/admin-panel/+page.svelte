@@ -23,6 +23,7 @@
     <thead>
       <tr>
         <th>&#8470;</th>
+        <th>Icon</th>
         <th>Username</th>
         <th>Email</th>
         <th>Status</th>
@@ -33,6 +34,9 @@
     {#each data.users as user, index}
       <tr>
         <td>{index + 1}</td>
+        <td>
+          <img src={`icons/${user.icon}`} alt="Progile Icon" class="profile"/>
+        </td>
         <td>{user.username}</td>
         <td>{user.email}</td>
         <td>{user.isBanned ? 'Banned' : 'Not Banned'}</td>
@@ -91,7 +95,6 @@
   .styled-table tbody tr:last-child {
     border-bottom: 0.5rem solid #bb7ddc;
   }
-  
 
   .admin-panel {
     margin: auto;
@@ -122,5 +125,10 @@
 
   button:active {
     transform: scale(0.9);
+  }
+
+  img {
+    width: 5rem;
+    border-radius: 3rem;
   }
 </style>

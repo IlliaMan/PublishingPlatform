@@ -13,9 +13,9 @@ export async function load({ fetch }) {
     throw error(res.status);
   }
     
-  const data = await res.json();
-  console.log(data);
+  const users = await res.json();
+
   return {
-    users: data
+    users
   };
 }
