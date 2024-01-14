@@ -6,7 +6,7 @@
 <div class="main">
   <h1>Forgot Password?</h1>
   <p>Enter your email and we will send you a link to reset your password</p>
-  <TextField name="Email" placeholder="youremail@gmail.com"/>
+  <TextField inputName="Email" placeholder="Email"/>
   <Button name="Submit"/>
   <div class="additional-options">
     <a href="/login">
