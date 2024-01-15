@@ -1,5 +1,6 @@
 <script>
   import LikeButton from "./LikeButton.svelte";
+  import { userId } from "../../stores";
 
   export let articles = [];
   let content_div;
@@ -30,7 +31,7 @@
           <LikeButton 
             likes={likes.length} 
             isDisabled={true} 
-            isLiked={false} 
+            isLiked={likes.includes($userId) ? true : false} 
             isSmallIcon={true}
           />
         </div>
