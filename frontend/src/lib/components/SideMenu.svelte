@@ -3,7 +3,8 @@
     isAdmin as adminStore, 
     isAuthenticated as authenticatedStore, 
     userEmail as userEmailStore,
-    profileIcon as profileIconStore
+    profileIcon as profileIconStore,
+    userId as userIdStore
   } from "../../stores";
 
   export let isAuthenticated = false;
@@ -30,6 +31,7 @@
         authenticatedStore.set(false);
         adminStore.set(false);
         userEmailStore.set(null);
+        userIdStore.set(null);
       }}>Log out</a>
   {:else}
     <a href="/login">Sign in</a>

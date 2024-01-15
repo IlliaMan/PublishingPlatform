@@ -1,6 +1,6 @@
 <script>
   import TextField from "$lib/components/TextField.svelte";
-  import { isAuthenticated, isAdmin, userEmail, profileIcon } from "../../stores";
+  import { isAuthenticated, isAdmin, userEmail, profileIcon, userId } from "../../stores";
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import Logo from "$lib/components/Logo.svelte";
@@ -47,8 +47,10 @@
         isAuthenticated.set(false);
         isAdmin.set(false);
         userEmail.set(null);
+        userId.set(null);
       }, time * 1000);
 
+      userId.set(user._id);
       profileIcon.set(user.icon);
       userEmail.set(user.email);
       isAuthenticated.set(true);
