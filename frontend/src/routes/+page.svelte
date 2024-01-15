@@ -33,9 +33,6 @@
             isLiked={likes.includes($userId) ? true : false} 
             isSmallIcon={true} 
           />
-          <Button name='Read' onClick={() => {
-            goto(`/article?${new URLSearchParams({ id: _id, email })}`);
-          }}/>
         </div>
       </div>
     {/each}
@@ -96,7 +93,7 @@
     height: 4rem;
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding-left: 2rem;
   }
 
   .author-information {
