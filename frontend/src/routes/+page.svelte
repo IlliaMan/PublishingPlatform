@@ -141,6 +141,10 @@
     cursor: pointer;
   }
 
+  .author-information a:hover {
+    animation: jump 400ms ease-in;
+  }
+
   @media only screen and (max-width: 1000px) {
     .main {
       width: 80vw;
@@ -151,6 +155,18 @@
     .article-tiles > div {
       max-width: 100%;
       flex: auto;
+    }
+  }
+
+  @keyframes jump {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    0% {
+      transform: scale(1);
     }
   }
 </style>

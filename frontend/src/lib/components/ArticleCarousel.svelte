@@ -179,7 +179,23 @@
     cursor: pointer;
   }
 
+  .author-information a:hover {
+    animation: jump 400ms ease-in;
+  }
+
   .main:hover {
     border: thin solid var(--secondary-color);
+  }
+
+  @keyframes jump {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    0% {
+      transform: scale(1);
+    }
   }
 </style>
