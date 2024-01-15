@@ -61,23 +61,33 @@
     background: transparent;
     cursor: pointer;
     color: #fff;
-    border: thin solid #fff;
-  }
-
-  button:hover {
-    border: thin solid var(--secondary-color);
-  }
-  
-  button:active {
-    border: thin solid var(--accent-color);
+    border: none;
   }
 
   button:disabled {
-    border: thin solid transparent;
     cursor: unset;
   }
 
   .small {
     width: 3rem;
+  }
+
+  button:enabled:hover > img {
+    animation: rock 500ms ease-in-out;
+  }
+
+  @keyframes rock {
+    0% {
+      transform: rotateZ(0);
+    }
+    25% {
+      transform: rotateZ(-30deg);
+    }
+    75% {
+      transform: rotateZ(30deg);
+    }
+    100% {
+      transform: rotateZ(0);
+    }
   }
 </style>
