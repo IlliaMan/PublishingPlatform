@@ -26,7 +26,7 @@ authRouter.post('/login', async (req, res) => {
   }
 
   const accessToken = generateAccessToken(user[0]);
-  const refreshToken = jwt.sign({ email: user[0].email, role: user[0].role, icon: user[0].icon }, REFRESH_TOKEN_SECRET);
+  const refreshToken = jwt.sign({ _id: user[0].id, email: user[0].email, role: user[0].role, icon: user[0].icon }, REFRESH_TOKEN_SECRET);
   refreshTokens.push(refreshToken);
   res.json({ accessToken: accessToken, refreshToken: refreshToken });
 });
@@ -51,13 +51,13 @@ authRouter.post('/token', (req, res) => {
       return res.sendStatus(403);
     }
 
-    const accessToken = generateAccessToken({ email: user.email, role: user.role, icon: user.icon });
+    const accessToken = generateAccessToken({ _id: user._id, email: user.email, role: user.role, icon: user.icon });
     res.json({ accessToken: accessToken });
   });
 });
 
 function generateAccessToken(user) {
-  return jwt.sign({ email: user.email, role: user.role, icon: user.icon }, ACCESS_TOKEN_SECRET, { expiresIn: '20m' });
+  return jwt.sign({ _id: user._id, email: user.email, role: user.role, icon: user.icon }, ACCESS_TOKEN_SECRET, { expiresIn: '20m' });
 }
 
 export default authRouter;
