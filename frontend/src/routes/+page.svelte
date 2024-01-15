@@ -5,12 +5,13 @@
   import LikeButton from "$lib/components/LikeButton.svelte";
 
   export let data;
+  const { articles } = data;
 </script>
 
 <div class="main">
   <ArticleCarousel />
   <div class="article-tiles">
-    {#each data.articleList as { _id, title, email, likes, content }}
+    {#each articles as { _id, title, email, likes, content, icon, username }}
       <div class="article">
         <div class="article-title">
           <p>
@@ -21,6 +22,10 @@
         </div>
         <p class="content">{content}</p>
         <div class="article-button-pannel">
+          <div class="author-information">
+            <img src={`icons/${icon}`} alt="Profile Icon" />
+            <p>{`@${username}`}</p>
+          </div>
           <LikeButton 
             likes={likes.length} 
             isDisabled={true} 
@@ -90,7 +95,19 @@
     height: 4rem;
     display: flex;
     justify-content: space-between;
-    padding-right: 2rem;
+    padding: 0 2rem;
+  }
+
+  .author-information {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+  }
+
+  .author-information > img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 3rem;
   }
 
   .article-title > p {
