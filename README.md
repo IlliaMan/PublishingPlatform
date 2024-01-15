@@ -10,6 +10,10 @@ The platform allows its users to create, manage and distribute written content. 
 
 ![login page](./frontend/screenshots/loginPage.png)
 
+### Main Page
+
+![main page](./frontend/screenshots/mainPage.png)
+
 ### Sign-up Page
 
 ![sign-up page](./frontend/screenshots/signupPage.png)
