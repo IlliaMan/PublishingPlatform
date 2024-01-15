@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
   import LikeButton from "$lib/components/LikeButton.svelte";
+  import { userId } from "../stores.js";
 
   export let data;
   const { articles } = data;
@@ -29,7 +30,7 @@
           <LikeButton 
             likes={likes.length} 
             isDisabled={true} 
-            isLiked={false}
+            isLiked={likes.includes($userId) ? true : false} 
             isSmallIcon={true} 
           />
           <Button name='Read' onClick={() => {
