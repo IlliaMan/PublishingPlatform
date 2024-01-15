@@ -24,7 +24,9 @@
         <p class="content">{content}</p>
         <div class="article-button-pannel">
           <div class="author-information">
-            <img src={`icons/${icon}`} alt="Profile Icon" />
+            <a href={`/profile?${new URLSearchParams({ email })}`}>
+              <img src={`icons/${icon}`} alt="Profile Icon" />
+            </a>
             <p>{`@${username}`}</p>
           </div>
           <LikeButton 
@@ -102,7 +104,7 @@
     column-gap: 1rem;
   }
 
-  .author-information > img {
+  .author-information a img {
     width: 4rem;
     height: 4rem;
     border-radius: 3rem;
@@ -136,6 +138,7 @@
 
   a {
     all: unset;
+    cursor: pointer;
   }
 
   @media only screen and (max-width: 1000px) {
