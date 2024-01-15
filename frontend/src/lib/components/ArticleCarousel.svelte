@@ -25,7 +25,9 @@
         <p>{content}</p>
         <div class="button-container">
           <div class="author-information">
-            <img src={`icons/${icon}`} alt="Profile Icon" />
+            <a href={`/profile?${new URLSearchParams({ email })}`}>
+              <img src={`icons/${icon}`} alt="Profile Icon" />
+            </a>
             <p>{`@${username}`}</p>
           </div>
           <LikeButton 
@@ -119,7 +121,7 @@
     margin-right: 2rem;
   }
 
-  .author-information > img {
+  .author-information a img {
     width: 6rem;
     height: 6rem;
     border-radius: 5rem;
@@ -174,6 +176,7 @@
 
   a {
     all: unset;
+    cursor: pointer;
   }
 
   .main:hover {
