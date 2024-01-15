@@ -10,6 +10,10 @@ The platform allows its users to create, manage and distribute written content. 
 
 ![login page](./frontend/screenshots/loginPage.png)
 
+### Sign-up Page
+
+![sign-up page](./frontend/screenshots/signupPage.png)
+
 ### Article Page
 
 ![article page](./frontend/screenshots/articlePage.png)
@@ -53,6 +57,3 @@ Here are all the functional requirements described for each group.
   - Ban a user
   - Unban a user
   - See a list of all users
-
-
-
