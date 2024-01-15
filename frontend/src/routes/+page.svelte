@@ -9,7 +9,7 @@
 </script>
 
 <div class="main">
-  <ArticleCarousel />
+  <ArticleCarousel articles={articles} />
   <div class="article-tiles">
     {#each articles as { _id, title, email, likes, content, icon, username }}
       <div class="article">
