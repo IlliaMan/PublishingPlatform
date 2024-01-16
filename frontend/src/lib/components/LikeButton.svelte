@@ -20,7 +20,7 @@
 {#if isLiked}
   <button disabled={isDisabled} on:click={() => { 
     changeIsLiked();
-    onLike();
+    onUnlike();
   }}>
     <img 
       src="redHeart.svg" 
@@ -33,7 +33,7 @@
 {:else}
   <button disabled={isDisabled} on:click={() => {
     changeIsLiked();
-    onUnlike();
+    onLike();
   }}>
     <img 
       src="greyHeart.svg" 

@@ -39,7 +39,7 @@
           isDisabled={!$isAuthenticated}
           isLiked={isLiked} 
           likes={likeCount} 
-          onLike={() => {
+          onUnlike={() => {
             fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
               method: 'DELETE',
               headers: {
@@ -53,7 +53,7 @@
               }
             });
           }} 
-          onUnlike={() => {
+          onLike={() => {
             fetch(`http://127.0.0.1:3000/articles/likes/${id}`, {
               method: 'POST',
               headers: {
