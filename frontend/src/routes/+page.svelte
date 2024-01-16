@@ -33,7 +33,25 @@
             likes={likes.length} 
             isDisabled={!$isAuthenticated} 
             isLiked={likes.includes($userId) ? true : false} 
-            isSmallIcon={true} 
+            isSmallIcon={true}
+            onUnlike={() => {
+              fetch(`http://127.0.0.1:3000/articles/likes/${_id}`, {
+                method: 'DELETE',
+                headers: {
+                  'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+                  'Content-type': 'application/json; charset=UTF-8'
+                }
+              })
+            }}
+            onLike={() => {
+              fetch(`http://127.0.0.1:3000/articles/likes/${_id}`, {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`,
+                  'Content-type': 'application/json; charset=UTF-8'
+                }
+              })
+            }}
           />
         </div>
       </div>
