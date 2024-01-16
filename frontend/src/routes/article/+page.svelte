@@ -22,15 +22,15 @@
     <h1>{article.title}</h1>
     <div class="additional-information">
       <div class="horizontal-block">
-        <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
-          <div class="icon profile-icon">
+        <div class="icon profile-icon">
+          <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
             <img src={`/icons/${icon}`} alt="Progile Icon" class="small-image"/>
-            <div class="author">
-              <p>{`@${userName}`}</p>
-              <p>{`${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
-            </div>
+          </a>
+          <div class="author">
+            <p>{`@${userName}`}</p>
+            <p>{`${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
           </div>
-        </a>
+        </div>
         <div class="reading-statistics">
           <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
           <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
@@ -141,17 +141,7 @@
     display: flex;
     column-gap: 1rem;
     align-items: center;
-    border: thin solid #fff;
     padding: 0 1rem;
-    border-radius: 4px;
-  }
-
-  .icon:hover {
-    border: thin solid var(--secondary-color);
-  }
-
-  .icon:active {
-    border: thin solid var(--accent-color);
   }
 
   .profile-icon img {
@@ -159,7 +149,7 @@
   }
 
   .small-image {
-    width: 5rem;
+    width: 7rem;
   }
 
   a {
@@ -188,6 +178,10 @@
     border-radius: 4px;
   }
 
+  .profile-icon a:hover {
+    animation: jump 400ms ease-in;
+  }
+
   @media only screen and (max-width: 850px) {
     .horizontal-block {
       height: auto;
@@ -207,6 +201,18 @@
   @media only screen and (max-width: 500px) {
     .main {
       width: 80vw;
+    }
+  }
+
+  @keyframes jump {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    0% {
+      transform: scale(1);
     }
   }
 </style>
