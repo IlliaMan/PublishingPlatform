@@ -75,8 +75,18 @@
   </div>
   <div class="form">
     <form class="login-form" on:submit|preventDefault={onLoginSubmit}>
-    <TextField inputName="email" placeholder="Email Address"/>
-    <TextField inputName="password" type="password" placeholder="Password"/>
+    <TextField 
+      inputName="email"
+      type="email"
+      placeholder="Email Address"
+      isRequired={true}
+    />
+    <TextField 
+      inputName="password" 
+      type="password" 
+      placeholder="Password"
+      isRequired={true}
+    />
     <Button name="Sign in"/>
   </form>
   <div class="additional-options">

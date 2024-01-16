@@ -3,6 +3,7 @@
   export let placeholder = "placeholder";
   export let inputName = "";
   export let value = "";
+  export let isRequired = true;
 </script>
 
 <div>
@@ -11,6 +12,7 @@
     name={inputName} 
     placeholder={placeholder} 
     value={value} 
+    required={isRequired}
   />
   <label for={inputName}>{placeholder}</label>
 </div>

@@ -67,19 +67,23 @@
     <TextField 
       inputName="email" 
       placeholder="Email"
+      isRequired={true}
     />
     <TextField 
       inputName="username" 
       placeholder="Username"
+      isRequired={true}
     />
     <TextField 
       inputName="password" 
       placeholder="Password" 
       type="password"
+      isRequired={true}
     />
     <TextField 
       placeholder="Repeat Password" 
       type="password"
+      isRequired={true}
     />
     <Button name="Sign up"/>
   </form>
