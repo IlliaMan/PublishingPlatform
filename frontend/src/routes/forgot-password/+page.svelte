@@ -17,23 +17,29 @@
 
 <style>
   .main {
-    height: 100px;
-    width: 33vw;
+    box-sizing: border-box;
+    background-color: var(--primary-color);
+    padding: 10rem 10vw;
+    border-radius: 4px;
+    color: #fff;
+    width: 55vw;
     margin: auto;
-    margin-top: 25vh;
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   h1 {
     font-size: 3rem;
     margin: 0;
+    text-align: center;
   }
 
   p {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin: 0;
+    text-align: center;
   }
 
   .additional-options {
@@ -41,6 +47,10 @@
     justify-content: flex-end;
     font-size: 1.8rem;
     font-style: italic;
+  }
+
+  a {
+    color: #fff;
   }
 
   a:hover {
