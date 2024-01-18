@@ -3,6 +3,8 @@
   import { isAuthenticated, userId } from "../../stores";
 
   export let articles = [];
+
+  $: articles = articles.filter((_, index) => index < 3);
   let content_div;
 </script>
 
