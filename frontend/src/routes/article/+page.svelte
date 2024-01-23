@@ -76,7 +76,7 @@
 
 <style>
   .main {
-    width: 55vw;
+    width: 80vw;
     margin: auto;
     margin-top: 4rem;
     display: flex;
@@ -198,9 +198,9 @@
     }
   }
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 650px) {
     .main {
-      width: 80vw;
+      width: 90vw;
     }
   }
 
