@@ -15,6 +15,41 @@ userRouter.get('/', async (request, response) => {
   }
 });
 
+userRouter.patch('/', getUserByJWT, async (req, res) => {
+  let user;
+  try {
+    const users = await UserModel.find({ email: req.user.email });
+    if(users == null) {
+      // 404 - cannot find something
+      return res.status(404).json({ message: "cannot find User"});
+    }
+    user = users[0];
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  const {
+    newPassword,
+    password,
+    icon
+  } = req.body;
+
+  try {
+    if(user.password !== password) {
+      return res.sendStatus(403);
+    }
+    if(newPassword.length !== 0) {
+      user.password = newPassword;
+    }
+    user.icon = icon; 
+
+    await user.save();
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+});
+
 // Getting one 
 userRouter.get('/:id', async (req, res) => {
   let user;
