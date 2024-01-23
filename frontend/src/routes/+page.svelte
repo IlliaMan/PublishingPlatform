@@ -207,10 +207,10 @@
     flex-direction: column;
     justify-content: space-between;
     border: thin solid #fff;
-    width: 24rem;
+    width: 30rem;
     height: 34.5rem;
     position: absolute;
-    left: -26rem;
+    left: -32rem;
     top: -36.5rem;
     padding: 0.5rem 0;
   }
@@ -259,6 +259,13 @@
 
   .side-section div {
     padding: 0 1rem;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    div .side-section {
+      left: -27.5rem;
+      width: 25.5rem;
+    }
   }
 
   @media only screen and (max-width: 1000px) {
