@@ -24,7 +24,7 @@
             </a>
           </p>
         </div>
-        <p>{content}</p>
+        <p class="content">{content}</p>
         <div class="button-container">
           <div class="author-information">
             <a href={`/profile?${new URLSearchParams({ email })}`}>
@@ -120,7 +120,7 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin-bottom: 0;
+    margin: 2rem 0;
   }
 
   .sliding-article > .button-container {
@@ -133,6 +133,7 @@
   .author-information {
     display: flex;
     align-items: center;
+    line-height: normal;
   }
 
   .author-information > p {
@@ -157,7 +158,7 @@
 
   .article-title {
     display: inline;
-    font-size: 5rem;
+    font-size: 3rem;
     margin: 0;
     margin-top: 1rem;
   }
@@ -168,7 +169,7 @@
     font-size: inherit;
     margin-top: 1rem;
     margin-bottom: 0;
-    text-align: center;
+    text-align: justify;
   }
 
   p > a {
@@ -176,6 +177,7 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 6rem;
   }
 
   .arrow {
@@ -185,7 +187,7 @@
 
   div > p {
     padding: 0 5rem;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     text-align: justify;
   }
 
@@ -197,6 +199,10 @@
   a {
     all: unset;
     cursor: pointer;
+  }
+
+  .content {
+    line-height: 3.5rem;
   }
 
   .author-information a:hover {
