@@ -1,5 +1,4 @@
 <script>
-  import Button from "$lib/components/Button.svelte";
   import showdown from "showdown";
   import { isAuthenticated } from "../../stores.js";
   import LikeButton from "$lib/components/LikeButton.svelte";
@@ -19,22 +18,23 @@
 </script>
 
 <div class="main">
-    <h1>{article.title}</h1>
-    <div class="additional-information">
-      <div class="horizontal-block">
-        <div class="icon profile-icon">
-          <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
-            <img src={`/icons/${icon}`} alt="Progile Icon" class="small-image"/>
-          </a>
-          <div class="author">
-            <p>{`@${userName}`}</p>
-            <p>{`${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
-          </div>
+  <h1>{article.title}</h1>
+  <div class="additional-information">
+    <div class="horizontal-block">
+      <div class="icon profile-icon">
+        <a href={`/profile?${new URLSearchParams({ email: article.email })}`}>
+          <img src={`/icons/${icon}`} alt="Progile Icon" class="small-image"/>
+        </a>
+        <div class="author">
+          <p>{`@${userName}`}</p>
+          <p>{`${new Date(article.date).toLocaleString('default', { month: 'long', year: 'numeric', day: 'numeric' })}`}</p>
         </div>
-        <div class="reading-statistics">
-          <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
-          <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
-        </div>
+      </div>
+      <div class="reading-statistics">
+        <p>{`${timeToRead} ${timeToRead === 1 ? 'minute' : 'minutes'} to read`}</p>
+        <p>{`${article.content.split(" ").filter(n => n != '').length} words`}</p>
+      </div>
+      <div class="like-button">
         <LikeButton 
           isDisabled={!$isAuthenticated}
           isLiked={isLiked} 
@@ -65,18 +65,20 @@
                 isLiked = true;
                 likeCount++;
               }
-            });
-          }}/>
+            }
+          );
+        }}/>
       </div>
     </div>
-    <div class="content">
-      {@html converter.makeHtml(article.content)}
-    </div>
+  </div>
+  <div class="content">
+    {@html converter.makeHtml(article.content)}
+  </div>
 </div>
 
 <style>
   .main {
-    width: 80vw;
+    width: 75vw;
     margin: auto;
     margin-top: 4rem;
     display: flex;
@@ -102,11 +104,9 @@
   .horizontal-block {
     display: flex;
     flex-direction: row;
-    column-gap: 2rem;
     align-items: center;
     height: 8rem;
     justify-content: space-between;
-    flex-wrap: wrap;
   }
 
   .additional-information:nth-child(1) {
@@ -114,7 +114,7 @@
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 0;
     text-align: center;
     background-color: var(--primary-color);
@@ -152,6 +152,12 @@
     width: 7rem;
   }
 
+  .like-button {
+    display: flex;
+    width: 22rem;
+    justify-content: flex-end;
+  }
+
   a {
     all: unset;
     height: fit-content;
@@ -163,7 +169,6 @@
     flex-direction: column;
     justify-content: space-around;
     row-gap: 2rem;
-    min-width: 16rem;
   }
 
   .reading-statistics > p {
@@ -176,10 +181,18 @@
     font-size: 2rem;
     color: #fff;
     border-radius: 4px;
+    text-align: justify;
+    line-height: 3.5rem;
   }
 
   .profile-icon a:hover {
     animation: jump 400ms ease-in;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .main {
+      width: 85vw;
+    }
   }
 
   @media only screen and (max-width: 850px) {
@@ -188,19 +201,39 @@
       row-gap: 2rem;
     }
 
-    .horizontal-block > * {
-      width: 100%;
+    .main {
+      width: 90vw;
     }
+  }
 
-    .reading-statistics {
-      justify-content: space-around;
-      width: 50%;
+  @media only screen and (max-width: 750px) {
+    .like-button {
+      width: 15rem;
     }
   }
 
   @media only screen and (max-width: 650px) {
     .main {
-      width: 90vw;
+      width: 95vw;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .horizontal-block {
+      flex-direction: column;
+    }
+
+    .author {
+      display: flex;
+      flex-direction: row;
+      column-gap: 2rem;
+    }
+
+    .reading-statistics {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      column-gap: 2rem;
     }
   }
 
