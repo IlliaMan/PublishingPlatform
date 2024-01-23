@@ -71,7 +71,7 @@
 <div class="main">
   <div class="logo">
     <p>Welcome to</p>
-    <Logo size="big" />
+    <Logo size="responsive" />
   </div>
   <div class="form">
     <form class="login-form" on:submit|preventDefault={onLoginSubmit}>

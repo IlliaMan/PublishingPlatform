@@ -24,11 +24,16 @@
 
   .small {
     width: 6rem;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
   .big {
     width: 21rem;
-    border-radius: 1rem
+    border-radius: 2rem
+  }
+
+  .responsive {
+    width: 50%;
+    border-radius: 2rem;
   }
 </style>
