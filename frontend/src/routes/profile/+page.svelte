@@ -98,7 +98,7 @@
     margin: auto;
     margin-top: 4rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 2rem;
     column-gap: 6rem;
   }
@@ -107,8 +107,9 @@
     box-sizing: border-box;
     border: thin solid #fff;
     display: flex;
-    flex-direction: column;
-    width: 30rem;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
     row-gap: 4rem;
     height: fit-content;
     background-color: var(--primary-color);
@@ -180,18 +181,6 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  @media only screen and (max-width: 850px) {
-    .main {
-      flex-direction: column;
-    }
-
-    .user-info {
-      width: 100%;
-      flex-direction: row;
-      align-items: center;
-    }
   }
 
   .article > a:hover,
