@@ -87,7 +87,7 @@
   }
 
   .right-slider {
-  border-left: thin solid #fff;
+    border-left: thin solid #fff;
     background-color: var(--primary-color);
     width: 10%;
     color: #fff;
@@ -125,7 +125,8 @@
 
   .sliding-article > .button-container {
     display: flex;
-    margin: 0 3rem 1rem 5rem;
+    margin: 0 0 1rem 5rem;
+    padding-right: 5rem;
     align-items: center;
     justify-content: space-between;
   }
@@ -149,7 +150,7 @@
   }
 
   .content {
-    width: 80%;
+    width: 85%;
     overflow: hidden;
     display: flex;
     flex-direction: row;
