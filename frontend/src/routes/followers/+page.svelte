@@ -1,6 +1,4 @@
 <script>
-  import { goto } from '$app/navigation';
-
   export let data;
   const { followers, email, userName } = data;
 </script>
@@ -16,23 +14,19 @@
       <tr>
         <th>&#8470;</th>
         <th>Icon</th>
-        <th>User</th>
-        <th>Actions</th>
+        <th>Username</th>
       </tr>
     </thead>
     <tbody>
-    {#each followers as { email, icon }, index}
+    {#each followers as { email, icon, username }, index}
       <tr>
         <td>{index + 1}</td>
         <td>
-          <img src={`icons/${icon}`} alt="Progile Icon" class="profile"/>
+          <a href={`/profile?${new URLSearchParams({ email })}`}>
+            <img src={`icons/${icon}`} alt="Progile Icon" />
+          </a>
         </td>
-        <td>{`${email}`}</td>
-        <td>
-          <button on:click={() => {
-            goto(`/profile?${new URLSearchParams({ email })}`);
-          }}>Profile</button>
-        </td>
+        <td>{`@${username}`}</td>
       </tr>
       {/each}
     </tbody>
@@ -92,36 +86,35 @@
     text-align: center;
     margin-bottom: 2rem;
   }
-  
-  button {
-    border-radius: 4px;
-    padding: 0.75rem 3rem;
-    background-color: whitesmoke;
-    border: thin solid #898989;
-    transition: 250ms;
-  }
-
-  button:hover {
-    cursor: pointer;
-    background-color: #898989;
-    color: white;
-  }
-
-  button:active {
-    transform: scale(0.9);
-  }
-
-  .profile {
-    width: 4rem;
-  }
 
   a {
-     margin: auto;
-     width: 100%;
-     font-size: 2rem;
+    all: unset;
+    display: inline-block;
+    margin: auto;
+    width: 5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
   }
-  
+
+  a:hover {
+    animation: jump 400ms ease-in;
+  }
+
   img {
-    border-radius: 5rem;
+    border-radius: 7rem;
+    width: inherit;
+  }
+
+  @keyframes jump {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    0% {
+      transform: scale(1);
+    }
   }
 </style>

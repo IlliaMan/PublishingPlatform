@@ -18,6 +18,12 @@ export async function load({ fetch, url }) {
     followers[index].icon = response.icon;
   });
 
+  await Promise.all(followers.map(async (user, index) => {
+    response = await fetch(`http://localhost:3000/users/username/${user.email}`);
+    response = await response.json();
+    followers[index].username = response.username;
+  }));
+
   return {
     followers,
     email,
