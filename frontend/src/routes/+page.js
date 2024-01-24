@@ -29,19 +29,23 @@ export async function load({ fetch }) {
     response = await fetch(`http://localhost:3000/users/following/list/${get(userEmail)}`);
     response = await response.json();
     const followingList = response.following;
-    const recentArticles = articles.slice(0).sort((a, b) => new Date(b.date) - new Date(a.date));
-    const articlesFromFollowing = recentArticles.filter(article => followingList.includes(article.email));
-    const length = articlesFromFollowing.length;
-    for (let i = 0; i < 10; i++) {
-      if (i < 5) {
-        articlesSideSectionLeft.push(recentArticles[i % length])
-      } else if (i < 10) {
-        articlesSideSectionRight.push(recentArticles[i % length]);
+    if(followingList.length > 0) {
+      const recentArticles = articles.slice(0).sort((a, b) => new Date(b.date) - new Date(a.date));
+      const articlesFromFollowing = recentArticles.filter(article => followingList.includes(article.email));
+      const length = articlesFromFollowing.length;
+      for (let i = 0; i < 10; i++) {
+        if (i < 5) {
+          articlesSideSectionLeft.push(recentArticles[i % length])
+        } else if (i < 10) {
+          articlesSideSectionRight.push(recentArticles[i % length]);
+        }
       }
+    } else {
+      articlesSideSectionLeft = shuffle(articles.slice(0)).splice(0, 5);
+      articlesSideSectionRight = shuffle(articles.slice(0)).splice(0, 5);
     }
   }
 
-  console.log(articles);
   return {
     articles,
     articlesSideSectionLeft,
