@@ -114,7 +114,8 @@
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 400;
     margin: 0;
     text-align: center;
     background-color: var(--primary-color);
@@ -124,12 +125,11 @@
   }
 
   p {
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-align: justify;
   }
 
   .author > p {
-    font-size: 2rem;
     background-color: transparent;
     color: #fff;
     border-radius: 4px;
@@ -176,10 +176,10 @@
   }
 
   .content {
-    background-color: var(--primary-color);
+    border: thin solid var(--primary-color);
+    background-color: #ffffff;
     padding: 1rem 2rem;
-    font-size: 2rem;
-    color: #fff;
+    font-size: 2.4rem;
     border-radius: 4px;
     text-align: justify;
     line-height: 3.5rem;
