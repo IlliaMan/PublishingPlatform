@@ -72,7 +72,7 @@
     box-sizing: border-box;
     margin: auto;
     min-height: 32rem;
-    border: thin solid #fff;
+    border: thin solid #000;
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -80,17 +80,17 @@
   }
 
   .left-slider {
-    border-right: thin solid #fff;
+    border-right: thin solid #000;
     background-color: var(--primary-color);
     width: 10%;
-    color: #fff; 
+    color: #495057;
   }
 
   .right-slider {
-    border-left: thin solid #fff;
+    border-left: thin solid #000;
     background-color: var(--primary-color);
     width: 10%;
-    color: #fff;
+    color: #495057;
   }
 
   .left-slider:hover,
@@ -112,7 +112,6 @@
     justify-content: space-around;
     min-width: 100%;
     background-color: var(--primary-color);
-    color: #fff;
   }
 
   .sliding-article > p {

@@ -1,4 +1,6 @@
 <script>
+  import Button from "$lib/components/Button.svelte";
+
   export let data;
 
   const updateUserBanStatus = (email, isBanned) => {
@@ -41,16 +43,22 @@
         <td>{user.email}</td>
         <td>{user.isBanned ? 'Banned' : 'Not Banned'}</td>
         <td>
-          <button on:click={() => {
-            user.isBanned = true;
-            updateUserBanStatus(user.email, true);
-          }}>Ban</button>
+          <Button 
+            onClick={() => {
+              user.isBanned = true;
+              updateUserBanStatus(user.email, true);
+            }}
+            name="Ban"
+          />
         </td>
         <td>
-          <button on:click={() => {
-            user.isBanned = false;
-            updateUserBanStatus(user.email, false);
-          }}>Unban</button>
+          <Button 
+            onClick={() => {
+              user.isBanned = false;
+              updateUserBanStatus(user.email, false);
+            }} 
+            name="Unban"
+          />
         </td>
       </tr>
       {/each}
@@ -62,10 +70,8 @@
   .styled-table {
     box-sizing: border-box;
     border-collapse: collapse;
-    margin: 25px 0;
     font-size: 1.7rem;
     font-family: sans-serif;
-    width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
 
@@ -97,36 +103,19 @@
   }
 
   .admin-panel {
-    margin: auto;
-    margin-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-bottom: 2rem;
-    width: 75%;
   }
 
   h1 {
+    color: #fff;
     font-size: 4rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 3rem 0;
   }
   
-  button {
-    border-radius: 4px;
-    padding: 0.75rem 3rem;
-    background-color: whitesmoke;
-    border: thin solid #898989;
-    transition: 250ms;
-  }
-
-  button:hover {
-    cursor: pointer;
-    background-color: #898989;
-    color: white;
-  }
-
-  button:active {
-    transform: scale(0.9);
-  }
-
   img {
     width: 5rem;
     border-radius: 3rem;

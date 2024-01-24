@@ -60,8 +60,8 @@
     border-radius: 4px;
     background: transparent;
     cursor: pointer;
-    color: #fff;
     border: none;
+    color: #000;
   }
 
   button:disabled {

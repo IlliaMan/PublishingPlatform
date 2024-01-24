@@ -11,15 +11,17 @@
     height: 4.5rem;
     border-radius: 4px;
     padding: 0.75rem 3rem;
-    background-color: whitesmoke;
-    border: thin solid var(--primary-color);
+    background-color: #495057;
+    border: thin solid #000;
+    color: #fff;
     transition: 50ms;
+    font-weight: 600;
   }
 
   button:hover {
     cursor: pointer;
     background-color: var(--secondary-color);
-    color: white;
+    border: thin solid #fff;
   }
 
   button:active {

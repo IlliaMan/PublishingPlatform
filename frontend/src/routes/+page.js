@@ -41,6 +41,7 @@ export async function load({ fetch }) {
     }
   }
 
+  console.log(articles);
   return {
     articles,
     articlesSideSectionLeft,

@@ -37,14 +37,21 @@
     text-align: center;
   }
 
+  .main > h1,
+  .main > p {
+    color: #fff;
+  }
+
   h1 {
     font-size: 4rem;
     margin: 0;
+    color: #000;
   }
 
   p {
     font-size: 1.6rem;
     margin: 0;
+    color: #000;
   }
 
   .options {
@@ -58,15 +65,15 @@
   .options > div {
     min-width: 30%;
     min-height: 35rem;
-    background-color: var(--primary-color);
+    background-color: #b0b0b0;
     border: thin solid #fff;
-    color: #fff;
+    color: #000;
   }
 
   .option:nth-child(2) {
     background-color: #fff;
     color: var(--primary-color);
-    border: thin solid var(--primary-color);
+    border: thin solid #000;
   }
 
   .option:hover {

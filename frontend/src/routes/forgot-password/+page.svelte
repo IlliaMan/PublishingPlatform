@@ -21,7 +21,6 @@
     background-color: var(--primary-color);
     padding: 10rem 10vw;
     border-radius: 4px;
-    color: #fff;
     width: 55vw;
     margin: auto;
     margin-top: 10vh;
@@ -47,10 +46,6 @@
     justify-content: flex-end;
     font-size: 1.8rem;
     font-style: italic;
-  }
-
-  a {
-    color: #fff;
   }
 
   a:hover {

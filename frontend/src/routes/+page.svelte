@@ -128,7 +128,6 @@
     flex: 45%;
     background-color: var(--primary-color);
     padding: 2rem 1rem;
-    color: #fff;
     border-radius: 4px;
   }
 

@@ -118,10 +118,10 @@
     column-gap: 5rem;
     width: 100%;
     min-height: 10rem;
-    color: #fff;
     background-color: var(--primary-color);
     padding: 2rem 4rem;
     border-radius: 4px;
+    align-items: flex-end;
   }
 
   h1 {
@@ -133,9 +133,9 @@
     width: 100%;
     height: 5rem;
     background-color: var(--primary-color);
-    color: #fff;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    border-bottom: 0.125rem solid #000;
   }
 
   .main-area {
@@ -152,8 +152,9 @@
   }
 
   textarea {
-    padding-top: 2rem;
-    width: 99%;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+    width: 100%;
     height: 100%;
     font-size: 2rem;
     text-align: left;
@@ -173,8 +174,7 @@
     font-size: 2rem;
     padding: 1rem 2rem;
     overflow: scroll;
-    background-color: white;
-    border-top: 0.125rem solid black;
+    background-color: #fff;
   }
 
   .statistics {
@@ -199,9 +199,11 @@
   }
 
   .input-rectangle > input {
-    height: 3.5rem;
+    box-sizing: border-box;
+    height: 4rem;
     border-radius: 0.5rem;
     font-size: 1.8rem;
     width: 100%;
+    padding-left: 1rem;
   }
 </style>

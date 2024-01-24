@@ -13,7 +13,7 @@
   <div class="main">
     <div class="home-section">
       <Header 
-        bind:menuIconArg={isOpen}
+        bind:isSideMenuOpen={isOpen}
         isAuthenticated={$isAuthenticated}
         userEmail={$userEmail}
         profileIcon={$profileIcon}

@@ -38,7 +38,6 @@
   .styled-table {
     box-sizing: border-box;
     border-collapse: collapse;
-    margin: 25px 0;
     font-size: 1.7rem;
     font-family: sans-serif;
     width: 100%;
@@ -47,7 +46,7 @@
   }
 
   .styled-table thead tr {
-    background-color: var(--primary-color);
+    background-color: #7928a4;
     color: #ffffff;
     text-align: left;
   }
@@ -56,7 +55,7 @@
   .styled-table td {
     padding: 1.5rem 3rem;
   }
-
+  
   .styled-table tbody tr {
     background-color: #dedede;
   }
@@ -70,12 +69,11 @@
   }
 
   .styled-table tbody tr:last-child {
-    border-bottom: 0.5rem solid var(--primary-color);
+    border-bottom: 0.5rem solid #bb7ddc;
   }
   
   .followers-panel {
     margin: auto;
-    margin-top: 8rem;
     padding-bottom: 2rem;
     width: 60%;
     text-align: center;
@@ -85,6 +83,8 @@
     font-size: 4rem;
     text-align: center;
     margin-bottom: 2rem;
+    color: #fff;
+    margin: 3rem 0;
   }
 
   a {

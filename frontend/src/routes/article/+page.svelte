@@ -78,7 +78,7 @@
 
 <style>
   .main {
-    width: 75vw;
+     width: 75vw;
     margin: auto;
     margin-top: 4rem;
     display: flex;
@@ -94,7 +94,6 @@
     width: 100%;
     min-height: 12rem;
     background-color: var(--primary-color);
-    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -119,7 +118,6 @@
     margin: 0;
     text-align: center;
     background-color: var(--primary-color);
-    color: #fff;
     padding: 2rem 1rem;
     border-radius: 4px;
   }
@@ -131,7 +129,6 @@
 
   .author > p {
     background-color: transparent;
-    color: #fff;
     border-radius: 4px;
     padding: 0.5rem 1rem;
     margin: 0;

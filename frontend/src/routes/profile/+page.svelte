@@ -113,7 +113,6 @@
     row-gap: 4rem;
     height: fit-content;
     background-color: var(--primary-color);
-    color: #fff;
     padding: 2rem 3rem;
     border-radius: 4px;
   }
@@ -131,7 +130,6 @@
     box-sizing: border-box;
     border: thin solid var(--primary-color);
     background-color: var(--primary-color);
-    color: #fff;
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;

@@ -55,7 +55,7 @@ input {
   font-size: 1.8rem;
   width: 100%;
   padding-left: 2rem;
-  border: none;
+  border: 2px solid #495057;
 }
 
 input:focus {

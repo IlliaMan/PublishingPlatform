@@ -98,7 +98,6 @@
   .main {
     box-sizing: border-box;
     background-color: var(--primary-color);
-    color: #fff;
     border-radius: 4px;
     width: 55vw;
     margin: auto;
@@ -135,10 +134,6 @@
 
   p {
     margin: 0;
-  }
-
-  a {
-    color: #fff;
   }
 
   .additional-options {

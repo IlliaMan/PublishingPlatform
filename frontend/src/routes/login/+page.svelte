@@ -108,7 +108,6 @@
   margin: auto;
   margin-top: 10vh;
   background-color: var(--primary-color);
-  color: #fff;
   border-radius: 4px;
   padding: 3rem 0;
   row-gap: 4rem;
@@ -149,10 +148,6 @@
 .form {
   width: 70%;
   margin: auto;
-}
-
-a {
-  color: #fff;
 }
 
 a:hover {

@@ -70,11 +70,11 @@
     width: 100%;
     text-align: center;
     display: block;
-    color: white;
     font-size: 2rem;
     padding: 1rem 0;
     text-decoration: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #000;
+    color: #000;
   }
 
   .main > a:hover {

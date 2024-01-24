@@ -1,7 +1,7 @@
 <script>
   import Logo from "./Logo.svelte";
 
-  export let menuIconArg = false;
+  export let isSideMenuOpen = false;
   export let isAuthenticated = false;
   export let profileIcon = 'profileIcon.png'
   export let userEmail = null;
@@ -13,7 +13,7 @@
   <div class="logo">
     <Logo size="small" />
   </div>
-  <div class="search-bar">
+  <div class="search-bar" class:shrink={isSideMenuOpen}>
     <input type="text" placeholder="Search"
       on:focusin={() => { isInputResultHidden = false; }}
       on:focusout={val => { 
@@ -55,7 +55,7 @@
   {#if isAuthenticated}
     <div class="icon profile-icon">
       <a href={`/profile?${new URLSearchParams({ email: userEmail })}`}>
-        <img src={`icons/${profileIcon}`} alt="Progile Icon" class="small-image"/>
+        <img src={`icons/${profileIcon}`} alt="Progile Icon" class="small-image profile-icon-img"/>
       </a>
     </div>
   {:else}
@@ -67,7 +67,7 @@
   {/if}
   <div class="menu-icon">
     <button on:click={() => { 
-      menuIconArg = !menuIconArg;
+      isSideMenuOpen = !isSideMenuOpen;
     }}>
       <img src="MenuIcon.png" alt="Menu Icon" class="small-image"/>
     </button>
@@ -79,10 +79,6 @@
     align-items: center;
     margin-left: 2rem;
     margin-right: 6rem;
-  }
-
-  .logo-image {
-    height: 5rem;
   }
 
   header {
@@ -97,10 +93,15 @@
   .search-bar {
     display: flex;
     flex-direction: column;
-    width: 55vw;
+    width: 76%;
     align-self: center;
     margin: auto;
     height: 4.5rem;
+    transition: width 400ms ease;
+  }
+
+  .search-bar.shrink {
+    width: calc(76% - 12rem);
   }
 
   input {
@@ -110,7 +111,7 @@
     box-sizing: border-box;
     border-radius: 0.5rem;
     padding-left: 2rem;
-    border: none;
+    border: 2px solid #495057;
   }
   
   input:focus {
@@ -174,9 +175,27 @@
     border-radius: 5rem;
   }
 
-  @media only screen and (max-width: 550px) {
-    input {
-      visibility: hidden;
+  img:not(.profile-icon-img) {
+    filter: brightness(25%);
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .search-bar {
+      width: 65%;
+    }
+    
+    .search-bar.shrink {
+      width: calc(65% - 5rem);
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .search-bar {
+      width: 50%;
+    }
+
+    .search-bar.shrink {
+      width: calc(50% - 5rem);
     }
   }
 </style>
