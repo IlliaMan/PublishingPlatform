@@ -167,9 +167,11 @@
   }
 
   .preview {
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
     font-size: 2rem;
+    padding: 1rem 2rem;
     overflow: scroll;
     background-color: white;
     border-top: 0.125rem solid black;
