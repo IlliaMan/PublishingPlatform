@@ -63,7 +63,3 @@ Here are all the functional requirements described for each group.
   - Ban a user
   - Unban a user
   - See a list of all users
-
-## Additional Information
-
-This version is the final application state for thesis defence.
