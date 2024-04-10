@@ -4,6 +4,12 @@
 
 The platform allows its users to create, manage and distribute written content. It incorporates features such as user profiles, article posting, the ability to follow/unfollow other users, and a feed of the most popular articles within the platform.
 
+## TO DO
+
+- Rewrite frontend using NextJS
+- Rewrite backend using microservice architecture
+- Deploy the project on Cloud (AWS)
+
 ## Screenshots
 
 ### Login Page
