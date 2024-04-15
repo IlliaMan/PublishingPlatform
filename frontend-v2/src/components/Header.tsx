@@ -1,5 +1,3 @@
-
-
 function Header() {
 
   return (
@@ -8,7 +6,7 @@ function Header() {
         <a className="btn btn-ghost text-xl" href="/">Publishing Platform</a>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost">Profile</button>
+        <a className="btn btn-ghost" href="/profile">Profile</a>
         <button className="btn btn-ghost">Settings</button>
         <a className="btn btn-ghost" href="/login">Login</a>
       </div>
